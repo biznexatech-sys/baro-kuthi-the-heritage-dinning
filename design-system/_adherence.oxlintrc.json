@@ -1,0 +1,592 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/layout/call-bar/**",
+              "components/layout/footer/**",
+              "components/layout/header/**",
+              "components/layout/invitation/**",
+              "components/lib/**",
+              "components/sections/course-scroll/**",
+              "components/sections/guest-book/**",
+              "components/sections/hero/**",
+              "components/sections/info-strip/**",
+              "components/sections/menu-book/**",
+              "components/sections/occasions/**",
+              "components/sections/reservation/**",
+              "components/sections/rooms/**",
+              "components/sections/story/**",
+              "components/ui/actions/**",
+              "components/ui/frames/**",
+              "components/ui/type/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Cinzel|Cormorant Garamond|Playfair Display))/i]",
+        "message": "Font not provided by the design system. Available: Cinzel, Cormorant Garamond, Playfair Display."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ArchImage'] > JSXAttribute > JSXIdentifier[name!=/^(?:src|alt|shape|tone|width|height|loading|parallax|caption|className|style|key|ref|className|style|children)$/]",
+        "message": "<ArchImage> doesn't accept that prop. Declared props: src, alt, shape, tone, width, height, loading, parallax, caption, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ArchImage'] > JSXAttribute[name.name='shape'] > Literal[value!=/^(?:arch|tall|wide|cinema|square)$/]",
+        "message": "<ArchImage> shape must be one of 'arch' | 'tall' | 'wide' | 'cinema' | 'square'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ArchImage'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<ArchImage> tone must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ArchImage'] > JSXAttribute[name.name='loading'] > Literal[value!=/^(?:lazy|eager)$/]",
+        "message": "<ArchImage> loading must be one of 'lazy' | 'eager'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|href|onClick|children|fullWidth|disabled|type|target|rel|className|style|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, href, onClick, children, fullWidth, disabled, type, target, rel, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|secondary|on-dark)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'secondary' | 'on-dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:button|submit|reset)$/]",
+        "message": "<Button> type must be one of 'button' | 'submit' | 'reset'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Course'] > JSXAttribute > JSXIdentifier[name!=/^(?:numeral|name|note|image|imageAlt|icon|key|ref|className|style|children)$/]",
+        "message": "<Course> doesn't accept that prop. Declared props: numeral, name, note, image, imageAlt, icon."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Divider'] > JSXAttribute > JSXIdentifier[name!=/^(?:motif|width|space|draw|className|style|key|ref|className|style|children)$/]",
+        "message": "<Divider> doesn't accept that prop. Declared props: motif, width, space, draw, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|numeral|tone|as|className|style|key|ref|className|style|children)$/]",
+        "message": "<Eyebrow> doesn't accept that prop. Declared props: children, numeral, tone, as, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:light|dark|terracotta)$/]",
+        "message": "<Eyebrow> tone must be one of 'light' | 'dark' | 'terracotta'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Row'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|key|ref|className|style|children)$/]",
+        "message": "<Row> doesn't accept that prop. Declared props: label, value."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FrameDouble'] > JSXAttribute > JSXIdentifier[name!=/^(?:as|fill|padding|children|className|style|key|ref|className|style|children)$/]",
+        "message": "<FrameDouble> doesn't accept that prop. Declared props: as, fill, padding, children, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FrameDouble'] > JSXAttribute[name.name='fill'] > Literal[value!=/^(?:none|parchment|parchment-dark|terracotta-deep)$/]",
+        "message": "<FrameDouble> fill must be one of 'none' | 'parchment' | 'parchment-dark' | 'terracotta-deep'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Review'] > JSXAttribute > JSXIdentifier[name!=/^(?:date|quote|name|href|source|key|ref|className|style|children)$/]",
+        "message": "<Review> doesn't accept that prop. Declared props: date, quote, name, href, source."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LinkItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|href|key|ref|className|style|children)$/]",
+        "message": "<LinkItem> doesn't accept that prop. Declared props: label, href."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LinkItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|href|key|ref|className|style|children)$/]",
+        "message": "<LinkItem> doesn't accept that prop. Declared props: label, href."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Phone'] > JSXAttribute > JSXIdentifier[name!=/^(?:display|href|key|ref|className|style|children)$/]",
+        "message": "<Phone> doesn't accept that prop. Declared props: display, href."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='InvitationIntro'] > JSXAttribute > JSXIdentifier[name!=/^(?:open|onEnter|onSkip|storageKey|rememberDays|seal|shutter|position|className|style|key|ref|className|style|children)$/]",
+        "message": "<InvitationIntro> doesn't accept that prop. Declared props: open, onEnter, onSkip, storageKey, rememberDays, seal, shutter, position, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='InvitationIntro'] > JSXAttribute[name.name='position'] > Literal[value!=/^(?:fixed|absolute)$/]",
+        "message": "<InvitationIntro> position must be one of 'fixed' | 'absolute'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MenuItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|name|price|description|speciality|key|ref|className|style|children)$/]",
+        "message": "<MenuItem> doesn't accept that prop. Declared props: id, name, price, description, speciality."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LinkItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|href|key|ref|className|style|children)$/]",
+        "message": "<LinkItem> doesn't accept that prop. Declared props: label, href."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Phone'] > JSXAttribute > JSXIdentifier[name!=/^(?:display|href|key|ref|className|style|children)$/]",
+        "message": "<Phone> doesn't accept that prop. Declared props: display, href."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LinkItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|href|key|ref|className|style|children)$/]",
+        "message": "<LinkItem> doesn't accept that prop. Declared props: label, href."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RoomRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:rooms|layout|className|style|key|ref|className|style|children)$/]",
+        "message": "<RoomRow> doesn't accept that prop. Declared props: rooms, layout, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RoomRow'] > JSXAttribute[name.name='layout'] > Literal[value!=/^(?:auto|desktop|mobile)$/]",
+        "message": "<RoomRow> layout must be one of 'auto' | 'desktop' | 'mobile'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionHeading'] > JSXAttribute > JSXIdentifier[name!=/^(?:eyebrow|numeral|title|lead|tone|align|ornament|as|size|reveal|className|style|key|ref|className|style|children)$/]",
+        "message": "<SectionHeading> doesn't accept that prop. Declared props: eyebrow, numeral, title, lead, tone, align, ornament, as, size, reveal, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionHeading'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:light|dark|terracotta)$/]",
+        "message": "<SectionHeading> tone must be one of 'light' | 'dark' | 'terracotta'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionHeading'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|center)$/]",
+        "message": "<SectionHeading> align must be one of 'left' | 'center'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionHeading'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:h2|h1|display)$/]",
+        "message": "<SectionHeading> size must be one of 'h2' | 'h1' | 'display'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StickyCallBar'] > JSXAttribute > JSXIdentifier[name!=/^(?:phoneHref|whatsappHref|callLabel|whatsappLabel|position|visibility|spacer|className|style|key|ref|className|style|children)$/]",
+        "message": "<StickyCallBar> doesn't accept that prop. Declared props: phoneHref, whatsappHref, callLabel, whatsappLabel, position, visibility, spacer, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StickyCallBar'] > JSXAttribute[name.name='position'] > Literal[value!=/^(?:fixed|static)$/]",
+        "message": "<StickyCallBar> position must be one of 'fixed' | 'static'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StickyCallBar'] > JSXAttribute[name.name='visibility'] > Literal[value!=/^(?:mobile|always)$/]",
+        "message": "<StickyCallBar> visibility must be one of 'mobile' | 'always'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LinkItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|href|key|ref|className|style|children)$/]",
+        "message": "<LinkItem> doesn't accept that prop. Declared props: label, href."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TextLink'] > JSXAttribute > JSXIdentifier[name!=/^(?:href|onClick|children|arrow|tone|target|rel|className|style|key|ref|className|style|children)$/]",
+        "message": "<TextLink> doesn't accept that prop. Declared props: href, onClick, children, arrow, tone, target, rel, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TextLink'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<TextLink> tone must be one of 'light' | 'dark'."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "ArchImage": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "Course": {
+        "replaces": []
+      },
+      "Divider": {
+        "replaces": []
+      },
+      "Eyebrow": {
+        "replaces": []
+      },
+      "Row": {
+        "replaces": []
+      },
+      "FrameDouble": {
+        "replaces": []
+      },
+      "Review": {
+        "replaces": []
+      },
+      "LinkItem": {
+        "replaces": []
+      },
+      "Phone": {
+        "replaces": []
+      },
+      "InvitationIntro": {
+        "replaces": []
+      },
+      "MenuItem": {
+        "replaces": []
+      },
+      "RoomRow": {
+        "replaces": []
+      },
+      "SectionHeading": {
+        "replaces": []
+      },
+      "StickyCallBar": {
+        "replaces": []
+      },
+      "TextLink": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--action-on-dark-border",
+      "--action-on-dark-fg",
+      "--action-primary-bg",
+      "--action-primary-bg-hover",
+      "--action-primary-fg",
+      "--action-secondary-border",
+      "--action-secondary-fg",
+      "--bp-2xl",
+      "--bp-lg",
+      "--bp-md",
+      "--bp-sm",
+      "--bp-xl",
+      "--button-inset",
+      "--callbar-h",
+      "--card-gap",
+      "--card-gap-d",
+      "--card-gap-m",
+      "--container",
+      "--copper",
+      "--divider-space",
+      "--dur-base",
+      "--dur-draw",
+      "--dur-fast",
+      "--dur-slow",
+      "--ease-heritage",
+      "--focus-ring",
+      "--focus-ring-offset",
+      "--focus-ring-w",
+      "--font-cinzel",
+      "--font-cormorant",
+      "--font-display",
+      "--font-nav",
+      "--font-playfair",
+      "--font-serif",
+      "--frame-gap",
+      "--frame-outline-offset",
+      "--fs-body",
+      "--fs-body-d",
+      "--fs-body-m",
+      "--fs-body-min",
+      "--fs-button",
+      "--fs-button-d",
+      "--fs-button-m",
+      "--fs-dish-desc",
+      "--fs-display",
+      "--fs-display-d",
+      "--fs-display-m",
+      "--fs-eyebrow",
+      "--fs-eyebrow-d",
+      "--fs-eyebrow-m",
+      "--fs-h1",
+      "--fs-h1-d",
+      "--fs-h1-m",
+      "--fs-h2",
+      "--fs-h2-d",
+      "--fs-h2-m",
+      "--fs-h3",
+      "--fs-h3-d",
+      "--fs-h3-m",
+      "--fs-lead",
+      "--fs-lead-d",
+      "--fs-lead-m",
+      "--fs-phone",
+      "--fs-pull-quote",
+      "--fs-review",
+      "--fs-small",
+      "--fs-small-d",
+      "--fs-small-m",
+      "--fs-year",
+      "--fw-medium",
+      "--fw-regular",
+      "--fw-semibold",
+      "--glow",
+      "--gradient-candle",
+      "--gradient-hero",
+      "--grid-cols",
+      "--gutter",
+      "--gutter-d",
+      "--gutter-m",
+      "--hairline",
+      "--hairline-terracotta",
+      "--hairline-w",
+      "--header-h",
+      "--header-h-compact",
+      "--heading-gap",
+      "--heading-gap-d",
+      "--heading-gap-m",
+      "--hero-inset",
+      "--highlight",
+      "--ink",
+      "--lalpaar-h",
+      "--lh-body",
+      "--lh-button",
+      "--lh-display",
+      "--lh-eyebrow",
+      "--lh-h1",
+      "--lh-h2",
+      "--lh-h3",
+      "--lh-lead",
+      "--lh-small",
+      "--line",
+      "--ls-body",
+      "--ls-button",
+      "--ls-display",
+      "--ls-eyebrow",
+      "--ls-h1",
+      "--ls-h2",
+      "--ls-h3",
+      "--ls-label",
+      "--ls-lead",
+      "--ls-small",
+      "--ls-small-caps",
+      "--ornament",
+      "--parallax-max",
+      "--parchment",
+      "--parchment-dark",
+      "--radius",
+      "--radius-arch",
+      "--reading",
+      "--reveal-rise",
+      "--reveal-stagger",
+      "--section-pad-y",
+      "--section-pad-y-d",
+      "--section-pad-y-m",
+      "--shadow-book",
+      "--shadow-none",
+      "--space-1",
+      "--space-10",
+      "--space-11",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--space-9",
+      "--surface-alt",
+      "--surface-band",
+      "--surface-band-deep",
+      "--surface-card",
+      "--surface-footer",
+      "--surface-overlay",
+      "--surface-page",
+      "--sway-max",
+      "--terracotta",
+      "--terracotta-deep",
+      "--text-body",
+      "--text-display-on-dark",
+      "--text-eyebrow",
+      "--text-heading",
+      "--text-link",
+      "--text-on-dark",
+      "--text-on-dark-label",
+      "--text-on-primary",
+      "--texture-checker-opacity",
+      "--texture-max-opacity",
+      "--touch-min",
+      "--white"
+    ],
+    "tokenKinds": {
+      "--terracotta": "color",
+      "--terracotta-deep": "color",
+      "--ink": "color",
+      "--copper": "color",
+      "--parchment": "color",
+      "--parchment-dark": "color",
+      "--glow": "color",
+      "--white": "color",
+      "--surface-page": "color",
+      "--surface-alt": "color",
+      "--surface-card": "color",
+      "--surface-band": "color",
+      "--surface-band-deep": "color",
+      "--surface-footer": "color",
+      "--surface-overlay": "color",
+      "--text-heading": "font",
+      "--text-body": "font",
+      "--text-link": "font",
+      "--text-eyebrow": "font",
+      "--text-on-dark": "font",
+      "--text-on-dark-label": "font",
+      "--text-display-on-dark": "font",
+      "--text-on-primary": "font",
+      "--line": "color",
+      "--ornament": "color",
+      "--focus-ring": "color",
+      "--highlight": "color",
+      "--action-primary-bg": "color",
+      "--action-primary-bg-hover": "color",
+      "--action-primary-fg": "color",
+      "--action-secondary-fg": "color",
+      "--action-secondary-border": "color",
+      "--action-on-dark-fg": "color",
+      "--action-on-dark-border": "color",
+      "--gradient-hero": "color",
+      "--gradient-candle": "color",
+      "--font-cinzel": "font",
+      "--font-cormorant": "font",
+      "--font-display": "font",
+      "--font-serif": "font",
+      "--font-playfair": "font",
+      "--font-nav": "font",
+      "--fw-regular": "font",
+      "--fw-medium": "font",
+      "--fw-semibold": "font",
+      "--fs-display-d": "spacing",
+      "--fs-h1-d": "spacing",
+      "--fs-h2-d": "spacing",
+      "--fs-h3-d": "spacing",
+      "--fs-eyebrow-d": "spacing",
+      "--fs-lead-d": "spacing",
+      "--fs-body-d": "spacing",
+      "--fs-small-d": "spacing",
+      "--fs-button-d": "spacing",
+      "--fs-display-m": "spacing",
+      "--fs-h1-m": "spacing",
+      "--fs-h2-m": "spacing",
+      "--fs-h3-m": "spacing",
+      "--fs-eyebrow-m": "spacing",
+      "--fs-lead-m": "spacing",
+      "--fs-body-m": "spacing",
+      "--fs-small-m": "spacing",
+      "--fs-button-m": "spacing",
+      "--fs-display": "color",
+      "--fs-h1": "color",
+      "--fs-h2": "color",
+      "--fs-h3": "color",
+      "--fs-eyebrow": "color",
+      "--fs-lead": "color",
+      "--fs-body": "color",
+      "--fs-small": "color",
+      "--fs-button": "color",
+      "--lh-display": "font",
+      "--lh-h1": "font",
+      "--lh-h2": "font",
+      "--lh-h3": "font",
+      "--lh-eyebrow": "font",
+      "--lh-lead": "font",
+      "--lh-body": "font",
+      "--lh-small": "font",
+      "--lh-button": "font",
+      "--ls-display": "font",
+      "--ls-h1": "font",
+      "--ls-h2": "font",
+      "--ls-h3": "font",
+      "--ls-eyebrow": "font",
+      "--ls-lead": "font",
+      "--ls-body": "font",
+      "--ls-small": "font",
+      "--ls-button": "font",
+      "--ls-label": "font",
+      "--ls-small-caps": "font",
+      "--fs-dish-desc": "spacing",
+      "--fs-pull-quote": "spacing",
+      "--fs-year": "spacing",
+      "--fs-phone": "spacing",
+      "--fs-review": "spacing",
+      "--fs-body-min": "spacing",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--space-9": "spacing",
+      "--space-10": "spacing",
+      "--space-11": "spacing",
+      "--section-pad-y-d": "spacing",
+      "--section-pad-y-m": "spacing",
+      "--heading-gap-d": "spacing",
+      "--heading-gap-m": "spacing",
+      "--card-gap-d": "spacing",
+      "--card-gap-m": "spacing",
+      "--gutter-d": "spacing",
+      "--gutter-m": "spacing",
+      "--section-pad-y": "spacing",
+      "--heading-gap": "spacing",
+      "--card-gap": "spacing",
+      "--gutter": "color",
+      "--divider-space": "spacing",
+      "--container": "spacing",
+      "--reading": "spacing",
+      "--grid-cols": "other",
+      "--header-h": "spacing",
+      "--header-h-compact": "spacing",
+      "--callbar-h": "spacing",
+      "--lalpaar-h": "spacing",
+      "--hero-inset": "spacing",
+      "--touch-min": "spacing",
+      "--bp-sm": "spacing",
+      "--bp-md": "spacing",
+      "--bp-lg": "spacing",
+      "--bp-xl": "spacing",
+      "--bp-2xl": "spacing",
+      "--radius": "radius",
+      "--radius-arch": "radius",
+      "--hairline-w": "spacing",
+      "--hairline": "color",
+      "--hairline-terracotta": "color",
+      "--frame-gap": "spacing",
+      "--frame-outline-offset": "spacing",
+      "--button-inset": "spacing",
+      "--focus-ring-w": "spacing",
+      "--focus-ring-offset": "spacing",
+      "--shadow-none": "shadow",
+      "--shadow-book": "shadow",
+      "--texture-max-opacity": "other",
+      "--texture-checker-opacity": "other",
+      "--ease-heritage": "other",
+      "--dur-fast": "other",
+      "--dur-base": "other",
+      "--dur-slow": "other",
+      "--dur-draw": "other",
+      "--reveal-rise": "other",
+      "--reveal-stagger": "other",
+      "--parallax-max": "other",
+      "--sway-max": "other"
+    },
+    "fontFamilies": [
+      "Cinzel",
+      "Cormorant Garamond",
+      "Playfair Display"
+    ]
+  }
+}

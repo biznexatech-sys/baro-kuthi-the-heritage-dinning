@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script></helmet>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Occasions">
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter) 0;background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.SectionHeading" size="h1" as="h1" eyebrow="Occasions" title="Occasions of the House" lead="Private dinners, family gatherings and midday tables, all arranged by telephone." hint-size="100%,250px"></x-import>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-10)">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.StoryBlock" numeral="I" eyebrow="The Zamindar’s Study" title="Private Dining" image-alt="A private table laid in the study, lamp-lit" hint-size="100%,640px"><p>An evening of your own in the study, for up to ten guests. The menu is chosen with the host beforehand.</p></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.StoryBlock" numeral="II" eyebrow="The Courtyard · The Jalsaghar" title="Family Celebrations" image-alt="A long family table in the courtyard at night" reverse="{{ true }}" hint-size="100%,640px"><p>Birthdays, anniversaries and annaprashan, hosted in the courtyard or the Jalsaghar, in the old manner.</p></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.StoryBlock" numeral="III" eyebrow="Midday, by arrangement" title="Corporate Lunches" image-alt="The verandah laid for lunch in daylight" hint-size="100%,640px"><p>Midday tables for colleagues and guests, with a set menu from either table.</p></x-import>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment-dark)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--heading-gap)">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.SectionHeading" eyebrow="How It Works" title="How an Occasion Is Arranged" lead="Everything is settled by telephone, with the host, in person." hint-size="100%,230px"></x-import>
+<ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--card-gap)">
+<li style="display:flex;flex-direction:column;gap:12px;padding-top:var(--space-5);border-top:1px solid var(--copper)"><span style="font:400 var(--fs-year)/1 var(--font-display);letter-spacing:.04em;color:var(--terracotta)">I</span><h3 style="margin:8px 0 0;font:600 var(--fs-h3)/var(--lh-h3) var(--font-serif);color:var(--terracotta)">Telephone the host</h3><p style="margin:0;max-width:32ch;font:400 18px/1.55 var(--font-serif);color:var(--ink)">Tell the host the date, the number of guests and the occasion.</p></li>
+<li style="display:flex;flex-direction:column;gap:12px;padding-top:var(--space-5);border-top:1px solid var(--copper)"><span style="font:400 var(--fs-year)/1 var(--font-display);letter-spacing:.04em;color:var(--terracotta)">II</span><h3 style="margin:8px 0 0;font:600 var(--fs-h3)/var(--lh-h3) var(--font-serif);color:var(--terracotta)">Settle the room and menu</h3><p style="margin:0;max-width:32ch;font:400 18px/1.55 var(--font-serif);color:var(--ink)">The host suggests a room and a menu from either table.</p></li>
+<li style="display:flex;flex-direction:column;gap:12px;padding-top:var(--space-5);border-top:1px solid var(--copper)"><span style="font:400 var(--fs-year)/1 var(--font-display);letter-spacing:.04em;color:var(--terracotta)">III</span><h3 style="margin:8px 0 0;font:600 var(--fs-h3)/var(--lh-h3) var(--font-serif);color:var(--terracotta)">Arrive and be received</h3><p style="margin:0;max-width:32ch;font:400 18px/1.55 var(--font-serif);color:var(--ink)">The house is prepared, and your guests are received at the gate.</p></li>
+</ol>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.ReservationCard" eyebrow="Arrangements" title="Arrange an Occasion" message="Occasions at Baro Kuthi are arranged personally. Please telephone our host." phone="{{ site.phone }}" whatsapp-href="{{ site.whatsapp }}" hours="{{ site.hours }}" hint-size="100%,640px"></x-import>
+</div>
+</section>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { d: null };
+  componentDidMount() {
+    import(new URL('./site-data.js', document.baseURI).href)
+      .then((d) => this.setState({ d }))
+      .catch((e) => console.error('RajbariOccasions: site-data.js failed to load', e));
+  }
+  renderVals() {
+    const d = this.state.d;
+    if (!d) return { ready: false };
+    return { ready: true, site: d.site };
+  }
+}
+</script>
+</body>
+</html>

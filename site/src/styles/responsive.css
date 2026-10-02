@@ -1,0 +1,88 @@
+/*
+ * Viewport-driven responsive rules for the production site.
+ *
+ * In the design system, components measure their own width and add `.bk-compact` (so they render correctly inside
+ * phone frames on a desktop canvas). A statically exported site cannot measure anything before JavaScript runs, so
+ * here the same rules are keyed to media queries instead. Each block mirrors a `.bk-compact` / `--mid` / `--swipe`
+ * rule in design-system/components/** — keep them in step when those change.
+ * Token swaps (type scale, section padding, gutters) already have media queries in tokens/*.css.
+ */
+
+/* ── Header (§9.2): desktop bar ≥ 1200px, mobile bar + full-screen menu below ─────────────────────────── */
+@media (min-width: 1200px) {
+  .site-header__variant--mobile { display: none; }
+}
+@media (max-width: 1199.98px) {
+  .site-header__variant--desktop { display: none; }
+}
+
+/* ── Footer (§9.14): 4 columns → 2 (768–1099) → 1 (< 768) ──────────────────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1099.98px) {
+  .bk-footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-7); }
+}
+@media (max-width: 767.98px) {
+  .bk-footer__cols { grid-template-columns: 1fr; gap: 40px; }
+  .bk-footer__inner { padding-top: var(--space-8); }
+}
+
+/* ── Rooms row (§9.10): 4 columns → 2 → horizontal swipe with progress line ───────────────────────────── */
+.bk-rooms__progress { display: none; }
+@media (min-width: 768px) and (max-width: 1099.98px) {
+  .bk-rooms__scroller { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-8); }
+}
+@media (max-width: 767.98px) {
+  .bk-rooms__scroller { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter); scroll-padding: 0 var(--gutter); scrollbar-width: none; overscroll-behavior-x: contain; }
+  .bk-rooms__scroller::-webkit-scrollbar { display: none; }
+  .bk-rooms .bk-room { flex: 0 0 76%; scroll-snap-align: start; }
+  .bk-rooms__progress { display: block; }
+}
+
+/* ── Menu book (§9.8): spread ≥ 768px; tabs + one page + page-turn below ───────────────────────────────── */
+.bk-book__tabs { display: none; }
+@media (max-width: 767.98px) {
+  .bk-book { perspective: 1400px; }
+  .bk-book__tabs { display: grid; }
+  .bk-book__spread { grid-template-columns: minmax(0, 1fr); }
+  .bk-book__spread::before, .bk-book__spread::after { display: none; }
+  .bk-book__page { padding: 40px 28px; }
+  .bk-book__page.is-inactive { display: none; }
+  .bk-book__footer { padding: 0 28px 40px; }
+}
+@media (min-width: 768px) {
+  /* The page-turn is a mobile-only effect. */
+  .bk-book__page.is-turning-fwd, .bk-book__page.is-turning-back { animation: none; }
+}
+
+/* ── Hero (§9.5) ───────────────────────────────────────────────────────────────────────────────────────── */
+@media (max-width: 767.98px) {
+  .bk-hero__content { padding: var(--space-8) calc(var(--hero-inset) + var(--space-5)) calc(var(--hero-inset) + 40px); }
+  .bk-hero__ph { top: calc(var(--hero-inset) + 24px); right: calc(var(--hero-inset) + 24px); max-width: 220px; }
+  .bk-hero__actions { flex-direction: column; align-self: stretch; }
+  .bk-hero__actions .bk-btn { width: 100%; }
+}
+
+/* ── Info strip, story block, occasion band, guest book, reservation card ─────────────────────────────── */
+@media (max-width: 767.98px) {
+  .bk-info__inner { grid-template-columns: 1fr; }
+  .bk-info__col { padding: var(--space-6) 0; }
+  .bk-info__col + .bk-info__col { border-left: 0; border-top: var(--hairline); }
+
+  .bk-story { grid-template-columns: minmax(0, 1fr); row-gap: 40px; }
+  .bk-story .bk-story__media, .bk-story .bk-story__text,
+  .bk-story--reverse .bk-story__media, .bk-story--reverse .bk-story__text { grid-column: 1; grid-row: auto; }
+  .bk-story .bk-story__media { width: 100%; max-width: 420px; }
+
+  .bk-occasion__items { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
+
+  .bk-guestbook { grid-template-columns: minmax(0, 1fr); }
+
+  .bk-resv { padding: 56px var(--space-5) 40px; }
+  .bk-resv__grid { grid-template-columns: minmax(0, 1fr); }
+  .bk-resv__col { padding: 40px 0 0; }
+  .bk-resv__col + .bk-resv__col { border-left: 0; border-top: var(--hairline); margin-top: 40px; }
+  .bk-resv__phone { white-space: normal; }
+}
+/* Tablet: three narrow review cards read poorly; stack them in one column until there is room. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .bk-guestbook { grid-template-columns: minmax(0, 1fr); }
+}

@@ -1,0 +1,43 @@
+/*
+ * Page-level brand typography that is not a design-system component (ported from design-system/ui_kits/website).
+ * Convention: Tailwind utilities handle page *layout* (sections, grids, stacks); `pg-*` classes here handle
+ * brand *typography and rules* that would be unreadable as utilities. Components keep their own `bk-*` CSS.
+ */
+
+/* Skip link — hidden until focused. */
+.pg-skip { position: absolute; left: var(--space-4); top: -100px; z-index: 300; padding: 12px 20px; background: var(--terracotta-deep); color: var(--parchment); font: var(--fw-semibold) var(--fs-button)/1 var(--font-serif); font-variant: all-small-caps; letter-spacing: var(--ls-button); text-decoration: none; }
+.pg-skip:focus { top: var(--space-4); color: var(--parchment); }
+
+/* Letterpress rows with copper leaders (rooms facts, visit hours). */
+.pg-leaders { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.pg-leaders li { display: flex; align-items: baseline; font: 400 18px/1.45 var(--font-serif); color: var(--ink); }
+.pg-leaders .pg-leaders__k { font-weight: 600; font-variant: all-small-caps; letter-spacing: .14em; color: var(--terracotta); white-space: nowrap; }
+.pg-leaders .pg-leaders__v { text-align: right; }
+
+.pg-prose p { margin: 0 0 20px; font: 400 var(--fs-body)/var(--lh-body) var(--font-serif); letter-spacing: var(--ls-body); color: var(--ink); max-width: var(--reading); text-wrap: pretty; }
+
+.pg-centred-line { margin: 0; max-width: 34ch; font: italic 400 var(--fs-lead)/var(--lh-lead) var(--font-serif); color: var(--ink); text-wrap: balance; }
+
+.pg-room-name { margin: 0; font: 400 var(--fs-h2)/var(--lh-h2) var(--font-display); letter-spacing: var(--ls-h2); text-transform: uppercase; color: var(--terracotta); }
+
+.pg-step { display: flex; flex-direction: column; gap: 12px; padding-top: var(--space-5); border-top: var(--hairline); }
+.pg-step__n { font: 400 var(--fs-year)/1 var(--font-display); letter-spacing: .04em; color: var(--terracotta); }
+.pg-step__title { margin: 8px 0 0; font: 600 var(--fs-h3)/var(--lh-h3) var(--font-serif); color: var(--terracotta); }
+.pg-step__text { margin: 0; font: 400 18px/1.55 var(--font-serif); color: var(--ink); max-width: 32ch; }
+
+.pg-map { aspect-ratio: 16 / 10; display: flex; }
+.pg-map iframe { flex: 1; border: 0; width: 100%; height: 100%; }
+.pg-map__idle { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; }
+.pg-map__addr { margin: 0; font: italic 400 var(--fs-lead)/1.4 var(--font-serif); color: var(--ink); }
+
+.pg-visit .bk-eyebrow { margin-bottom: 12px; }
+.pg-visit__text { margin: 0; font: 400 20px/1.55 var(--font-serif); color: var(--ink); }
+
+.pg-faq { margin: 0; display: flex; flex-direction: column; }
+.pg-faq__item { padding: var(--space-5) 0; border-top: var(--hairline); }
+.pg-faq__item:last-child { border-bottom: var(--hairline); }
+.pg-faq dt { font: 600 var(--fs-h3)/var(--lh-h3) var(--font-serif); color: var(--terracotta); }
+.pg-faq dd { margin: 10px 0 0; font: 400 var(--fs-body)/var(--lh-body) var(--font-serif); color: var(--ink); max-width: 48ch; }
+
+/* Gentle fade between routes (client navigation). */
+.pg-page { animation: bk-fade var(--dur-base) var(--ease-heritage) both; }

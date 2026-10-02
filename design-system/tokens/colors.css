@@ -1,0 +1,51 @@
+/* DESIGN.md §2 — Colour tokens. Ratio: 70% parchment · 25% terracotta · 5% copper. */
+:root{
+--terracotta:#924B3F;
+--terracotta-deep:#5E2E27;
+--ink:#3A1F1A;
+--copper:#D7A680;
+--parchment:#F6ECE2;
+--parchment-dark:#EBDCCD;
+--glow:#FFCC99;
+--white:#FFFFFF;
+
+/* surfaces */
+--surface-page:var(--parchment);
+--surface-alt:var(--parchment-dark);
+--surface-card:var(--parchment-dark);
+--surface-band:var(--terracotta);
+--surface-band-deep:var(--terracotta-deep);
+--surface-footer:var(--terracotta-deep);
+--surface-overlay:var(--terracotta-deep);
+
+/* text — light sections */
+--text-heading:var(--terracotta);
+--text-body:var(--ink);
+--text-link:var(--terracotta);
+--text-eyebrow:var(--terracotta);
+/* text — dark bands */
+--text-on-dark:var(--parchment);
+--text-on-dark-label:var(--copper);
+--text-display-on-dark:var(--copper); /* ≥32px only on terracotta */
+/* text — terracotta buttons */
+--text-on-primary:var(--white);
+
+/* lines, ornaments, states */
+--line:var(--copper);
+--ornament:var(--copper);
+--focus-ring:var(--copper);
+--highlight:var(--glow);
+
+/* actions */
+--action-primary-bg:var(--terracotta);
+--action-primary-bg-hover:var(--terracotta-deep);
+--action-primary-fg:var(--white);
+--action-secondary-fg:var(--terracotta);
+--action-secondary-border:var(--terracotta);
+--action-on-dark-fg:var(--parchment);
+--action-on-dark-border:var(--copper);
+
+/* gradients */
+--gradient-hero:linear-gradient(to top,var(--terracotta-deep) 0%,color-mix(in srgb,var(--terracotta-deep) 55%,transparent) 35%,transparent 70%);
+--gradient-candle:radial-gradient(closest-side,color-mix(in srgb,var(--glow) 38%,transparent),transparent);
+}

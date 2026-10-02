@@ -1,0 +1,20 @@
+/* §9.5 Hero — "The Gate". Full-bleed dusk photo, terracotta-deep gradient from the bottom, double copper frame inset 24px. */
+.bk-hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-end;min-height:max(560px,calc(100svh - var(--header-h) - var(--lalpaar-h)));background:var(--ink);color:var(--parchment)}
+.bk-hero__media{position:absolute;inset:0;z-index:-2}
+.bk-hero__img{display:block;width:100%;height:100%;object-fit:cover}
+.bk-hero__placeholder{position:absolute;inset:0;background:var(--gradient-candle) 50% -30%/80% 90% no-repeat,var(--ink)}
+.bk-hero__ph{position:absolute;top:calc(var(--hero-inset) + 36px);right:calc(var(--hero-inset) + 40px);display:flex;flex-direction:column;align-items:flex-end;gap:6px;max-width:300px;text-align:right}
+.bk-hero__ph-label{font:var(--fw-semibold) 13px/1.4 var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-eyebrow);color:var(--copper)}
+.bk-hero__ph-alt{font:italic var(--fw-regular) 17px/1.45 var(--font-serif);color:var(--parchment)}
+.bk-hero__shade{position:absolute;inset:0;z-index:-1;background:var(--gradient-hero)}
+.bk-hero__frame{position:absolute;inset:var(--hero-inset);pointer-events:none}
+.bk-hero__chandelier{position:absolute;top:var(--hero-inset);left:50%;width:min(220px,28%);transform:translateX(-50%) rotate(var(--sway,0deg));transform-origin:50% 0;transition:transform var(--dur-slow) var(--ease-heritage);pointer-events:none}
+.bk-hero__chandelier-art{display:block;width:100%;height:auto}
+.bk-hero__content{position:relative;box-sizing:border-box;width:100%;max-width:calc(var(--container) + 2 * var(--gutter));margin:0 auto;padding:var(--space-9) calc(var(--hero-inset) + var(--space-8)) calc(var(--hero-inset) + 72px);display:flex;flex-direction:column;align-items:flex-start}
+.bk-hero__title{margin:var(--space-5) 0 0;font:var(--fw-regular) var(--fs-display)/var(--lh-display) var(--font-display);letter-spacing:var(--ls-display);text-transform:uppercase;color:var(--parchment);max-width:13ch;text-wrap:balance}
+.bk-hero__lead{margin:var(--space-5) 0 0;font:italic var(--fw-regular) var(--fs-lead)/var(--lh-lead) var(--font-serif);color:var(--parchment);max-width:34ch;text-wrap:pretty}
+.bk-hero__actions{display:flex;flex-wrap:wrap;gap:var(--space-4);margin-top:40px}
+.bk-hero--compact .bk-hero__content{padding:var(--space-8) calc(var(--hero-inset) + var(--space-5)) calc(var(--hero-inset) + 40px)}
+.bk-hero--compact .bk-hero__ph{top:calc(var(--hero-inset) + 24px);right:calc(var(--hero-inset) + 24px);max-width:220px}
+.bk-hero--compact .bk-hero__actions{flex-direction:column;align-self:stretch}
+.bk-hero--compact .bk-hero__actions .bk-btn{width:100%}

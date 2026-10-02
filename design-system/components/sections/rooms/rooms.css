@@ -1,0 +1,13 @@
+/* §9.10 Room card — arched 3:4 image, Cinzel h3 name, eyebrow line, one sentence, text link. */
+.bk-room{display:flex;flex-direction:column;gap:var(--space-5);min-width:0}
+.bk-room__body{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.bk-room__name{margin:0;font:var(--fw-regular) var(--fs-h3)/var(--lh-h3) var(--font-display);letter-spacing:.02em;text-transform:uppercase;color:var(--terracotta);text-wrap:balance}
+.bk-room__desc{margin:2px 0 0;font:var(--fw-regular) 18px/1.55 var(--font-serif);color:var(--ink);text-wrap:pretty}
+/* Row: four columns on desktop; horizontal swipe on mobile with a copper progress line (no auto-play). */
+.bk-rooms__scroller{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--card-gap)}
+.bk-rooms--cols-2 .bk-rooms__scroller{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-8)}
+.bk-rooms--swipe .bk-rooms__scroller{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter);scroll-padding:0 var(--gutter);scrollbar-width:none;overscroll-behavior-x:contain}
+.bk-rooms--swipe .bk-rooms__scroller::-webkit-scrollbar{display:none}
+.bk-rooms--swipe .bk-room{flex:0 0 76%;scroll-snap-align:start}
+.bk-rooms__progress{position:relative;height:1px;margin-top:var(--space-6);background:var(--copper)}
+.bk-rooms__thumb{position:absolute;top:-1px;height:3px;background:var(--copper)}

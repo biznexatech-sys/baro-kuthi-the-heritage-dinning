@@ -1,0 +1,54 @@
+/* DESIGN.md §3 — Cinzel (display) + Cormorant Garamond (everything else) + Playfair Display (header navigation only, client request). No sans-serif anywhere. */
+:root{
+--font-cinzel:'Cinzel','Trajan Pro',Georgia,serif;
+--font-cormorant:'Cormorant Garamond','Cormorant',Garamond,Georgia,serif;
+--font-display:var(--font-cinzel);
+--font-serif:var(--font-cormorant);
+--font-playfair:'Playfair Display',Georgia,serif;
+--font-nav:var(--font-playfair);
+
+--fw-regular:400; /* @kind font */
+--fw-medium:500; /* @kind font */
+--fw-semibold:600; /* @kind font */
+
+/* desktop values */
+--fs-display-d:72px;--fs-h1-d:56px;--fs-h2-d:40px;--fs-h3-d:28px;--fs-eyebrow-d:14px;--fs-lead-d:24px;--fs-body-d:20px;--fs-small-d:16px;--fs-button-d:15px;
+/* mobile values */
+--fs-display-m:40px;--fs-h1-m:34px;--fs-h2-m:28px;--fs-h3-m:22px;--fs-eyebrow-m:13px;--fs-lead-m:20px;--fs-body-m:18px;--fs-small-m:15px;--fs-button-m:15px;
+
+/* live (responsive) sizes */
+--fs-display:var(--fs-display-d);--fs-h1:var(--fs-h1-d);--fs-h2:var(--fs-h2-d);--fs-h3:var(--fs-h3-d);--fs-eyebrow:var(--fs-eyebrow-d);--fs-lead:var(--fs-lead-d);--fs-body:var(--fs-body-d);--fs-small:var(--fs-small-d);--fs-button:var(--fs-button-d);
+
+--lh-display:1.05; /* @kind font */
+--lh-h1:1.1; /* @kind font */
+--lh-h2:1.15; /* @kind font */
+--lh-h3:1.2; /* @kind font */
+--lh-eyebrow:1.4; /* @kind font */
+--lh-lead:1.5; /* @kind font */
+--lh-body:1.65; /* @kind font */
+--lh-small:1.5; /* @kind font */
+--lh-button:1; /* @kind font */
+
+--ls-display:0.06em; /* @kind font */
+--ls-h1:0.05em; /* @kind font */
+--ls-h2:0.04em; /* @kind font */
+--ls-h3:0.01em; /* @kind font */
+--ls-eyebrow:0.22em; /* @kind font */
+--ls-lead:0; /* @kind font */
+--ls-body:0.005em; /* @kind font */
+--ls-small:0.01em; /* @kind font */
+--ls-button:0.2em; /* @kind font */
+--ls-label:0.18em; /* @kind font */
+--ls-small-caps:0.2em; /* @kind font */
+
+/* component-specific sizes named in §9 */
+--fs-dish-desc:18px;
+--fs-pull-quote:32px;
+--fs-year:56px;
+--fs-phone:40px;
+--fs-review:20px;
+--fs-body-min:18px; /* Cormorant runs small — body never below this */
+}
+@media (max-width:767.98px){:root{--fs-display:var(--fs-display-m);--fs-h1:var(--fs-h1-m);--fs-h2:var(--fs-h2-m);--fs-h3:var(--fs-h3-m);--fs-eyebrow:var(--fs-eyebrow-m);--fs-lead:var(--fs-lead-m);--fs-body:var(--fs-body-m);--fs-small:var(--fs-small-m);--fs-pull-quote:26px;--fs-year:40px;--fs-phone:32px}}
+/* Compact scope: components add this when THEY are narrower than 768px (e.g. inside a phone frame on a desktop screen). */
+.bk-compact{--fs-display:var(--fs-display-m);--fs-h1:var(--fs-h1-m);--fs-h2:var(--fs-h2-m);--fs-h3:var(--fs-h3-m);--fs-eyebrow:var(--fs-eyebrow-m);--fs-lead:var(--fs-lead-m);--fs-body:var(--fs-body-m);--fs-small:var(--fs-small-m);--fs-pull-quote:26px;--fs-year:40px;--fs-phone:32px}

@@ -1,0 +1,22 @@
+/* §9.4 Invitation intro — full-screen parchment, centred double-framed card (max 560px), wax seal opens the shutters (900ms). */
+.bk-invite{position:fixed;inset:0;z-index:200;display:grid;place-items:center;box-sizing:border-box;padding:var(--space-5);overflow:hidden}
+.bk-invite--absolute{position:absolute}
+.bk-invite__panel{position:absolute;top:0;bottom:0;width:50%;background-color:var(--parchment);background-repeat:repeat-y;background-size:100% auto;transition:transform var(--dur-slow) var(--ease-heritage) 250ms}
+.bk-invite__panel--left{left:0;border-right:var(--hairline)}
+.bk-invite__panel--right{right:0}
+.bk-invite.is-opening .bk-invite__panel--left{transform:translateX(-101%)}
+.bk-invite.is-opening .bk-invite__panel--right{transform:translateX(101%)}
+.bk-invite__skip{position:absolute;top:var(--space-3);right:var(--space-5);z-index:2;transition:opacity var(--dur-fast) var(--ease-heritage)}
+.bk-invite__card{position:relative;z-index:1;box-sizing:border-box;width:100%;max-width:560px;padding:var(--space-8) var(--space-7) var(--space-7);display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--parchment);transition:opacity var(--dur-fast) var(--ease-heritage)}
+.bk-invite.is-opening .bk-invite__card,.bk-invite.is-opening .bk-invite__skip{opacity:0}
+.bk-invite__card .bk-eyebrow{margin-bottom:var(--space-5)}
+.bk-invite__line{margin:0;font:italic var(--fw-regular) 24px/1.45 var(--font-serif);color:var(--ink);text-wrap:balance}
+.bk-invite__house{margin:var(--space-2) 0 var(--space-3);font:var(--fw-regular) 44px/1.1 var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta)}
+.bk-invite__seal{position:relative;display:grid;place-items:center;width:96px;height:96px;margin-top:var(--space-7);padding:0;border:0;border-radius:50%;background:var(--copper);color:var(--terracotta-deep);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.bk-invite__seal::before{content:"";position:absolute;inset:-56px;border-radius:50%;background:var(--gradient-candle);opacity:0;z-index:-1;pointer-events:none;transition:opacity var(--dur-base) var(--ease-heritage)}
+.bk-invite__seal:hover::before,.bk-invite__seal:focus-visible::before{opacity:1}
+.bk-invite__seal--art{background:none;border-radius:0;width:112px;height:112px}
+.bk-invite__seal-art{display:block;width:100%;height:100%;object-fit:contain}
+.bk-invite__seal-label{font:var(--fw-semibold) var(--fs-button)/1 var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-button);margin-right:calc(-1 * var(--ls-button))}
+.bk-invite__hint{margin:var(--space-4) 0 0;font:var(--fw-semibold) 13px/1.4 var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-eyebrow);color:var(--terracotta)}
+@media (max-width:767.98px){.bk-invite__card{padding:var(--space-7) var(--space-5) var(--space-6)}.bk-invite__house{font-size:34px}.bk-invite__line{font-size:21px}}

@@ -1,0 +1,30 @@
+/* DESIGN.md §13 globals + text utilities. */
+html{background:var(--surface-page);color:var(--text-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;font-family:var(--font-serif);font-size:var(--fs-body);line-height:var(--lh-body);letter-spacing:var(--ls-body);font-variant-numeric:oldstyle-nums}
+a{color:var(--text-link);text-decoration-color:var(--copper);text-underline-offset:.2em;transition:color var(--dur-fast) var(--ease-heritage)}
+a:hover{color:var(--terracotta-deep)}
+:focus-visible{outline:var(--focus-ring-w) solid var(--focus-ring);outline-offset:var(--focus-ring-offset)}
+::selection{background:var(--copper);color:var(--ink)}
+
+.small-caps{font-variant:all-small-caps;letter-spacing:var(--ls-small-caps)}
+.frame-double{border:var(--hairline);outline:var(--hairline);outline-offset:var(--frame-outline-offset)}
+.arch{border-radius:var(--radius-arch);overflow:hidden}
+
+.t-display{font:var(--fw-regular) var(--fs-display)/var(--lh-display) var(--font-display);letter-spacing:var(--ls-display);text-transform:uppercase;color:var(--text-heading);margin:0}
+.t-h1{font:var(--fw-regular) var(--fs-h1)/var(--lh-h1) var(--font-display);letter-spacing:var(--ls-h1);text-transform:uppercase;color:var(--text-heading);margin:0}
+.t-h2{font:var(--fw-regular) var(--fs-h2)/var(--lh-h2) var(--font-display);letter-spacing:var(--ls-h2);text-transform:uppercase;color:var(--text-heading);margin:0;text-wrap:balance}
+.t-h3{font:var(--fw-semibold) var(--fs-h3)/var(--lh-h3) var(--font-serif);letter-spacing:var(--ls-h3);color:var(--text-heading);margin:0}
+.t-eyebrow{font:var(--fw-semibold) var(--fs-eyebrow)/var(--lh-eyebrow) var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-eyebrow);color:var(--text-eyebrow);margin:0}
+.t-lead{font:italic var(--fw-regular) var(--fs-lead)/var(--lh-lead) var(--font-serif);color:var(--text-body);margin:0;text-wrap:pretty}
+.t-body{font:var(--fw-regular) var(--fs-body)/var(--lh-body) var(--font-serif);letter-spacing:var(--ls-body);color:var(--text-body);margin:0;text-wrap:pretty}
+.t-small{font:var(--fw-medium) var(--fs-small)/var(--lh-small) var(--font-serif);letter-spacing:var(--ls-small);color:var(--text-body);margin:0}
+.t-button{font:var(--fw-semibold) var(--fs-button)/var(--lh-button) var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-button)}
+.t-label{font:var(--fw-semibold) var(--fs-small)/var(--lh-small) var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-label)}
+
+.on-dark{--text-heading:var(--parchment);--text-body:var(--parchment);--text-eyebrow:var(--copper);--text-link:var(--parchment);background:var(--surface-band-deep);color:var(--parchment)}
+
+/* Reveal: fade + 24px rise, once. JS sets data-reveal="pending" only for elements below the fold. */
+[data-reveal="pending"]{opacity:0;transform:translateY(var(--reveal-rise))}
+[data-reveal="done"]{opacity:1;transform:none;transition:opacity var(--dur-base) var(--ease-heritage),transform var(--dur-base) var(--ease-heritage);transition-delay:var(--reveal-delay,0ms)}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}[data-reveal]{opacity:1!important;transform:none!important}}

@@ -1,0 +1,71 @@
+<!-- @dsCard group="Website" viewport="1440x900" name="Heritage Dining website" subtitle="Click-through: Home · Story · Menu · Rooms · Occasions · Visit" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Baro Kuthi Rajbari · The Heritage Dining</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="ds-fallback.js"></script>
+<script src="data.js"></script>
+<style>
+body{margin:0}
+.kit-section{box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)}
+.kit-section--alt{background:var(--parchment-dark)}
+.kit-section--flush-top{padding-top:0}
+.kit-section--flush-bottom{padding-bottom:0}
+.kit-inner{max-width:var(--container);margin:0 auto}
+.kit-stack{display:flex;flex-direction:column;gap:var(--heading-gap)}
+.kit-split{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--card-gap);row-gap:var(--heading-gap);align-items:start}
+.kit-split>:first-child{grid-column:1 / span 4}
+.kit-split>:last-child{grid-column:6 / span 7}
+.kit-split--7-4>:first-child{grid-column:1 / span 7}
+.kit-split--7-4>:last-child{grid-column:9 / span 4}
+.kit-leaders{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.kit-leaders li{display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)}
+.kit-leaders .k{font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap}
+.kit-leaders .v{text-align:right}
+.kit-prose p{margin:0 0 20px;font:400 var(--fs-body)/var(--lh-body) var(--font-serif);letter-spacing:var(--ls-body);color:var(--ink);max-width:var(--reading);text-wrap:pretty}
+.kit-timeline{display:flex;flex-direction:column;gap:var(--space-10)}
+.kit-note,.kit-cta{display:flex;flex-direction:column;align-items:center;gap:var(--space-6);text-align:center}
+.kit-note__text,.kit-cta__line{margin:0;max-width:34ch;font:italic 400 var(--fs-lead)/var(--lh-lead) var(--font-serif);color:var(--ink);text-wrap:balance}
+.kit-room{display:flex;flex-direction:column;gap:var(--space-7)}
+.kit-room__head{display:flex;flex-direction:column;gap:14px}
+.kit-room__name{margin:0;font:400 var(--fs-h2)/var(--lh-h2) var(--font-display);letter-spacing:var(--ls-h2);text-transform:uppercase;color:var(--terracotta)}
+.kit-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--card-gap)}
+.kit-step{display:flex;flex-direction:column;gap:12px;padding-top:var(--space-5);border-top:var(--hairline)}
+.kit-step__n{font:400 var(--fs-year)/1 var(--font-display);letter-spacing:.04em;color:var(--terracotta)}
+.kit-step__title{margin:8px 0 0;font:600 var(--fs-h3)/var(--lh-h3) var(--font-serif);color:var(--terracotta)}
+.kit-step__text{margin:0;font:400 18px/1.55 var(--font-serif);color:var(--ink);max-width:32ch}
+.kit-map{aspect-ratio:16/10;display:flex}
+.kit-map iframe{flex:1;border:0;width:100%;height:100%}
+.kit-map__idle{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.kit-map__addr{margin:0;font:italic 400 var(--fs-lead)/1.4 var(--font-serif);color:var(--ink)}
+.kit-visit{display:flex;flex-direction:column;gap:var(--space-7)}
+.kit-visit .bk-eyebrow{margin-bottom:12px}
+.kit-visit__text{margin:0;font:400 20px/1.55 var(--font-serif);color:var(--ink)}
+.kit-faq{margin:0;display:flex;flex-direction:column}
+.kit-faq__item{padding:var(--space-5) 0;border-top:var(--hairline)}
+.kit-faq__item:last-child{border-bottom:var(--hairline)}
+.kit-faq dt{font:600 var(--fs-h3)/var(--lh-h3) var(--font-serif);color:var(--terracotta)}
+.kit-faq dd{margin:10px 0 0;font:400 var(--fs-body)/var(--lh-body) var(--font-serif);color:var(--ink);max-width:48ch}
+.kit-page{animation:bk-fade var(--dur-base) var(--ease-heritage) both}
+@media (max-width:1023.98px){.kit-split>*,.kit-split--7-4>*{grid-column:1 / -1!important}.kit-steps{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="Section.jsx"></script>
+<script type="text/babel" src="HomePage.jsx"></script>
+<script type="text/babel" src="MenuPage.jsx"></script>
+<script type="text/babel" src="StoryPage.jsx"></script>
+<script type="text/babel" src="RoomsPage.jsx"></script>
+<script type="text/babel" src="OccasionsPage.jsx"></script>
+<script type="text/babel" src="VisitPage.jsx"></script>
+<script type="text/babel" src="App.jsx"></script>
+</body>
+</html>

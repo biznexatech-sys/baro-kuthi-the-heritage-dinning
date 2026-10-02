@@ -1,0 +1,48 @@
+/*
+ * Stylesheet entry. Order matters:
+ *   1. Tailwind theme + utilities (layered, no preflight — the design system owns the base styles)
+ *   2. Design-system tokens + component CSS (synced from ../design-system by `npm run sync:ds`)
+ *   3. Site-only CSS: viewport-driven responsive rules, page-level typography
+ * Unlayered CSS (2, 3) wins over layered utilities, so utilities are for page layout, never to restyle a bk-* component.
+ */
+@layer theme, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@import '../styles/ds/index.css';
+@import 'lenis/dist/lenis.css';
+@import '../styles/responsive.css';
+@import '../styles/pages.css';
+
+/* DESIGN.md §13 Tailwind theme, mapped onto the design-system variables (one source of truth). */
+@theme inline {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  --color-*: initial;
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-deep: var(--terracotta-deep);
+  --color-ink: var(--ink);
+  --color-copper: var(--copper);
+  --color-parchment: var(--parchment);
+  --color-parchment-dark: var(--parchment-dark);
+  --color-glow: var(--glow);
+  --color-white: var(--white);
+  --color-transparent: transparent;
+
+  --font-*: initial;
+  --font-display: var(--font-cinzel);
+  --font-serif: var(--font-cormorant);
+
+  --radius-*: initial;
+  --radius-arch: 999px 999px 0 0;
+
+  --ease-heritage: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --container-reading: var(--reading);
+  --container-site: var(--container);
+}

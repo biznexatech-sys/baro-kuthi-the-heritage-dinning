@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script></helmet>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Home">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Hero" eyebrow="Est. 1823 · Paikpara, Kolkata" title="The Rajbari Table" lead="An evening at a zamindar’s house, served course by course." image-alt="The Baro Kuthi façade at dusk, lamps lit" primary-action="{{ reserve }}" secondary-action="{{ viewMenu }}" hint-size="100%,760px"></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.InfoStrip" hours="{{ site.hoursLine }}" address="{{ site.addressLine }}" map-href="{{ site.mapHref }}" phone="{{ site.phone }}" whatsapp-href="{{ site.whatsapp }}" hint-size="100%,150px"></x-import>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter) 0;background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.StoryBlock" numeral="I" eyebrow="The Courtyard" title="A House of 1823" image-alt="The courtyard and its arches at dusk, lamps lit" action="{{ readStory }}" hint-size="100%,680px"><p>Baro Kuthi has stood in Paikpara since 1823. Its courtyard, verandah and music room now receive guests for dinner, served in the old order of a Rajbari meal.</p></x-import>
+</div>
+</section>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Divider" hint-size="100%,216px"></x-import>
+<section style="box-sizing:border-box;padding:0 var(--gutter) var(--section-pad-y);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--heading-gap)">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.SectionHeading" numeral="II" eyebrow="The Two Tables" title="A Bengali Table and a Sahib’s Table" lead="Two kitchens of the house, served side by side." hint-size="100%,230px"></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.MenuBook" pages="{{ menu.tables }}" limit="{{ 4 }}" footer="{{ menuFooter }}" hint-size="100%,620px"></x-import>
+</div>
+</section>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.CourseScroll" courses="{{ courses }}" heading="{{ courseHeading }}" mode="{{ courseMode }}" hint-size="100%,900px"></x-import>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--heading-gap)">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.SectionHeading" numeral="IV" eyebrow="The Rooms of the House" title="Four Rooms, Four Evenings" lead="Each room of the house keeps its own hour and its own table." hint-size="100%,230px"></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.RoomRow" rooms="{{ rooms }}" hint-size="100%,620px"></x-import>
+</div>
+</section>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.OccasionBand" action="{{ arrange }}" hint-size="100%,760px"></x-import>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--heading-gap)">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.SectionHeading" numeral="VI" eyebrow="The Guest Book" title="From the Guest Book" lead="Words left by guests of the house, quoted as written." hint-size="100%,230px"></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.GuestBook" reviews="{{ reviews }}" hint-size="100%,360px"></x-import>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:0 var(--gutter) var(--section-pad-y);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.ReservationCard" numeral="VII" eyebrow="Reserve a Table" title="Telephone the House" phone="{{ site.phone }}" whatsapp-href="{{ site.whatsapp }}" hours="{{ site.hours }}" hint-size="100%,640px"></x-import>
+</div>
+</section>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;courseMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;stage&quot;,&quot;stack&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;'auto' | 'stage' | 'stack'&quot;}}">
+const NS = () => window.BaroKuthiDesignSystem_e9f570 || {};
+// MenuBook takes its footer as a node, not children — the one piece the template can't express.
+function MenuFooter() {
+  const TextLink = NS().TextLink;
+  return TextLink ? React.createElement(TextLink, { href: '#menu' }, 'View the full menu') : null;
+}
+
+class Component extends DCLogic {
+  state = { d: null };
+  componentDidMount() {
+    import(new URL('./site-data.js', document.baseURI).href)
+      .then((d) => this.setState({ d }))
+      .catch((e) => console.error('RajbariHome: site-data.js failed to load', e));
+  }
+  renderVals() {
+    const d = this.state.d;
+    if (!d) return { ready: false };
+    return {
+      ready: true,
+      site: d.site, menu: d.menu, courses: d.courses, rooms: d.rooms, reviews: d.reviews,
+      reserve: { label: 'Reserve by Telephone', href: d.site.phone.href },
+      viewMenu: { label: 'View the Menu', href: '#menu' },
+      readStory: { label: 'Read the full story', href: '#story' },
+      arrange: { label: 'Arrange an Occasion', href: '#occasions' },
+      menuFooter: React.createElement(MenuFooter),
+      courseHeading: { numeral: 'III', eyebrow: 'The Course of a Rajbari Meal', title: 'Eight Courses, In Order', lead: 'A Bengali meal is served in sequence, from bitter to sweet.' },
+      courseMode: this.props.courseMode ?? 'auto',
+    };
+  }
+}
+</script>
+</body>
+</html>

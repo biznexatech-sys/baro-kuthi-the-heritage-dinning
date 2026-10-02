@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "verandah", "name": "The Verandah", "eyebrow": "The café · Seats 24",
+    "description": "Tea and a light menu along the cast-iron railing.",
+    "imageAlt": "The verandah railing in afternoon light",
+    "capacity": "24", "best": "Afternoon", "occasions": "Tea, small lunches",
+    "text": "The café of the house runs the length of the verandah. Tea is poured by the pot and a light menu is served until evening."
+  },
+  {
+    "slug": "jalsaghar", "name": "The Jalsaghar", "eyebrow": "Seats 40 · Best at dusk",
+    "description": "The music room, now the main hall, under its Belgian chandeliers.",
+    "imageAlt": "The Jalsaghar under its chandeliers, lamp-lit",
+    "capacity": "40", "best": "Dusk", "occasions": "Dinners, anniversaries",
+    "text": "The old music room is now the main hall. Its chandeliers are lit at dusk, and dinner is served course by course."
+  },
+  {
+    "slug": "thakur-dalan", "name": "The Thakur-dalan Courtyard", "eyebrow": "Seats 60 · After dark",
+    "description": "Tables laid before the old pillared pavilion.",
+    "imageAlt": "The Thakur-dalan pillars at night, lamps lit",
+    "capacity": "60", "best": "After dark", "occasions": "Family celebrations",
+    "text": "Tables are laid in the open courtyard, before the pillared pavilion, for larger family evenings."
+  },
+  {
+    "slug": "study", "name": "The Zamindar’s Study", "eyebrow": "Private · Seats 10",
+    "description": "A private room for small dinners, by arrangement.",
+    "imageAlt": "A lamp-lit study with shutters half open",
+    "capacity": "10", "best": "By arrangement", "occasions": "Private dinners",
+    "text": "A private room for small dinners. The menu and the evening are arranged with the host in advance."
+  }
+]

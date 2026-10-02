@@ -1,0 +1,28 @@
+/* DESIGN.md §4 — 8px base scale, grid, layout. Breakpoints: sm 480 · md 768 · lg 1024 · xl 1280 · 2xl 1536 */
+:root{
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;--space-9:96px;--space-10:128px;--space-11:160px;
+
+--section-pad-y-d:160px;--section-pad-y-m:96px;
+--heading-gap-d:64px;--heading-gap-m:40px;
+--card-gap-d:32px;--card-gap-m:24px;
+--gutter-d:64px;--gutter-m:20px;
+
+--section-pad-y:var(--section-pad-y-d);
+--heading-gap:var(--heading-gap-d);
+--card-gap:var(--card-gap-d);
+--gutter:var(--gutter-d);
+--divider-space:96px;
+
+--container:1280px;
+--reading:680px;
+--grid-cols:12; /* @kind other */
+
+--header-h:88px;--header-h-compact:64px;--callbar-h:64px;--lalpaar-h:6px;
+--hero-inset:24px;
+--touch-min:48px;
+
+--bp-sm:480px;--bp-md:768px;--bp-lg:1024px;--bp-xl:1280px;--bp-2xl:1536px;
+}
+@media (min-width:768px) and (max-width:1023.98px){:root{--grid-cols:8; /* @kind other */}}
+@media (max-width:767.98px){:root{--section-pad-y:var(--section-pad-y-m);--heading-gap:var(--heading-gap-m);--card-gap:var(--card-gap-m);--gutter:var(--gutter-m);--grid-cols:4; /* @kind other */ --header-h:64px;--divider-space:64px}}
+.bk-compact{--section-pad-y:var(--section-pad-y-m);--heading-gap:var(--heading-gap-m);--card-gap:var(--card-gap-m);--gutter:var(--gutter-m);--grid-cols:4; /* @kind other */--header-h:64px;--divider-space:64px}

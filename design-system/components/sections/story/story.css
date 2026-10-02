@@ -1,0 +1,17 @@
+/* §9.7 Story block — "The Courtyard". Arched image 5 cols + text 5 cols, 2-col offset, alternating sides. */
+.bk-story{box-sizing:border-box;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--card-gap);align-items:center;width:100%;max-width:var(--container);margin:0 auto}
+.bk-story__media{grid-column:1 / span 5;grid-row:1;min-width:0}
+.bk-story__text{grid-column:8 / span 5;grid-row:1;min-width:0}
+.bk-story--reverse .bk-story__media{grid-column:8 / span 5}
+.bk-story--reverse .bk-story__text{grid-column:1 / span 5}
+.bk-story__year{margin:0 0 var(--space-3);font:var(--fw-regular) var(--fs-year)/1 var(--font-display);letter-spacing:.04em;color:var(--terracotta)}
+.bk-story--dark .bk-story__year{color:var(--copper)}
+.bk-story__body{margin-top:var(--space-6);display:flex;flex-direction:column;gap:var(--space-5)}
+.bk-story__body p{margin:0;font:var(--fw-regular) var(--fs-body)/var(--lh-body) var(--font-serif);letter-spacing:var(--ls-body);color:var(--ink);text-wrap:pretty}
+.bk-story--dark .bk-story__body p{color:var(--parchment)}
+.bk-story__quote{margin:40px 0 0;padding:4px 0 4px var(--space-5);border-left:var(--hairline);font:italic var(--fw-regular) var(--fs-pull-quote)/1.3 var(--font-serif);color:var(--terracotta);text-wrap:balance}
+.bk-story--dark .bk-story__quote{color:var(--copper)}
+.bk-story__action{margin-top:var(--space-5)}
+.bk-story.bk-compact{grid-template-columns:minmax(0,1fr);row-gap:40px}
+.bk-story.bk-compact .bk-story__media,.bk-story.bk-compact .bk-story__text{grid-column:1;grid-row:auto}
+.bk-story.bk-compact .bk-story__media{width:100%;max-width:420px}

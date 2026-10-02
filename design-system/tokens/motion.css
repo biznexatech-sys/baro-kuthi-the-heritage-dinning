@@ -1,0 +1,12 @@
+/* DESIGN.md §8 — Slow and deliberate. Forbidden: bounce, elastic, scale-pop, spin, typewriter, cursor trails, auto-play. */
+:root{
+--ease-heritage:cubic-bezier(0.22,0.61,0.36,1); /* @kind other */
+--dur-fast:300ms; /* @kind other */   /* hover, links */
+--dur-base:600ms; /* @kind other */   /* reveals */
+--dur-slow:900ms; /* @kind other */   /* shutter, page turn */
+--dur-draw:1.6s; /* @kind other */    /* alpana / railing line-draw */
+--reveal-rise:24px; /* @kind other */
+--reveal-stagger:80ms; /* @kind other */
+--parallax-max:8%; /* @kind other */
+--sway-max:1.5deg; /* @kind other */
+}

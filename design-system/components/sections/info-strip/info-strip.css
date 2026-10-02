@@ -1,0 +1,12 @@
+/* Info strip — Hours · Address · Call / WhatsApp, three columns with copper dividers. */
+.bk-info{background:var(--parchment);border-bottom:var(--hairline)}
+.bk-info__inner{box-sizing:border-box;max-width:calc(var(--container) + 2 * var(--gutter));margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.bk-info__col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-2);padding:40px var(--space-5);text-align:center}
+.bk-info__col + .bk-info__col{border-left:var(--hairline)}
+.bk-info__value{margin:0;font:var(--fw-regular) var(--fs-body)/1.5 var(--font-serif);color:var(--ink);text-wrap:balance}
+.bk-info__phone{font:var(--fw-regular) 22px/1.3 var(--font-display);letter-spacing:.06em;color:var(--terracotta);text-decoration:none;white-space:nowrap}
+.bk-info__phone:hover{color:var(--terracotta-deep)}
+.bk-info__links{display:flex;gap:var(--space-5);justify-content:center;margin-top:-6px}
+.bk-info.bk-compact .bk-info__inner{grid-template-columns:1fr}
+.bk-info.bk-compact .bk-info__col{padding:var(--space-6) 0}
+.bk-info.bk-compact .bk-info__col + .bk-info__col{border-left:0;border-top:var(--hairline)}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Heritage Dining Website" description="The six-page Baro Kuthi Rajbari site — Home, The Story, The Menu, The Rooms, Occasions, Visit — reserved by telephone only." -->
+<helmet><script src="./ds-base.js"></script></helmet>
+<sc-if value="{{ framed }}" hint-placeholder-val="{{ false }}">
+<div style="box-sizing:border-box;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:32px 24px;background:var(--parchment-dark)">
+<p style="margin:0;font:600 14px/1.4 var(--font-serif);font-variant:all-small-caps;letter-spacing:.22em;color:var(--terracotta)">Phone · 390 px</p>
+<div style="padding:6px;border:1px solid var(--copper);background:var(--parchment)">
+<iframe src="{{ frameSrc }}" title="Baro Kuthi website at phone width" style="display:block;width:390px;max-width:calc(100vw - 64px);height:min(844px, calc(100vh - 120px));border:1px solid var(--copper);background:var(--parchment)"></iframe>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ fluid }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Website">
+<sc-if value="{{ introAuto }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.InvitationIntro" hint-size="0,0"></x-import></sc-if>
+<sc-if value="{{ introForced }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.InvitationIntro" open="{{ true }}" on-enter="{{ onIntroDone }}" hint-size="0,0"></x-import></sc-if>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Header" active-href="{{ route }}" phone="{{ site.phone }}" hint-size="100%,95px"></x-import>
+<main>
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}"><dc-import name="RajbariHome" course-mode="{{ courseMode }}" hint-size="100%,100vh"></dc-import></sc-if>
+<sc-if value="{{ isStory }}" hint-placeholder-val="{{ false }}"><dc-import name="RajbariStory" hint-size="100%,100vh"></dc-import></sc-if>
+<sc-if value="{{ isMenu }}" hint-placeholder-val="{{ false }}"><dc-import name="RajbariMenu" hint-size="100%,100vh"></dc-import></sc-if>
+<sc-if value="{{ isRooms }}" hint-placeholder-val="{{ false }}"><dc-import name="RajbariRooms" hint-size="100%,100vh"></dc-import></sc-if>
+<sc-if value="{{ isOccasions }}" hint-placeholder-val="{{ false }}"><dc-import name="RajbariOccasions" hint-size="100%,100vh"></dc-import></sc-if>
+<sc-if value="{{ isVisit }}" hint-placeholder-val="{{ false }}"><dc-import name="RajbariVisit" hint-size="100%,100vh"></dc-import></sc-if>
+</main>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Footer" address="{{ site.address }}" map-href="{{ site.mapHref }}" hours="{{ site.hours }}" getting-here="{{ site.gettingHere }}" banquet-href="{{ site.banquetHref }}" hint-size="100%,420px"></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.StickyCallBar" phone-href="{{ site.phone.href }}" whatsapp-href="{{ site.whatsapp }}" hint-size="0,0"></x-import>
+</sc-if>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;preview&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Desktop&quot;,&quot;Phone&quot;],&quot;default&quot;:&quot;Desktop&quot;,&quot;tsType&quot;:&quot;'Desktop' | 'Phone'&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;invitation&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;First visit&quot;,&quot;Always&quot;,&quot;Never&quot;],&quot;default&quot;:&quot;First visit&quot;,&quot;tsType&quot;:&quot;'First visit' | 'Always' | 'Never'&quot;,&quot;section&quot;:&quot;Home&quot;},&quot;courseMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Scroll&quot;,&quot;Dots&quot;,&quot;List&quot;],&quot;default&quot;:&quot;Scroll&quot;,&quot;tsType&quot;:&quot;'Scroll' | 'Dots' | 'List'&quot;,&quot;section&quot;:&quot;Home&quot;}}">
+const PAGES = ['#home', '#story', '#menu', '#rooms', '#occasions', '#visit'];
+const COURSE_MODES = { Scroll: 'auto', Dots: 'stage', List: 'stack' };
+const FALLBACK_SITE = { phone: { display: '+91 XXXXX XXXXX', href: 'tel:+91XXXXXXXXXX' } };
+
+class Component extends DCLogic {
+  state = { route: '#home', site: null, introDone: false };
+  params = new URLSearchParams(location.search);
+
+  componentDidMount() {
+    this.onHash = () => this.readHash(true);
+    window.addEventListener('hashchange', this.onHash);
+    this.readHash(false);
+    import(new URL('./site-data.js', document.baseURI).href)
+      .then((m) => this.setState({ site: m.site }))
+      .catch((e) => console.error('HeritageDiningSite: site-data.js failed to load', e));
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash);
+    clearTimeout(this.anchorTimer);
+  }
+  componentDidUpdate(prev) {
+    if (prev.invitation !== this.props.invitation && this.state.introDone) this.setState({ introDone: false });
+  }
+  readHash(scroll) {
+    const [base, anchor] = (location.hash || '#home').split('/');
+    this.setState({ route: PAGES.includes(base) ? base : '#home' });
+    if (anchor) this.scrollToAnchor(anchor);
+    else if (scroll) window.scrollTo(0, 0);
+  }
+  // Pages mount asynchronously, so wait for the anchor to exist; land it just under the sticky header.
+  scrollToAnchor(id, tries = 60) {
+    clearTimeout(this.anchorTimer);
+    const el = document.getElementById(id);
+    if (el) { window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 70); return; }
+    if (tries > 0) this.anchorTimer = setTimeout(() => this.scrollToAnchor(id, tries - 1), 50);
+  }
+  renderVals() {
+    const p = this.params;
+    const bare = p.has('bare');
+    const preview = bare ? 'Desktop' : (this.props.preview ?? 'Desktop');
+    const invitation = p.get('invitation') || (p.has('intro') ? 'Always' : (this.props.invitation ?? 'First visit'));
+    const course = p.get('course') || (this.props.courseMode ?? 'Scroll');
+    const r = this.state.route;
+    const home = r === '#home';
+    const frame = new URL(location.href);
+    frame.hash = '';
+    frame.searchParams.set('bare', '1');
+    frame.searchParams.set('invitation', invitation);
+    frame.searchParams.set('course', course);
+    return {
+      framed: preview === 'Phone',
+      fluid: preview !== 'Phone',
+      frameSrc: frame.href,
+      ready: !!this.state.site,
+      site: this.state.site || FALLBACK_SITE,
+      route: r,
+      isHome: home, isStory: r === '#story', isMenu: r === '#menu', isRooms: r === '#rooms', isOccasions: r === '#occasions', isVisit: r === '#visit',
+      introAuto: home && invitation === 'First visit',
+      introForced: home && invitation === 'Always' && !this.state.introDone,
+      onIntroDone: () => this.setState({ introDone: true }),
+      courseMode: COURSE_MODES[course] || 'auto',
+    };
+  }
+}
+</script>
+</body>
+</html>

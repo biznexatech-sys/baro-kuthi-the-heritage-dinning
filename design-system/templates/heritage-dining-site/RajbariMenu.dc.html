@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script></helmet>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="The Menu">
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--heading-gap)">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.SectionHeading" size="h1" as="h1" eyebrow="The Menu" title="The Two Tables" lead="The Bengali Table and the Sahib’s Table, from the kitchens of the house." hint-size="100%,250px"></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.MenuBook" pages="{{ menu.tables }}" hint-size="100%,820px"></x-import>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment-dark)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--heading-gap) clamp(32px,8vw,128px)">
+<div style="flex:4 1 300px;min-width:0"><x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.SectionHeading" eyebrow="Set Menus" title="The Whole Meal, In Order" lead="For a first evening at the house, the thali is the truest introduction." hint-size="100%,260px"></x-import></div>
+<div style="flex:7 1 480px;min-width:0"><x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.MenuBook" pages="{{ sets }}" hint-size="100%,520px"></x-import></div>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter) 0;background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--heading-gap) clamp(32px,8vw,128px)">
+<div style="flex:4 1 300px;min-width:0"><x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.SectionHeading" eyebrow="The Verandah" title="The Café of the House" lead="Tea and a light menu along the railing, through the afternoon." hint-size="100%,260px"></x-import></div>
+<div style="flex:7 1 480px;min-width:0"><x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.MenuBook" pages="{{ verandah }}" hint-size="100%,600px"></x-import></div>
+</div>
+</section>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Divider" hint-size="100%,216px"></x-import>
+<section style="box-sizing:border-box;padding:0 var(--gutter) var(--section-pad-y);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:var(--space-6);text-align:center">
+<p style="margin:0;max-width:34ch;font:italic 400 var(--fs-lead)/var(--lh-lead) var(--font-serif);color:var(--ink);text-wrap:balance">Some dishes follow the season and the market. The host will describe them at the table.</p>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Button" variant="secondary" href="#menu" hint-size="260px,52px">Download the Menu · PDF</x-import>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment-dark)">
+<div style="max-width:var(--container);margin:0 auto">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.ReservationCard" eyebrow="Reservations" title="Reserve a Table" phone="{{ site.phone }}" whatsapp-href="{{ site.whatsapp }}" hours="{{ site.hours }}" hint-size="100%,640px"></x-import>
+</div>
+</section>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { d: null };
+  componentDidMount() {
+    import(new URL('./site-data.js', document.baseURI).href)
+      .then((d) => this.setState({ d }))
+      .catch((e) => console.error('RajbariMenu: site-data.js failed to load', e));
+  }
+  renderVals() {
+    const d = this.state.d;
+    if (!d) return { ready: false };
+    return { ready: true, site: d.site, menu: d.menu, sets: [d.menu.sets], verandah: [d.menu.verandah] };
+  }
+}
+</script>
+</body>
+</html>

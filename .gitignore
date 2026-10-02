@@ -1,0 +1,21 @@
+# Dependencies and build output
+node_modules/
+site/.next/
+site/out/
+site/next-env.d.ts
+*.tsbuildinfo
+
+# Generated from design-system/ by site/scripts/sync-design-system.mjs
+site/src/styles/ds/
+site/public/fonts/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+site/out-coming-soon/
+site/public/icons/
+
+# Local tooling
+.claude/

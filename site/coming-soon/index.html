@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{name}} — Coming Soon</title>
+<meta name="description" content="{{description}}">
+<meta name="theme-color" content="#5E2E27">
+<link rel="canonical" href="{{url}}/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{name}}">
+<meta property="og:title" content="{{name}} — Coming Soon">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{url}}/">
+<meta property="og:image" content="{{url}}/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icons/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
+<link rel="preload" href="/assets/fonts/cinzel-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/noto-serif-bengali-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/{{crest}}" as="image" type="image/webp">
+<link rel="stylesheet" href="/assets/{{css}}">
+<!-- Animations run only with JavaScript; without it, the finished page shows immediately. -->
+<script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('bk-cs-seen'))document.documentElement.classList.add('seen')}catch(e){}</script>
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body>
+
+<!-- ─── Loading: the fanlight is drawn, lit, and the crest blooms out of it; then the shutters part ─── -->
+<div class="loader" id="loader" role="status" aria-label="Loading Baro Kuthi">
+  <div class="loader__shutter loader__shutter--left" aria-hidden="true"></div>
+  <div class="loader__shutter loader__shutter--right" aria-hidden="true"></div>
+  <div class="loader__stage" aria-hidden="true">
+    <div class="loader__glow"></div>
+    <div class="loader__crest">
+      <img class="loader__crest-img" src="/assets/{{crest}}" alt="" width="1300" height="786" decoding="async">
+      <span class="loader__sheen"></span>
+      <!-- Hairline fanlight, positioned exactly over the arch in the crest artwork -->
+      <svg class="loader__fanlight" viewBox="-110 -110 220 120" fill="none">
+        <path class="fl-arc" d="M-100 0 A100 100 0 0 1 100 0" pathLength="1"/>
+        <path class="fl-arc fl-arc--inner" d="M-88 0 A88 88 0 0 1 88 0" pathLength="1"/>
+        <path class="fl-base" d="M-100 0 H100" pathLength="1"/>
+        <g class="fl-rays">{{rays}}</g>
+      </svg>
+    </div>
+  </div>
+  <div class="loader__foot" aria-hidden="true">
+    <p class="loader__line">The house is being prepared</p>
+    <span class="loader__bar"><span class="loader__bar-fill" id="loader-bar"></span></span>
+  </div>
+  <button type="button" class="loader__skip" id="loader-skip">Skip</button>
+</div>
+
+<!-- ─── The page: the client's coming-soon stamp, brought to life ─── -->
+<main class="page" id="page">
+  <p class="page__eyebrow reveal" style="--d:0">Est. 1823 · Paikpara, Kolkata</p>
+
+  <article class="stamp" id="stamp" aria-labelledby="cs-title">
+    <div class="stamp__ground" aria-hidden="true">
+      <div class="stamp__rays"></div>
+      <div class="stamp__candle"></div>
+      <canvas class="stamp__dust" id="dust"></canvas>
+      <span class="stamp__glare"></span>
+    </div>
+    <div class="stamp__frame" aria-hidden="true"></div>
+
+    <div class="stamp__body">
+      <h1 class="stamp__crest reveal" style="--d:1">
+        <span class="sr-only">Baro Kuthi Rajbari · The Heritage Dining</span>
+        <span class="crest" aria-hidden="true">
+          <img class="crest__img" src="/assets/{{crest}}" alt="" width="1300" height="786" decoding="async">
+          <span class="crest__sheen"></span>
+        </span>
+      </h1>
+
+      <div class="stamp__rule reveal" style="--d:3" aria-hidden="true"><span></span><i></i><span></span></div>
+
+      <p class="stamp__title reveal" style="--d:4" id="cs-title">Coming Soon</p>
+
+      <p class="stamp__bn reveal" style="--d:6" lang="bn">রাজকীয় ঐতিহ্যে, রসনার নতুন অধ্যায়</p>
+      <p class="stamp__en reveal" style="--d:7">A new chapter of taste, in a royal tradition.</p>
+
+      {{contacts}}
+    </div>
+  </article>
+
+  <footer class="page__foot reveal" style="--d:9">
+    <p>The house will receive its first guests shortly.</p>
+    <p class="page__links">
+      <a href="{{banquetHref}}" rel="noopener">Visit the Banquet House <span aria-hidden="true">→</span></a>
+    </p>
+    <p class="page__legal">© <span id="year">{{year}}</span> · {{name}}</p>
+  </footer>
+</main>
+
+<script src="/assets/{{js}}" defer></script>
+</body>
+</html>

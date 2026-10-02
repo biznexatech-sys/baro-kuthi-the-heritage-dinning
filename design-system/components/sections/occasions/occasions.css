@@ -1,0 +1,10 @@
+/* §9.11 Occasion band — full-bleed terracotta, checker.svg at 4%, centred heading, three items, on-dark button. */
+.bk-occasion{position:relative;isolation:isolate;overflow:hidden;background:var(--terracotta);color:var(--parchment)}
+.bk-occasion__texture{position:absolute;inset:0;z-index:-1;opacity:var(--texture-checker-opacity);background-repeat:repeat;background-size:96px auto;pointer-events:none}
+.bk-occasion__inner{box-sizing:border-box;max-width:calc(var(--container) + 2 * var(--gutter));margin:0 auto;padding:var(--section-pad-y) var(--gutter);display:flex;flex-direction:column;align-items:center}
+.bk-occasion__items{list-style:none;box-sizing:border-box;width:100%;margin:var(--heading-gap) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--card-gap)}
+.bk-occasion__item{display:flex;flex-direction:column;align-items:center;gap:14px;padding:0 var(--space-4);text-align:center}
+.bk-occasion__title{margin:10px 0 0;font:var(--fw-regular) 24px/1.2 var(--font-display);letter-spacing:.05em;text-transform:uppercase;color:var(--parchment);text-wrap:balance}
+.bk-occasion__text{margin:0;max-width:30ch;font:var(--fw-regular) 18px/1.55 var(--font-serif);color:var(--parchment);text-wrap:pretty}
+.bk-occasion__action{margin-top:var(--heading-gap)}
+.bk-occasion.bk-compact .bk-occasion__items{grid-template-columns:minmax(0,1fr);gap:var(--space-7)}

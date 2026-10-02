@@ -1,0 +1,9 @@
+{
+  "homeExcerpt": "Baro Kuthi has stood in Paikpara since 1823. Its courtyard, verandah and music room now receive guests for dinner, served in the old order of a Rajbari meal.",
+  "chapters": [
+    { "year": "1823", "title": "The House at Paikpara", "imageAlt": "Archival drawing of the Baro Kuthi façade", "draft": true, "body": ["Draft — this chapter will be written from the family’s own records and approved by the owners before it is published."] },
+    { "year": "1858", "title": "A Chapter of the House", "imageAlt": "The Jalsaghar, chandeliers lit", "draft": true, "quote": "“Pull quote from the family’s account, set in italic.”", "body": ["Draft — this chapter will be written from the family’s own records and approved by the owners before it is published."] },
+    { "year": "1859", "title": "A Chapter of the House", "imageAlt": "The staircase and its arches, lamp-lit", "draft": true, "body": ["Draft — this chapter will be written from the family’s own records and approved by the owners before it is published."] },
+    { "year": "Today", "title": "The Rajbari Table", "imageAlt": "A table laid on the verandah at dusk", "body": ["The house now receives guests for dinner, served course by course in its old rooms, and arranged personally by telephone."] }
+  ]
+}

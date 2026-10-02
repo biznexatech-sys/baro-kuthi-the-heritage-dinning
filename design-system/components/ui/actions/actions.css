@@ -1,0 +1,26 @@
+/* §9.1 Buttons — square, small caps, 300ms. Focus: 2px copper outline, 3px offset, always visible. */
+.bk-btn{position:relative;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:var(--touch-min);padding:18px 36px;margin:0;border:1px solid transparent;border-radius:var(--radius);background:transparent;font:var(--fw-semibold) var(--fs-button)/var(--lh-button) var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-button);text-decoration:none;text-align:center;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color var(--dur-fast) var(--ease-heritage),color var(--dur-fast) var(--ease-heritage),border-color var(--dur-fast) var(--ease-heritage)}
+.bk-btn__label{position:relative;margin-right:calc(-1 * var(--ls-button))}
+.bk-btn--primary{background:var(--action-primary-bg);border-color:var(--action-primary-bg);color:var(--action-primary-fg)}
+.bk-btn--primary::after{content:"";position:absolute;inset:calc(var(--button-inset) - 1px);border:var(--hairline);pointer-events:none}
+.bk-btn--primary:hover{background:var(--action-primary-bg-hover);border-color:var(--action-primary-bg-hover);color:var(--action-primary-fg)}
+.bk-btn--secondary{color:var(--action-secondary-fg);border-color:var(--action-secondary-border)}
+.bk-btn--secondary:hover{background:var(--terracotta);border-color:var(--terracotta);color:var(--white)}
+.bk-btn--on-dark{color:var(--action-on-dark-fg);border-color:var(--action-on-dark-border)}
+.bk-btn--on-dark:hover{background:var(--copper);border-color:var(--copper);color:var(--terracotta-deep)}
+.bk-btn:focus-visible{outline:var(--focus-ring-w) solid var(--focus-ring);outline-offset:var(--focus-ring-offset)}
+.bk-btn--full{display:flex;width:100%}
+.bk-btn:disabled{opacity:.45;cursor:not-allowed}
+.bk-btn--primary:disabled:hover{background:var(--action-primary-bg);border-color:var(--action-primary-bg)}
+.bk-btn--secondary:disabled:hover{background:transparent;color:var(--action-secondary-fg)}
+.bk-btn--on-dark:disabled:hover{background:transparent;color:var(--action-on-dark-fg);border-color:var(--action-on-dark-border)}
+
+/* Text link — terracotta small caps + →, copper underline grows from the left on hover. */
+.bk-textlink{position:relative;display:inline-flex;align-items:center;max-width:100%;min-height:var(--touch-min);padding:0;margin:0;border:0;background:none;color:var(--terracotta);font:var(--fw-semibold) var(--fs-button)/1.2 var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-button);text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.bk-textlink:hover{color:var(--terracotta)}
+.bk-textlink__label{position:relative;padding-bottom:4px}
+.bk-textlink__label::after{content:"";position:absolute;left:0;right:var(--ls-button);bottom:0;height:1px;background:var(--copper);transform:scaleX(0);transform-origin:left center;transition:transform var(--dur-fast) var(--ease-heritage)}
+.bk-textlink:hover .bk-textlink__label::after,.bk-textlink:focus-visible .bk-textlink__label::after{transform:scaleX(1)}
+.bk-textlink__arrow{margin-left:.35em;font:16px/1 Georgia,'Times New Roman',serif;letter-spacing:0;transition:transform var(--dur-fast) var(--ease-heritage)}
+.bk-textlink:hover .bk-textlink__arrow{transform:translateX(4px)}
+.bk-textlink--dark,.bk-textlink--dark:hover{color:var(--parchment)}

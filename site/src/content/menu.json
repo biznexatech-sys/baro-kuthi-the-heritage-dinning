@@ -1,0 +1,45 @@
+{
+  "currency": "₹",
+  "tables": [
+    {
+      "title": "The Bengali Table", "tab": "The Bengali Table", "subtitle": "Served course by course, on kansa",
+      "items": [
+        { "name": "Shukto", "price": 320, "description": "Bitter gourd and summer vegetables in a light milk gravy." },
+        { "name": "Chingri Malai Curry", "price": 980, "description": "Tiger prawns in coconut milk, gently spiced.", "speciality": true },
+        { "name": "Bhetki Paturi", "price": 740, "description": "Bhetki in mustard paste, steamed in banana leaf." },
+        { "name": "Kosha Mangsho", "price": 880, "description": "Mutton slow-cooked dark with onion and whole spices.", "speciality": true },
+        { "name": "Mochar Ghonto", "price": 360, "description": "Banana flower with coconut, slow-stirred." },
+        { "name": "Mishti Doi", "price": 180, "description": "Sweetened curd, set in an earthen pot." }
+      ]
+    },
+    {
+      "title": "The Sahib’s Table", "tab": "The Sahib’s Table", "subtitle": "Anglo-Indian dishes, on old china",
+      "items": [
+        { "name": "Mulligatawny Soup", "price": 290, "description": "Peppered lentil soup, bright with lime." },
+        { "name": "Fish Orly", "price": 690, "description": "Bhetki in a light batter, with tartare sauce." },
+        { "name": "Chicken à la Kiev", "price": 720, "description": "Butter-filled cutlet, crumbed and fried golden.", "speciality": true },
+        { "name": "Mutton Stew", "price": 760, "description": "A club-style stew with root vegetables." },
+        { "name": "Roast Chicken", "price": 780, "description": "With gravy, buttered vegetables and mash." },
+        { "name": "Caramel Custard", "price": 220, "description": "Baked custard under a dark caramel." }
+      ]
+    }
+  ],
+  "sets": {
+    "title": "Set Menus", "subtitle": "The whole meal, in its proper order",
+    "items": [
+      { "name": "The Rajbari Thali · Niramish", "price": "1,450", "description": "Eight vegetarian courses, from Shukto to Paan." },
+      { "name": "The Rajbari Thali · Aamish", "price": "1,850", "description": "Eight courses with fish and mutton.", "speciality": true },
+      { "name": "The Sahib’s Supper", "price": "1,650", "description": "Soup, fish, roast and pudding, served in courses." }
+    ]
+  },
+  "verandah": {
+    "title": "The Verandah", "subtitle": "The café of the house, through the afternoon",
+    "items": [
+      { "name": "Darjeeling Tea, by the Pot", "price": 180, "description": "First flush, with milk or lemon." },
+      { "name": "Fish Kobiraji", "price": 390, "description": "Bhetki in a lacy egg crust, with kasundi." },
+      { "name": "Chicken Cutlet", "price": 340, "description": "Crumbed and fried, with onion salad." },
+      { "name": "Nolen Gur Sandesh", "price": 160, "description": "Date-palm jaggery sandesh, in season." }
+    ]
+  },
+  "seasonalNote": "Some dishes follow the season and the market. The host will describe them at the table."
+}

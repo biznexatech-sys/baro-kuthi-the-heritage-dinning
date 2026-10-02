@@ -1,0 +1,276 @@
+/*
+ * Baro Kuthi Rajbari — Coming Soon (standalone, pre-launch).
+ * Recreates the client's coming-soon stamp (images/coming-soon.jpeg) in HTML so it is sharp, accessible and animated.
+ * Brand rules (design-system/uploads/DESIGN.md): parchment / terracotta / copper only, Cinzel + Cormorant, radius 0,
+ * no shadows, one easing, slow and deliberate — nothing bounces or pops. Everything settles to its final state
+ * instantly under prefers-reduced-motion, and the page is complete without JavaScript.
+ */
+
+@font-face { font-family: 'Cinzel'; font-weight: 400 600; font-display: swap; src: url('fonts/cinzel-normal-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 400 700; font-display: swap; src: url('fonts/cormorant-garamond-normal-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 400; font-display: swap; src: url('fonts/cormorant-garamond-italic-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Noto Serif Bengali'; font-weight: 500; font-display: swap; src: url('fonts/noto-serif-bengali-500.woff2') format('woff2'); unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1; }
+
+@property --bloom { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+
+:root {
+  --terracotta: #924B3F;
+  --terracotta-deep: #5E2E27;
+  --stamp: #7A3526;            /* the stamp ground in the client's artwork */
+  --night: #2E1510;
+  --ink: #3A1F1A;
+  --copper: #D7A680;
+  --gold: #DCBC7F;             /* the crest's own gold */
+  --parchment: #F6ECE2;
+  --parchment-dark: #EBDCCD;
+  --paper: #E4CFA9;            /* the poster's border paper */
+  --glow: #FFCC99;
+
+  --display: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  --serif: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --bengali: 'Noto Serif Bengali', 'Nirmala UI', 'Vrinda', serif;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --fast: 300ms;
+  --base: 600ms;
+  --slow: 900ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { margin: 0; min-height: 100vh; min-height: 100svh; font-family: var(--serif); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+::selection { background: var(--copper); color: var(--ink); }
+
+/* ═══ Page ═════════════════════════════════════════════════════════════════════════════════════════ */
+.page {
+  position: relative;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(16px, 2.6vh, 28px);
+  padding: clamp(20px, 4vh, 48px) 16px calc(clamp(20px, 4vh, 40px) + env(safe-area-inset-bottom));
+  /* Paper grain at 5% (texture ≤ 6%, DESIGN.md §5) */
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .12 0 0 0 0 .1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 70% 60% at 50% 45%, #EAD8B8 0%, var(--paper) 60%, #D9C095 100%);
+  overflow: hidden;
+}
+
+.page__eyebrow, .page__foot p { margin: 0; text-align: center; }
+.page__eyebrow {
+  font: 700 18px/1.4 var(--serif); font-variant: all-small-caps; letter-spacing: .26em; margin-right: -.26em;
+  color: var(--terracotta-deep);
+}
+.page__foot { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.page__foot p:first-child { font: 600 20px/1.45 var(--serif); color: var(--ink); }
+.page__links a {
+  position: relative; display: inline-flex; align-items: center; min-height: 44px; gap: .4em;
+  font: 700 18px/1 var(--serif); font-variant: all-small-caps; letter-spacing: .2em;
+  color: var(--terracotta-deep); text-decoration: none;
+}
+.page__links a::after {
+  content: ''; position: absolute; left: 0; right: 1.4em; bottom: 12px; height: 1px; background: var(--terracotta-deep);
+  transform: scaleX(0); transform-origin: left; transition: transform var(--fast) var(--ease);
+}
+.page__links a:hover::after, .page__links a:focus-visible::after { transform: scaleX(1); }
+.page__links a span { transition: transform var(--fast) var(--ease); }
+.page__links a:hover span { transform: translateX(4px); }
+.page__legal { font: 700 15px/1.4 var(--serif); font-variant: all-small-caps; letter-spacing: .2em; color: var(--terracotta); }
+
+/* ═══ The stamp ═════════════════════════════════════════════════════════════════════════════════════ */
+.stamp {
+  --hole: 7px;
+  position: relative; isolation: isolate;
+  --w: max(min(300px, 100vw - 32px), min(560px, 100vw - 32px, (100svh - 240px) * 0.8));
+  width: var(--w);
+  aspect-ratio: 4 / 5;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: calc(var(--w) * .1) calc(var(--w) * .085);
+  container-type: inline-size;
+  color: var(--gold);
+  background: var(--stamp);
+  /* Perforated postage-stamp edge, as in the artwork */
+  -webkit-mask:
+    radial-gradient(var(--hole), #0000 97%, #000) round calc(var(--hole) * -1.5) calc(var(--hole) * -1.5) / calc(var(--hole) * 3) calc(var(--hole) * 3),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - var(--hole) * 3) calc(100% - var(--hole) * 3);
+          mask:
+    radial-gradient(var(--hole), #0000 97%, #000) round calc(var(--hole) * -1.5) calc(var(--hole) * -1.5) / calc(var(--hole) * 3) calc(var(--hole) * 3),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - var(--hole) * 3) calc(100% - var(--hole) * 3);
+  transform-style: preserve-3d;
+  transform: perspective(1400px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg));
+  transition: transform 1200ms var(--ease);
+}
+@media (max-width: 420px) { .stamp { --hole: 6px; } }
+
+.stamp__ground { position: absolute; inset: 0; z-index: -1; overflow: hidden;
+  background: radial-gradient(ellipse 80% 65% at 50% 34%, #8C4130 0%, var(--stamp) 55%, #5E2A1F 100%); }
+/* Fanlight rays fanning from behind the crest — the house's own motif, at a whisper */
+.stamp__rays {
+  position: absolute; left: 50%; top: 31%; width: 170%; aspect-ratio: 1; translate: -50% -50%;
+  background: repeating-conic-gradient(from -90deg at 50% 50%, color-mix(in srgb, var(--gold) 9%, transparent) 0deg 1.2deg, transparent 1.2deg 10deg);
+  -webkit-mask: radial-gradient(closest-side, #000 18%, #0000 72%); mask: radial-gradient(closest-side, #000 18%, #0000 72%);
+  opacity: .55;
+}
+.stamp__candle {
+  position: absolute; left: 50%; top: 31%; width: 90%; aspect-ratio: 1; translate: -50% -50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--glow) 26%, transparent), transparent);
+  opacity: .7;
+}
+.stamp__dust { position: absolute; inset: 0; width: 100%; height: 100%; }
+.stamp__glare {
+  position: absolute; inset: -40%; pointer-events: none; opacity: 0; transition: opacity var(--base) var(--ease);
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 30%), color-mix(in srgb, var(--glow) 16%, transparent), transparent 40%);
+}
+.stamp:hover .stamp__glare { opacity: 1; }
+
+/* Brand double frame, inset inside the perforation */
+.stamp__frame {
+  position: absolute; inset: calc(var(--hole) * 3 + 6px); pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); outline-offset: -8px;
+}
+
+.stamp__body { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.stamp__crest { margin: 0; width: 96%; }
+.crest { position: relative; display: block; }
+.crest__img { width: 100%; }
+/* Gilt sheen: a band of light passes over the crest, clipped to the artwork's own shape */
+.crest__sheen, .loader__sheen {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 246, 222, .75) 49%, rgba(255, 246, 222, .0) 60%) no-repeat;
+  background-size: 260% 100%; background-position: 140% 0;
+  -webkit-mask: var(--crest-mask) center / 100% 100% no-repeat; mask: var(--crest-mask) center / 100% 100% no-repeat;
+  mix-blend-mode: soft-light;
+}
+
+.stamp__rule { display: flex; align-items: center; gap: 10px; width: 64%; margin: 8cqi 0 7cqi; }
+.stamp__rule span { flex: 1; height: 1px; background: var(--gold); transform-origin: center; }
+.stamp__rule span:first-child { transform-origin: right; }
+.stamp__rule span:last-child { transform-origin: left; }
+.stamp__rule i { width: 7px; height: 7px; rotate: 45deg; border: 1px solid var(--gold); }
+
+.stamp__title {
+  margin: 0; font: 400 max(22px, 8.8cqi)/1.05 var(--display); white-space: nowrap; letter-spacing: .12em; margin-right: -.12em;
+  text-transform: uppercase; color: var(--gold);
+}
+.stamp__bn { margin: 8cqi 0 0; font: 500 max(15px, 4.9cqi)/1.6 var(--bengali); color: var(--gold); }
+.stamp__en { margin: 1.4cqi 0 0; font: italic 400 max(15px, 4.1cqi)/1.45 var(--serif); color: color-mix(in srgb, var(--parchment) 86%, transparent); }
+
+.stamp__contact { margin-top: 6cqi; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.stamp__contact a {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px;
+  border: 1px solid var(--copper); color: var(--parchment); text-decoration: none;
+  font: 600 15px/1 var(--serif); font-variant: all-small-caps; letter-spacing: .2em;
+  transition: background-color var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+.stamp__contact a:hover { background: var(--copper); color: var(--terracotta-deep); }
+
+/* ═══ Loader ═══════════════════════════════════════════════════════════════════════════════════════ */
+.loader { display: none; }
+.js:not(.seen) .loader {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow: hidden;
+  color: var(--gold);
+}
+.loader__shutter {
+  position: absolute; top: 0; bottom: 0; width: 50.5%; z-index: -1;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 22px, rgba(0, 0, 0, .16) 22px 23px, color-mix(in srgb, var(--gold) 7%, transparent) 23px 24px),
+    radial-gradient(ellipse 120% 80% at var(--ox) 50%, #5A2A21 0%, var(--night) 75%);
+  transition: transform var(--slow) var(--ease), opacity var(--slow) var(--ease);
+}
+.loader__shutter--left { left: 0; --ox: 100%; border-right: 1px solid color-mix(in srgb, var(--gold) 30%, transparent); }
+.loader__shutter--right { right: 0; --ox: 0%; }
+
+.loader__stage { position: relative; width: min(74vw, 520px); display: grid; place-items: center; transition: opacity var(--base) var(--ease), transform var(--slow) var(--ease); }
+.loader__glow {
+  position: absolute; left: 50%; top: 16.8%; width: 130%; aspect-ratio: 1; translate: -50% -50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--glow) 30%, transparent), transparent);
+  opacity: 0; scale: .4;
+}
+.loader__crest { position: relative; width: 100%; }
+.loader__crest-img {
+  width: 100%;
+  /* The crest blooms outwards from the fanlight, like lamplight filling the house */
+  -webkit-mask: radial-gradient(circle at 49.8% 16.8%, #000 var(--bloom), #0000 calc(var(--bloom) + 14%));
+          mask: radial-gradient(circle at 49.8% 16.8%, #000 var(--bloom), #0000 calc(var(--bloom) + 14%));
+}
+/* SVG viewBox −110…110 × −110…10, radius 100 ≙ the arch's outer radius (9.85% of the crest's width) */
+.loader__fanlight { position: absolute; left: 39.0%; top: -1.12%; width: 21.67%; overflow: visible; }
+.loader__fanlight path { stroke: var(--gold); stroke-width: 1.4; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; }
+
+.loader__foot { position: absolute; left: 50%; bottom: max(11vh, 64px); translate: -50% 0; display: flex; flex-direction: column; align-items: center; gap: 14px; transition: opacity var(--base) var(--ease); }
+.loader__line { margin: 0; font: 600 13px/1 var(--serif); font-variant: all-small-caps; letter-spacing: .34em; margin-right: -.34em; white-space: nowrap; color: color-mix(in srgb, var(--gold) 80%, transparent); opacity: 0; }
+.loader__bar { position: relative; display: block; width: 160px; height: 1px; background: color-mix(in srgb, var(--gold) 22%, transparent); overflow: hidden; }
+.loader__bar-fill { position: absolute; inset: 0; background: var(--gold); transform: scaleX(var(--p, 0)); transform-origin: left; transition: transform var(--base) var(--ease); }
+
+.loader__skip {
+  position: absolute; top: max(16px, env(safe-area-inset-top)); right: 16px; min-height: 44px; padding: 0 14px;
+  border: 0; background: none; cursor: pointer; color: color-mix(in srgb, var(--gold) 75%, transparent);
+  font: 600 13px/1 var(--serif); font-variant: all-small-caps; letter-spacing: .26em;
+  opacity: 0; animation: fade var(--base) var(--ease) 1.2s forwards;
+}
+.loader__skip:hover { color: var(--gold); }
+
+/* Timeline (≈ 3.4s): base line → arch draws → rays fan out → light fills → crest blooms → sheen → shutters part */
+.js:not(.seen) .fl-base { animation: draw 700ms var(--ease) 150ms forwards; }
+.js:not(.seen) .fl-arc { animation: draw 1000ms var(--ease) 500ms forwards; }
+.js:not(.seen) .fl-arc--inner { animation-delay: 650ms; }
+.js:not(.seen) .fl-rays path { animation: draw 500ms var(--ease) calc(900ms + var(--i) * 70ms) forwards; }
+.js:not(.seen) .loader__fanlight { animation: fanlight-out 700ms var(--ease) 2000ms forwards; }
+.js:not(.seen) .loader__glow { animation: glow-in 1400ms var(--ease) 1200ms forwards; }
+.js:not(.seen) .loader__crest-img { animation: bloom 1500ms var(--ease) 1650ms forwards; }
+.js:not(.seen) .loader__sheen { animation: sheen 1300ms var(--ease) 2700ms forwards; }
+.js:not(.seen) .loader__line { animation: fade var(--base) var(--ease) 400ms forwards; }
+
+.loader.is-leaving .loader__stage { opacity: 0; transform: scale(1.04); }
+.loader.is-leaving .loader__foot, .loader.is-leaving .loader__skip { opacity: 0; animation: none; }
+.loader.is-leaving .loader__shutter--left { transform: translateX(-101%); transition-delay: 250ms; }
+.loader.is-leaving .loader__shutter--right { transform: translateX(101%); transition-delay: 250ms; }
+.loader.is-gone { display: none !important; }
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fanlight-out { to { opacity: 0; } }
+@keyframes glow-in { to { opacity: 1; scale: 1; } }
+@keyframes bloom { from { --bloom: 0%; } to { --bloom: 130%; } }
+@keyframes sheen { from { background-position: 140% 0; } to { background-position: -40% 0; } }
+@keyframes fade { to { opacity: 1; } }
+
+/* ═══ Page entrance (after the shutters part) and ambient motion ════════════════════════════════════ */
+.js .reveal { opacity: 0; transform: translateY(24px); }
+.js .stamp { opacity: 0; transform: perspective(1400px) translateY(36px) rotate(-1.2deg) scale(.985); }
+.js.is-ready .stamp {
+  opacity: 1; transform: perspective(1400px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg));
+  transition: opacity 1200ms var(--ease), transform 1400ms var(--ease);
+}
+.js.is-ready.is-settled .stamp { transition: transform 1200ms var(--ease); }
+.js.is-ready .reveal {
+  opacity: 1; transform: none;
+  transition: opacity 900ms var(--ease), transform 900ms var(--ease);
+  transition-delay: calc(250ms + var(--d, 0) * 160ms);
+}
+.js .stamp__rule span { transform: scaleX(0); }
+.js.is-ready .stamp__rule span { transform: scaleX(1); transition: transform 1600ms var(--ease) 800ms; }
+/* "Coming Soon" settles from wide tracking, like letters pressed into place */
+.js .stamp__title { letter-spacing: .32em; margin-right: -.32em; }
+.js.is-ready .stamp__title { letter-spacing: .12em; margin-right: -.12em; transition: opacity 1400ms var(--ease) 900ms, transform 1400ms var(--ease) 900ms, letter-spacing 2200ms var(--ease) 900ms, margin 2200ms var(--ease) 900ms; }
+
+.js.is-ready .stamp__candle { animation: breathe 7s ease-in-out 2s infinite; }
+.js.is-ready .stamp__rays { animation: sway 26s ease-in-out infinite; }
+.js.is-ready .crest__sheen { animation: sheen 2200ms var(--ease) 2600ms 1 forwards, sheen-loop 9s var(--ease) 6s infinite; }
+
+@keyframes breathe { 0%, 100% { opacity: .55; scale: 1; } 50% { opacity: .9; scale: 1.06; } }
+@keyframes sway { 0%, 100% { rotate: -3deg; } 50% { rotate: 3deg; } }
+@keyframes sheen-loop { 0% { background-position: 140% 0; } 30%, 100% { background-position: -40% 0; } }
+
+/* ═══ Reduced motion: final state, no loader, no ambient movement ═══════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .js:not(.seen) .loader { display: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal, .js .stamp { opacity: 1 !important; transform: none !important; }
+  .js .stamp__rule span { transform: none !important; }
+  .js .stamp__title { letter-spacing: .12em; margin-right: -.12em; }
+  .stamp__dust { display: none; }
+}

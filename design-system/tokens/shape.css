@@ -1,0 +1,16 @@
+/* DESIGN.md §5 — Sharp and framed. Radius is 0 everywhere except arch masks. */
+:root{
+--radius:0;
+--radius-arch:999px 999px 0 0;
+--hairline-w:1px;
+--hairline:1px solid var(--copper);
+--hairline-terracotta:1px solid var(--terracotta);
+--frame-gap:6px; /* @kind spacing */               /* double frame: 1px · 6px · 1px */
+--frame-outline-offset:-8px;   /* = -(1px border + 6px gap + 1px line) */
+--button-inset:4px;            /* copper inset frame on primary buttons */
+--focus-ring-w:2px;--focus-ring-offset:3px;
+--shadow-none:none;
+--shadow-book:0 24px 48px -24px rgba(58,31,26,.25); /* the open menu book ONLY */
+--texture-max-opacity:.06; /* @kind other */
+--texture-checker-opacity:.04; /* @kind other */
+}

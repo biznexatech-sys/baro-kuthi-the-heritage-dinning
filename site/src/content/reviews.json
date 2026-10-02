@@ -1,0 +1,5 @@
+[
+  { "date": "Date of visit", "quote": "A guest’s words will be set here exactly as written in their Google review.", "name": "Reviewer’s name", "href": "#", "source": "Google review" },
+  { "date": "Date of visit", "quote": "Real reviews only — pulled by hand or from the Google Places API at build time.", "name": "Reviewer’s name", "href": "#", "source": "Google review" },
+  { "date": "Date of visit", "quote": "Never invented, never paraphrased; always with a link to the source.", "name": "Reviewer’s name", "href": "#", "source": "Google review" }
+]

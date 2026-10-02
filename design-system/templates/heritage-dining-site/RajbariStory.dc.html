@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script></helmet>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="The Story">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Hero" height="72svh" eyebrow="The Story · Est. 1823" title="The House at Paikpara" lead="A zamindar’s house, and the evenings it has kept." image-alt="Archival illustration of the Baro Kuthi façade" primary-action="{{ none }}" secondary-action="{{ none }}" hint-size="100%,620px"></x-import>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-10)">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.StoryBlock" year="1823" title="The House at Paikpara" image-alt="Archival drawing of the Baro Kuthi façade" hint-size="100%,640px"><p>Baro Kuthi was raised in Paikpara in 1823.</p><p>Draft — the rest of this chapter will be written from the family’s own records and approved by the owners before it is published.</p></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.StoryBlock" year="1858" title="A Chapter of the House" image-alt="The Jalsaghar, chandeliers lit" reverse="{{ true }}" quote="“Pull quote from the family’s account, set in italic.”" hint-size="100%,640px"><p>Draft — this chapter will be written from the family’s own records and approved by the owners before it is published.</p></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.StoryBlock" year="1859" title="A Chapter of the House" image-alt="The staircase and its arches, lamp-lit" hint-size="100%,640px"><p>Draft — this chapter will be written from the family’s own records and approved by the owners before it is published.</p></x-import>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.StoryBlock" year="Today" title="The Rajbari Table" image-alt="A table laid on the verandah at dusk" reverse="{{ true }}" hint-size="100%,640px"><p>The house now receives guests for dinner, served course by course in its old rooms, and arranged personally by telephone.</p></x-import>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:var(--space-9) var(--gutter);background:var(--parchment-dark);border-top:1px solid var(--copper);border-bottom:1px solid var(--copper)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:var(--space-6);text-align:center">
+<p style="margin:0;max-width:34ch;font:italic 400 var(--fs-lead)/var(--lh-lead) var(--font-serif);color:var(--ink);text-wrap:balance">The story continues at the table.</p>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Button" variant="secondary" href="#menu" hint-size="200px,52px">View the Menu</x-import>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.ReservationCard" eyebrow="Reservations" title="Telephone the House" phone="{{ site.phone }}" whatsapp-href="{{ site.whatsapp }}" hours="{{ site.hours }}" hint-size="100%,640px"></x-import>
+</div>
+</section>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { d: null };
+  componentDidMount() {
+    import(new URL('./site-data.js', document.baseURI).href)
+      .then((d) => this.setState({ d }))
+      .catch((e) => console.error('RajbariStory: site-data.js failed to load', e));
+  }
+  renderVals() {
+    const d = this.state.d;
+    if (!d) return { ready: false };
+    return { ready: true, site: d.site, none: null };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "Baro Kuthi Rajbari · The Heritage Dining",
+  "shortName": "Baro Kuthi",
+  "url": "https://barokuthirajbariheritagedining.com",
+  "description": "A restaurant in a zamindar’s house of 1823 in Paikpara, Kolkata. The house receives guests for dinner from 7 pm; tables are arranged by telephone.",
+  "phone": { "display": "+91 XXXXX XXXXX", "href": "tel:+91XXXXXXXXXX", "e164": "+91XXXXXXXXXX" },
+  "whatsapp": "https://wa.me/91XXXXXXXXXX?text=I%20would%20like%20to%20reserve%20a%20table",
+  "address": {
+    "lines": ["Baro Kuthi Rajbari", "Paikpara, Kolkata"],
+    "short": "Paikpara, Kolkata",
+    "locality": "Kolkata",
+    "region": "West Bengal",
+    "country": "IN"
+  },
+  "mapHref": "https://maps.google.com/?q=Paikpara,Kolkata",
+  "mapEmbed": "https://www.google.com/maps?q=Paikpara,Kolkata&output=embed",
+  "hoursLine": "The house receives guests from 7 pm",
+  "hours": [
+    { "label": "Lunch", "value": "12.30 – 3.30 pm", "opens": "12:30", "closes": "15:30" },
+    { "label": "Dinner", "value": "7 – 11 pm", "opens": "19:00", "closes": "23:00" },
+    { "label": "The Verandah", "value": "11 am – 7 pm", "opens": "11:00", "closes": "19:00" }
+  ],
+  "gettingHere": [
+    { "label": "Metro", "value": "Nearest station to be confirmed" },
+    { "label": "Parking", "value": "Within the compound, by arrangement" },
+    { "label": "Dress code", "value": "Smart; traditional dress welcome" }
+  ],
+  "banquetHref": "https://barokuthirajbari.com",
+  "menuPdf": null,
+  "servesCuisine": ["Bengali", "Anglo-Indian"]
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script></helmet>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="The Rooms">
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter) 0;background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.SectionHeading" size="h1" as="h1" eyebrow="The Rooms" title="The Rooms of the House" lead="Four rooms, each with its own hour, light and table." hint-size="100%,250px"></x-import>
+</div>
+</section>
+<section id="verandah" style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-7)">
+<div style="display:flex;flex-direction:column;gap:14px">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Eyebrow" numeral="I" hint-size="220px,20px">The café · Seats 24</x-import>
+<h2 style="margin:0;font:400 var(--fs-h2)/var(--lh-h2) var(--font-display);letter-spacing:var(--ls-h2);text-transform:uppercase;color:var(--terracotta);text-wrap:balance">The Verandah</h2>
+</div>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.ArchImage" shape="cinema" alt="The verandah railing in afternoon light" parallax="{{ true }}" hint-size="100%,540px"></x-import>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--space-6) clamp(32px,8vw,128px)">
+<p style="flex:7 1 420px;min-width:0;margin:0;max-width:var(--reading);font:400 var(--fs-body)/var(--lh-body) var(--font-serif);letter-spacing:var(--ls-body);color:var(--ink);text-wrap:pretty">The café of the house runs the length of the verandah. Tea is poured by the pot and a light menu is served until evening.</p>
+<ul style="flex:4 1 280px;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Seats</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">24</span></li>
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Best</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">Afternoon</span></li>
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Suits</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">Tea, small lunches</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="jalsaghar" style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment-dark)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-7)">
+<div style="display:flex;flex-direction:column;gap:14px">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Eyebrow" numeral="II" hint-size="220px,20px">The main hall · Seats 40</x-import>
+<h2 style="margin:0;font:400 var(--fs-h2)/var(--lh-h2) var(--font-display);letter-spacing:var(--ls-h2);text-transform:uppercase;color:var(--terracotta);text-wrap:balance">The Jalsaghar</h2>
+</div>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.ArchImage" shape="cinema" alt="The Jalsaghar under its Belgian chandeliers, lamp-lit" parallax="{{ true }}" hint-size="100%,540px"></x-import>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--space-6) clamp(32px,8vw,128px)">
+<p style="flex:7 1 420px;min-width:0;margin:0;max-width:var(--reading);font:400 var(--fs-body)/var(--lh-body) var(--font-serif);letter-spacing:var(--ls-body);color:var(--ink);text-wrap:pretty">The old music room is now the main hall. Its chandeliers are lit at dusk, and dinner is served course by course.</p>
+<ul style="flex:4 1 280px;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Seats</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">40</span></li>
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Best</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">Dusk</span></li>
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Suits</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">Dinners, anniversaries</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="courtyard" style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-7)">
+<div style="display:flex;flex-direction:column;gap:14px">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Eyebrow" numeral="III" hint-size="220px,20px">The courtyard · Seats 60</x-import>
+<h2 style="margin:0;font:400 var(--fs-h2)/var(--lh-h2) var(--font-display);letter-spacing:var(--ls-h2);text-transform:uppercase;color:var(--terracotta);text-wrap:balance">The Thakur-dalan Courtyard</h2>
+</div>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.ArchImage" shape="cinema" alt="The Thakur-dalan pillars at night, lamps lit" parallax="{{ true }}" hint-size="100%,540px"></x-import>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--space-6) clamp(32px,8vw,128px)">
+<p style="flex:7 1 420px;min-width:0;margin:0;max-width:var(--reading);font:400 var(--fs-body)/var(--lh-body) var(--font-serif);letter-spacing:var(--ls-body);color:var(--ink);text-wrap:pretty">Tables are laid in the open courtyard, before the pillared pavilion, for larger family evenings.</p>
+<ul style="flex:4 1 280px;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Seats</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">60</span></li>
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Best</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">After dark</span></li>
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Suits</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">Family celebrations</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="study" style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment-dark)">
+<div style="max-width:var(--container);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-7)">
+<div style="display:flex;flex-direction:column;gap:14px">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.Eyebrow" numeral="IV" hint-size="220px,20px">Private · Seats 10</x-import>
+<h2 style="margin:0;font:400 var(--fs-h2)/var(--lh-h2) var(--font-display);letter-spacing:var(--ls-h2);text-transform:uppercase;color:var(--terracotta);text-wrap:balance">The Zamindar’s Study</h2>
+</div>
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.ArchImage" shape="cinema" alt="A lamp-lit study with shutters half open" parallax="{{ true }}" hint-size="100%,540px"></x-import>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--space-6) clamp(32px,8vw,128px)">
+<p style="flex:7 1 420px;min-width:0;margin:0;max-width:var(--reading);font:400 var(--fs-body)/var(--lh-body) var(--font-serif);letter-spacing:var(--ls-body);color:var(--ink);text-wrap:pretty">A private room for small dinners. The menu and the evening are arranged with the host in advance.</p>
+<ul style="flex:4 1 280px;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Seats</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">10</span></li>
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Best</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">By arrangement</span></li>
+<li style="display:flex;align-items:baseline;font:400 18px/1.45 var(--font-serif);color:var(--ink)"><span style="font-weight:600;font-variant:all-small-caps;letter-spacing:.14em;color:var(--terracotta);white-space:nowrap">Suits</span><span aria-hidden="true" style="flex:1 1 auto;min-width:24px;align-self:flex-end;height:.5em;margin:0 10px .32em;background-image:radial-gradient(circle,var(--copper) .9px,transparent 1.3px);background-size:7px 4px;background-repeat:repeat-x;background-position:left bottom"></span><span style="text-align:right">Private dinners</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section style="box-sizing:border-box;padding:var(--section-pad-y) var(--gutter);background:var(--parchment)">
+<div style="max-width:var(--container);margin:0 auto">
+<x-import component-from-global-scope="BaroKuthiDesignSystem_e9f570.ReservationCard" eyebrow="Reservations" title="Reserve a Room’s Table" message="A room may be requested when you telephone. Please speak to our host." phone="{{ site.phone }}" whatsapp-href="{{ site.whatsapp }}" hours="{{ site.hours }}" hint-size="100%,640px"></x-import>
+</div>
+</section>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { d: null };
+  componentDidMount() {
+    import(new URL('./site-data.js', document.baseURI).href)
+      .then((d) => this.setState({ d }))
+      .catch((e) => console.error('RajbariRooms: site-data.js failed to load', e));
+  }
+  renderVals() {
+    const d = this.state.d;
+    if (!d) return { ready: false };
+    return { ready: true, site: d.site };
+  }
+}
+</script>
+</body>
+</html>
