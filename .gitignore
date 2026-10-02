@@ -19,3 +19,4 @@ site/public/icons/
 
 # Local tooling
 .claude/
+site/*.zip

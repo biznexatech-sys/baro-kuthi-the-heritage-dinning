@@ -1,5 +1,9 @@
 # Hostinger (Apache) — served from public_html/ after uploading the contents of out/.
 Options -Indexes
+# Deploy bookkeeping written by GitHub Actions (FTP-Deploy-Action) — never served
+<Files ".ftp-deploy-sync-state.json">
+  Require all denied
+</Files>
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 

@@ -1,0 +1,155 @@
+# Auto-deploy to Hostinger on every push to main (or manually from the Actions tab).
+#
+# SITE_MODE (repository variable, Settings → Secrets and variables → Actions → Variables):
+#   coming-soon (default) — public domain   ← site/out-coming-soon/  (every path shows the Coming Soon page)
+#                           preview domain  ← site/out/ + password + noindex (team only)
+#   live                  — public domain   ← site/out/  (the full website; set this on launch day)
+#
+# Required secrets:   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, PREVIEW_PASSWORD
+# Optional secrets:   PREVIEW_USER (default "team")
+# Variables:          SITE_MODE, FTP_SITE_DIR (default "./"), FTP_PREVIEW_DIR (e.g. "preview/"),
+#                     PREVIEW_HTPASSWD_PATH (absolute server path of the preview's .htpasswd),
+#                     FTP_PROTOCOL (default "ftps"), FTP_SECURITY (default "strict"; "loose" if Hostinger's TLS
+#                     certificate does not match the FTP host name)
+# Full setup: site/README.md → "Auto-deploy (GitHub Actions)".
+
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: false # never interrupt an upload half-way
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SITE_MODE: ${{ vars.SITE_MODE || 'coming-soon' }}
+      FTP_SITE_DIR: ${{ vars.FTP_SITE_DIR || './' }}
+      FTP_PREVIEW_DIR: ${{ vars.FTP_PREVIEW_DIR }}
+    defaults:
+      run:
+        working-directory: site
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Check configuration
+        id: config
+        env:
+          HAS_FTP: ${{ secrets.FTP_SERVER != '' && secrets.FTP_USERNAME != '' && secrets.FTP_PASSWORD != '' }}
+        run: |
+          case "$SITE_MODE" in coming-soon|live) ;; *) echo "::error::SITE_MODE must be 'coming-soon' or 'live' (got '$SITE_MODE')"; exit 1;; esac
+          for d in "$FTP_SITE_DIR" ${FTP_PREVIEW_DIR:+"$FTP_PREVIEW_DIR"}; do
+            case "$d" in */) ;; *) echo "::error::FTP directories must end with '/' (got '$d')"; exit 1;; esac
+          done
+          if [ "$HAS_FTP" != "true" ]; then
+            echo "::warning::FTP secrets are not set — the site is built and checked, but nothing is deployed. See site/README.md."
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          fi
+          # Glob that keeps the public deploy away from the preview folder when it lives inside public_html
+          if [ -n "$FTP_PREVIEW_DIR" ]; then
+            rel="${FTP_PREVIEW_DIR#./}"; rel="${rel#"${FTP_SITE_DIR#./}"}"
+            echo "preview_glob=${rel%/}/**" >> "$GITHUB_OUTPUT"
+          else
+            echo "preview_glob=.ftp-preview-none/**" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Mode: $SITE_MODE · public dir: $FTP_SITE_DIR · preview dir: ${FTP_PREVIEW_DIR:-(none)}"
+
+      - name: Install
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Build the website (out/)
+        run: npm run build
+
+      - name: Build the Coming Soon page (out-coming-soon/)
+        if: env.SITE_MODE == 'coming-soon'
+        run: npm run build:coming-soon
+
+      - name: Lock the team preview (password + noindex)
+        if: env.SITE_MODE == 'coming-soon' && env.FTP_PREVIEW_DIR != ''
+        env:
+          PREVIEW_USER: ${{ secrets.PREVIEW_USER }}
+          PREVIEW_PASSWORD: ${{ secrets.PREVIEW_PASSWORD }}
+          PREVIEW_HTPASSWD_PATH: ${{ vars.PREVIEW_HTPASSWD_PATH }}
+        run: node scripts/protect-preview.mjs out
+
+      # ── Coming Soon mode ────────────────────────────────────────────────────────────────────────
+      - name: Deploy Coming Soon → public domain
+        if: env.SITE_MODE == 'coming-soon' && steps.config.outputs.deploy == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          security: ${{ vars.FTP_SECURITY || 'strict' }}
+          local-dir: ./site/out-coming-soon/
+          server-dir: ${{ env.FTP_SITE_DIR }}
+          state-name: .ftp-deploy-sync-state.json
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            ${{ steps.config.outputs.preview_glob }}
+
+      - name: Deploy website → team preview
+        if: env.SITE_MODE == 'coming-soon' && env.FTP_PREVIEW_DIR != '' && steps.config.outputs.deploy == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          security: ${{ vars.FTP_SECURITY || 'strict' }}
+          local-dir: ./site/out/
+          server-dir: ${{ env.FTP_PREVIEW_DIR }}
+          state-name: .ftp-deploy-sync-state.json
+
+      # ── Live mode (launch) ──────────────────────────────────────────────────────────────────────
+      - name: Deploy website → public domain
+        if: env.SITE_MODE == 'live' && steps.config.outputs.deploy == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          security: ${{ vars.FTP_SECURITY || 'strict' }}
+          local-dir: ./site/out/
+          server-dir: ${{ env.FTP_SITE_DIR }}
+          state-name: .ftp-deploy-sync-state.json
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            ${{ steps.config.outputs.preview_glob }}
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Deploy — mode: \`$SITE_MODE\`"
+            if [ "${{ steps.config.outputs.deploy }}" != "true" ]; then echo "Built only — FTP secrets not configured.";
+            elif [ "$SITE_MODE" = "live" ]; then echo "Public domain: full website.";
+            else echo "Public domain: Coming Soon. Team preview: ${FTP_PREVIEW_DIR:-not configured}"; fi
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -378,6 +378,20 @@ npm run build        # writes out/
   security headers, a year's cache for hashed `/_next/static` files, 30 days for fonts and images, none for HTML.
 - Content changes mean rebuild and re-upload. There is no runtime CMS.
 
+### Auto-deploy (GitHub Actions → Hostinger)
+
+`.github/workflows/deploy.yml` runs on every push to `main`: `npm ci` → type-check → `npm run build` → (Coming Soon
+mode) `build:coming-soon` + `scripts/protect-preview.mjs` → FTPS upload with SamKirkland/FTP-Deploy-Action (changed
+files only; files it uploaded earlier and that no longer exist are removed).
+
+| `SITE_MODE` variable | Public domain | Preview subdomain |
+|---|---|---|
+| `coming-soon` (default) | `out-coming-soon/` — every path → Coming Soon | `out/` + HTTP Basic Auth + noindex |
+| `live` | `out/` — the full website | untouched |
+
+Launch = change `SITE_MODE` to `live` and re-run; no code change. Credentials live only in GitHub secrets.
+Setup steps: `site/README.md` → Auto-deploy.
+
 ### Favicon (both builds)
 
 One source: `site/public/images/favicon.svg` (client-supplied). `scripts/build-icons.mjs` copies it and derives

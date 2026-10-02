@@ -119,6 +119,10 @@ writeFileSync(
   `# Coming Soon (pre-launch). Every address on the domain shows the coming-soon page.
 # At launch, replace the contents of public_html/ with site/out/ — that build has its own .htaccess.
 Options -Indexes
+# Deploy bookkeeping written by GitHub Actions (FTP-Deploy-Action) — never served
+<Files ".ftp-deploy-sync-state.json">
+  Require all denied
+</Files>
 DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>

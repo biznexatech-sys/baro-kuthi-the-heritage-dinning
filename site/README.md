@@ -49,7 +49,60 @@ Every address on the domain (`/`, `/menu/`, …) shows the Coming Soon page.
   in `src/content/site.json`. Rebuild after editing.
 - Replay the loading screen by opening the page in a new tab or a private window.
 
+## Auto-deploy (GitHub Actions)
+
+Every push to `main` builds and deploys to Hostinger through `.github/workflows/deploy.yml`.
+You can also run it by hand: GitHub → **Actions → Deploy to Hostinger → Run workflow**.
+
+| `SITE_MODE` | Public domain shows | Team preview subdomain |
+|---|---|---|
+| `coming-soon` (default) | Coming Soon only, on every address | Full website, password-protected, hidden from Google |
+| `live` | Full website | Left as it was (can be deleted) |
+
+### One-time setup
+
+**1. Hostinger (hPanel)**
+- **FTP:** Files → FTP Accounts → note the **FTP IP / host**, **username** and **password** (reset it if you don't know it).
+  Check which folder the FTP account opens in: for the main account it is normally the domain's `public_html`.
+- **Preview subdomain:** Domains → Subdomains → create `preview` (→ `preview.barokuthirajbariheritagedining.com`).
+  Note the folder it uses, e.g. `public_html/preview`. Turn on SSL for it (Security → SSL).
+- **Absolute path:** open that folder in File Manager and copy the full path shown at the top, e.g.
+  `/home/u123456789/domains/barokuthirajbariheritagedining.com/public_html/preview`.
+
+**2. GitHub → repository → Settings → Secrets and variables → Actions**
+
+| Kind | Name | Value |
+|---|---|---|
+| Secret | `FTP_SERVER` | FTP host / IP from hPanel |
+| Secret | `FTP_USERNAME` | FTP username |
+| Secret | `FTP_PASSWORD` | FTP password |
+| Secret | `PREVIEW_PASSWORD` | Team preview password (10+ characters) |
+| Secret | `PREVIEW_USER` | *(optional)* preview login name — default `team` |
+| Variable | `SITE_MODE` | `coming-soon` |
+| Variable | `FTP_PREVIEW_DIR` | Preview folder **relative to the FTP login folder**, ending in `/` — e.g. `preview/` |
+| Variable | `PREVIEW_HTPASSWD_PATH` | Absolute path from step 1 + `/.htpasswd`, e.g. `/home/u123456789/domains/barokuthirajbariheritagedining.com/public_html/preview/.htpasswd` |
+| Variable | `FTP_SITE_DIR` | *(optional)* public folder relative to the FTP login folder — default `./` |
+| Variable | `FTP_PROTOCOL` / `FTP_SECURITY` | *(optional)* default `ftps` / `strict`. If the run fails with a certificate error, set `FTP_SECURITY` to `loose`; if FTPS is refused, set `FTP_PROTOCOL` to `ftp` |
+
+Until the FTP secrets exist the workflow still builds and type-checks the site but deploys nothing (yellow warning).
+
+**3. First run** — Actions → Deploy to Hostinger → Run workflow. Then check:
+the domain shows Coming Soon; `preview.` asks for the password and then shows the full site.
+
+### Safety built in
+- The preview is never uploaded without a password: the run fails if `PREVIEW_PASSWORD` or `PREVIEW_HTPASSWD_PATH` is missing.
+- The public deploy never touches the preview folder, and vice versa.
+- Each deploy uploads only changed files and removes files it uploaded earlier that no longer exist
+  (it remembers them in `.ftp-deploy-sync-state.json`, which `.htaccess` keeps private).
+- Deploys never run on top of each other.
+
 ## Launch: switch to the full website
+
+**With auto-deploy:** GitHub → Settings → Secrets and variables → Actions → Variables → set `SITE_MODE` to `live`,
+then run the workflow (or push). The public domain switches from Coming Soon to the full website; the old Coming
+Soon files are removed automatically. Delete the preview subdomain afterwards if you no longer need it.
+
+**By hand (without GitHub):**
 
 1. `npm run build`
 2. In Hostinger's File Manager, empty `public_html/` (this removes the Coming Soon files and their `.htaccess`).
