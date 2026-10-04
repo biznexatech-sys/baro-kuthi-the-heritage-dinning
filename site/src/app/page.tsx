@@ -1,6 +1,5 @@
 import { courses, menu, occasions, reviews, rooms, signatureDishes, site, story } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
-import { InvitationIntro } from '@/components/layout/InvitationIntro';
 import { Hero } from '@/components/sections/Hero';
 import { InfoStrip } from '@/components/sections/InfoStrip';
 import { StoryBlock } from '@/components/sections/StoryBlock';
@@ -15,12 +14,10 @@ import { Reservation } from '@/components/page/Reservation';
 
 export const metadata = pageMetadata({ path: '/' });
 
-/** §10 Home — Invitation → Gate → Courtyard (I) → Two Tables (II) → Signature Dishes (III) → Occasions (IV) → Guest Book (V) → Reserve (VI). */
+/** §10 Home — Gate → Courtyard (I) → Two Tables (II) → Signature Dishes (III) → Occasions (IV) → Guest Book (V) → Reserve (VI). */
 export default function HomePage() {
   return (
     <>
-      {/* Outside .pg-page: its fade animation creates a stacking context that would trap the overlay under the header. */}
-      <InvitationIntro />
       <div className="pg-page">
         <Hero
           slides={[
@@ -65,7 +62,17 @@ export default function HomePage() {
           </Stack>
         </PageSection>
 
-        <PageSection>
+        <PageSection
+          decor={
+            <div className="pg-lantern" aria-hidden="true">
+              <img className="pg-lantern__bracket" src="/images/lantern-bracket.webp" alt="" width={565} height={900} loading="lazy" decoding="async" />
+              <div className="pg-lantern__swing">
+                <span className="pg-lantern__glow" />
+                <img className="pg-lantern__lamp" src="/images/lantern-lamp.webp" alt="" width={565} height={900} loading="lazy" decoding="async" />
+              </div>
+            </div>
+          }
+        >
           <Stack>
             <SectionHeading align="center" numeral="III" eyebrow="From the Kitchens" title="Our Signature Dishes" lead="The dishes the house is known for, from the Bengali table and the Sahib’s." />
             <SignatureDishes dishes={signatureDishes} />

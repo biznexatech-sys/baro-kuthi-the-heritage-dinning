@@ -112,3 +112,19 @@
   .pg-split-head { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
 }
 
+/* Signature dishes — a carved wall bracket mounted flush at the top-left edge (at half strength) with its lantern swaying from the hook (pivot at
+   77.9% / 21.9% of the artwork) and a candle glow flickering inside. Two layers share one box so they stay aligned. */
+.pg-lantern { position: absolute; top: 0; left: 0; z-index: 0; opacity: .5; width: clamp(170px, 16vw, 270px); aspect-ratio: 565 / 900; pointer-events: none; user-select: none; }
+.pg-lantern img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pg-lantern__swing { position: absolute; inset: 0; transform-origin: 77.9% 21.9%; animation: pg-lantern-sway 6s ease-in-out infinite; }
+.pg-lantern__glow { position: absolute; left: 76%; top: 68%; width: 46%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--glow) 75%, transparent) 0%, color-mix(in srgb, var(--glow) 30%, transparent) 38%, transparent 70%); mix-blend-mode: multiply; animation: pg-lantern-flicker 3.2s ease-in-out infinite; }
+@keyframes pg-lantern-sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+@keyframes pg-lantern-flicker { 0%, 100% { opacity: .75; scale: 1; } 30% { opacity: 1; scale: 1.06; } 55% { opacity: .82; scale: .97; } 80% { opacity: .95; scale: 1.03; } }
+/* Narrower screens: the centred heading runs wide, so the lantern shortens to hang within the space above it. */
+@media (max-width: 1099.98px) {
+  .pg-lantern { width: 100px; }
+}
+@media (max-width: 767.98px) {
+  .pg-lantern { width: 74px; }
+}
+
