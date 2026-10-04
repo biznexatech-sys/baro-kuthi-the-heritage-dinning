@@ -94,23 +94,40 @@
 
   .bk-occasion__items { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
 
-  .bk-resv { padding: 56px var(--space-5) 40px; }
-  .bk-resv__grid { grid-template-columns: minmax(0, 1fr); }
-  .bk-resv__col { padding: 40px 0 0; }
-  .bk-resv__col + .bk-resv__col { border-left: 0; border-top: var(--hairline); margin-top: 40px; }
-  .bk-resv__phone { white-space: normal; }
+  .bk-resv { padding: 40px 20px; outline-offset: -8px; }
+  .bk-resv__contact { padding: var(--space-4); gap: var(--space-4); }
+  .bk-resv__icon { width: 48px; height: 48px; }
+  .bk-resv__hours-box { padding: var(--space-4); }
+  .bk-resv__form { padding: var(--space-5) var(--space-4); }
 }
 /* Guest book: below 1200px the cards become a swipeable scroll-snap row — two cards on tablet, one and a peek on phones. */
 @media (max-width: 1199.98px) {
   .bk-guestbook { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 8px 2px 24px; overscroll-behavior-x: contain; }
   .bk-guestbook::-webkit-scrollbar { display: none; }
   .bk-guest { flex: 0 0 calc((100% - var(--card-gap)) / 2); scroll-snap-align: start; }
-  .bk-guest:hover { transform: none; }
+  .bk-guest:hover, .bk-guestbook > .bk-guest:nth-child(3n+2), .bk-guestbook > .bk-guest:nth-child(3n+2):hover { transform: none; }
+  .bk-guestbook { padding-top: 44px; align-items: stretch; }
   .bk-guestbook__nav { display: flex; }
 }
 @media (max-width: 767.98px) {
   .bk-menuitem__name { font-size: 19px; }
-  .bk-guest { flex-basis: 86%; padding: 52px 24px 24px; }
-  .bk-guest__mark { left: 18px; font-size: 80px; }
+  .bk-guest { flex-basis: 86%; padding: 56px 22px 28px; }
+  .bk-guest__quote { font-size: 21px; }
   .bk-guest__ornament { width: 52px; }
+}
+
+/* Reservation: stack the invitation above the form below 1200px; single-column fields on small phones. */
+@media (max-width: 1199.98px) {
+  .bk-resv { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); padding: 56px 40px; }
+  .bk-resv__message { max-width: none; }
+}
+@media (max-width: 767.98px) {
+  .bk-resv { padding: 40px 20px; }
+}
+@media (max-width: 479.98px) {
+  .bk-resv__fields { grid-template-columns: minmax(0, 1fr); }
+  .bk-resv__contact { flex-direction: column; align-items: flex-start; }
+  .bk-resv__phone { font-size: 24px; }
+  .bk-resv__hour { font-size: 17px; }
+  .bk-resv__hour-label { letter-spacing: .06em; }
 }

@@ -41,3 +41,53 @@
 
 /* Gentle fade between routes (client navigation). */
 .pg-page { animation: bk-fade var(--dur-base) var(--ease-heritage) both; }
+
+/* Terracotta band (PageSection tone="band") — a candle-lit room: deep-to-terracotta gradient, a warm glow at the centre,
+   a faint copper jaali lattice, copper double rules at the top and bottom edges, and alpona corners. */
+.pg-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 58%, color-mix(in srgb, var(--glow) 22%, transparent) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23D7A680' stroke-opacity='.13' stroke-width='1'%3E%3Cpath d='M32 0L64 32L32 64L0 32Z'/%3E%3Ccircle cx='32' cy='32' r='5'/%3E%3Cpath d='M32 18c3.5 4.5 3.5 9 0 14c-3.5-5-3.5-9.5 0-14zM32 46c3.5-4.5 3.5-9 0-14c-3.5 5-3.5 9.5 0 14zM18 32c4.5-3.5 9-3.5 14 0c-5 3.5-9.5 3.5-14 0zM46 32c-4.5-3.5-9-3.5-14 0c5 3.5 9.5 3.5 14 0z'/%3E%3C/g%3E%3Cg fill='%23D7A680' fill-opacity='.22'%3E%3Ccircle cx='0' cy='0' r='1.6'/%3E%3Ccircle cx='64' cy='0' r='1.6'/%3E%3Ccircle cx='0' cy='64' r='1.6'/%3E%3Ccircle cx='64' cy='64' r='1.6'/%3E%3C/g%3E%3C/svg%3E") center / 64px 64px,
+    linear-gradient(180deg, var(--terracotta-deep) 0%, var(--terracotta) 22%, var(--terracotta) 78%, var(--terracotta-deep) 100%);
+}
+.pg-band::before,
+.pg-band::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 7px;
+  border-top: 1px solid var(--copper);
+  border-bottom: 1px solid var(--copper);
+  opacity: .55;
+  pointer-events: none;
+}
+.pg-band::before { top: 18px; }
+.pg-band::after { bottom: 18px; }
+.pg-band__corner { position: absolute; z-index: -1; width: clamp(84px, 9vw, 140px); height: auto; color: var(--copper); opacity: .5; stroke-width: 1.5; pointer-events: none; }
+.pg-band__corner--tl { top: 40px; left: 24px; }
+.pg-band__corner--tr { top: 40px; right: 24px; transform: scaleX(-1); }
+.pg-band__corner--bl { bottom: 40px; left: 24px; transform: scaleY(-1); }
+.pg-band__corner--br { bottom: 40px; right: 24px; transform: scale(-1); }
+@media (max-width: 767.98px) {
+  .pg-band::before { top: 10px; }
+  .pg-band::after { bottom: 10px; }
+  .pg-band__corner { width: 64px; }
+  .pg-band__corner--tl, .pg-band__corner--tr { top: 26px; }
+  .pg-band__corner--bl, .pg-band__corner--br { bottom: 26px; }
+  .pg-band__corner--tl, .pg-band__corner--bl { left: 10px; }
+  .pg-band__corner--tr, .pg-band__corner--br { right: 10px; }
+}
+
+/* Guest book — the heading's lead runs on one line; the carved lotus is tucked into the top-right corner, a quarter-to-half
+   visible, turning slowly like a chakra. */
+.pg-guest-heading .bk-heading__lead { max-width: 52ch; }
+.pg-medallion { --size: clamp(280px, 26vw, 420px); position: absolute; top: calc(var(--size) * -0.3); z-index: 0; display: block; width: var(--size); height: var(--size); opacity: .38; pointer-events: none; user-select: none; animation: pg-chakra 80s linear infinite; }
+.pg-medallion--right { right: calc(var(--size) / -2.4); }
+@keyframes pg-chakra { to { transform: rotate(360deg); } }
+@media (max-width: 767.98px) {
+  .pg-medallion { --size: 200px; opacity: .35; }
+}

@@ -1,32 +1,39 @@
 import type { ReactNode } from 'react';
 import { cx } from '@/lib/utils';
+import { AlponaCorner } from '@/components/ui/Alpona';
 
 export type PageSectionProps = {
-  /** light = parchment, alt = parchment-dark. Dark bands are components of their own (CourseScroll, OccasionBand). */
-  tone?: 'light' | 'alt';
+  /** light = parchment, alt = parchment-dark, band = terracotta (pair with dark-tone headings). */
+  tone?: 'light' | 'alt' | 'band';
   id?: string;
   flushTop?: boolean;
   flushBottom?: boolean;
   children: ReactNode;
   className?: string;
   'aria-label'?: string;
+  /** Decorative layer behind the content (absolutely positioned against the section). */
+  decor?: ReactNode;
 };
 
 /** §4 — one page band: 160px vertical padding (96 mobile), 64px gutters (20 mobile), 1280px container. */
-export function PageSection({ tone = 'light', id, flushTop, flushBottom, children, className, ...rest }: PageSectionProps) {
+export function PageSection({ tone = 'light', id, flushTop, flushBottom, children, className, decor, ...rest }: PageSectionProps) {
   return (
     <section
       id={id}
       aria-label={rest['aria-label']}
       className={cx(
         'box-border px-[var(--gutter)] py-[var(--section-pad-y)]',
-        tone === 'alt' ? 'bg-parchment-dark' : 'bg-parchment',
+        tone === 'alt' ? 'bg-parchment-dark' : tone === 'band' ? 'pg-band' : 'bg-parchment',
         flushTop && 'pt-0',
         flushBottom && 'pb-0',
+        !!decor && 'relative isolate overflow-x-clip',
         className,
       )}
     >
-      <div className="mx-auto max-w-site">{children}</div>
+      {tone === 'band' &&
+        (['tl', 'tr', 'bl', 'br'] as const).map((c) => <AlponaCorner key={c} className={'pg-band__corner pg-band__corner--' + c} />)}
+      {decor}
+      <div className={cx('mx-auto max-w-site', !!decor && 'relative z-[1]')}>{children}</div>
     </section>
   );
 }
