@@ -13,8 +13,13 @@
 .bk-footer__brand-link{display:inline-block;line-height:0;text-decoration:none;transition:opacity var(--dur-fast) var(--ease-heritage)}
 .bk-footer__brand-link:hover{opacity:.85}
 .bk-footer__logo{display:block;width:180px;max-width:100%;height:auto}
-.bk-footer__legal{margin:var(--space-8) 0 0;padding-top:var(--space-5);border-top:var(--hairline);font:var(--fw-semibold) 19px/1.4 var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-label);color:var(--copper)}
+.bk-footer__legal{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--space-2) var(--space-6);margin:var(--space-8) 0 0;padding-top:var(--space-5);border-top:var(--hairline);font:var(--fw-semibold) 19px/1.4 var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-label);color:var(--copper)}
 .bk-footer--mid .bk-footer__cols{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-7)}
 .bk-footer__col{overflow-wrap:anywhere}
 .bk-footer--compact .bk-footer__cols{grid-template-columns:1fr;gap:40px}
 .bk-footer--compact .bk-footer__inner{padding-top:var(--space-8)}
+.bk-footer__copy{margin:0}
+/* Developer credit — small and quiet, right of the copyright line (below it on phones). */
+.bk-footer__credit{margin:0;font:italic var(--fw-regular) 15px/1.4 var(--font-serif);font-variant:normal;letter-spacing:.02em;color:color-mix(in srgb,var(--parchment) 60%,transparent)}
+.bk-footer__credit a{color:var(--copper);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--copper) 40%,transparent);transition:color var(--dur-fast) var(--ease-heritage),border-color var(--dur-fast) var(--ease-heritage)}
+.bk-footer__credit a:hover{color:var(--parchment);border-color:var(--parchment)}

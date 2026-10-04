@@ -21,8 +21,8 @@ export default function HomePage() {
       <div className="pg-page">
         <Hero
           slides={[
-            { src: '/images/slide1.webp', alt: 'The Baro Kuthi façade at dusk, lit for the evening' },
-            { src: '/images/slide2.webp', alt: 'The hall with its chandeliers lit, seen through an old window' },
+            { src: '/images/slide1.webp', alt: 'The dining hall under its chandeliers, tables laid for the evening' },
+            { src: '/images/slide2.webp', alt: 'The Baro Kuthi façade at dusk, lit for the evening' },
             { src: '/images/slide3.webp', alt: 'The rooftop terrace and courtyard from above at night' },
           ]}
           alpona

@@ -108,7 +108,15 @@ export function Footer({
             </TextLink>
           </section>
         </div>
-        <p className="bk-footer__legal">© {year} · BARO KUTHI RAJ BARI · The Heritage Dining</p>
+        <div className="bk-footer__legal">
+          <p className="bk-footer__copy">© {year} · BARO KUTHI RAJ BARI · The Heritage Dining</p>
+          <p className="bk-footer__credit">
+            Developed by{' '}
+            <a href="https://biznexa.tech" target="_blank" rel="noopener">
+              Biznexa.tech
+            </a>
+          </p>
+        </div>
       </div>
       <div className="bk-lalpaar" style={lalpaarStyle(lalpaar)} aria-hidden="true" />
     </footer>
