@@ -9,6 +9,7 @@
   {
     "slug": "jalsaghar", "name": "The Jalsaghar", "eyebrow": "Seats 40 · Best at dusk",
     "description": "The music room, now the main hall, under its Belgian chandeliers.",
+    "image": "/images/slide2.webp",
     "imageAlt": "The Jalsaghar under its chandeliers, lamp-lit",
     "capacity": "40", "best": "Dusk", "occasions": "Dinners, anniversaries",
     "text": "The old music room is now the main hall. Its chandeliers are lit at dusk, and dinner is served course by course."
@@ -16,7 +17,8 @@
   {
     "slug": "thakur-dalan", "name": "The Thakur-dalan Courtyard", "eyebrow": "Seats 60 · After dark",
     "description": "Tables laid before the old pillared pavilion.",
-    "imageAlt": "The Thakur-dalan pillars at night, lamps lit",
+    "image": "/images/courtyard.webp",
+    "imageAlt": "Tables laid in the courtyard before the house at night, lamps lit",
     "capacity": "60", "best": "After dark", "occasions": "Family celebrations",
     "text": "Tables are laid in the open courtyard, before the pillared pavilion, for larger family evenings."
   },

@@ -1,8 +1,8 @@
 {
   "band": [
-    { "title": "Private Dining", "text": "The Zamindar’s Study, arranged for an evening of your own." },
-    { "title": "Family Celebrations", "text": "Birthdays, anniversaries and annaprashan, hosted in the old manner." },
-    { "title": "Corporate Lunches", "text": "Midday tables for colleagues and guests, arranged by telephone." }
+    { "title": "Private Dining", "text": "The Zamindar’s Study, arranged for an evening of your own.", "image": "/images/slide2.webp", "imageAlt": "The dining hall under its chandeliers, tables laid for the evening" },
+    { "title": "Family Celebrations", "text": "Birthdays, anniversaries and annaprashan, hosted in the old manner.", "image": "/images/boroKuthi_bari.webp", "imageAlt": "The house dressed for a celebration: a flower-decked gate and a vintage car at the door" },
+    { "title": "Corporate Lunches", "text": "Midday tables for colleagues and guests, arranged by telephone.", "image": "/images/courtyard.webp", "imageAlt": "Tables laid in the courtyard before the white façade" }
   ],
   "details": [
     { "title": "Private Dining", "eyebrow": "The Zamindar’s Study", "imageAlt": "A private table laid in the study, lamp-lit", "text": "An evening of your own in the study, for up to ten guests. The menu is chosen with the host beforehand." },

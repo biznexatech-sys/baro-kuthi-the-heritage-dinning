@@ -25,9 +25,9 @@
   .bk-footer__inner { padding-top: var(--space-8); }
 }
 
-/* ── Rooms row (§9.10): 4 columns → 2 → horizontal swipe with progress line ───────────────────────────── */
+/* ── Rooms row (§9.10): 4 columns (≥1200) → 2 → horizontal swipe with progress line ───────────────────────────── */
 .bk-rooms__progress { display: none; }
-@media (min-width: 768px) and (max-width: 1099.98px) {
+@media (min-width: 768px) and (max-width: 1199.98px) {
   .bk-rooms__scroller { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-8); }
 }
 @media (max-width: 767.98px) {
@@ -93,6 +93,7 @@
   .bk-story--featured .bk-story__watermark { height: calc(var(--section-pad-y) + (100vw - 2 * var(--gutter) - 14px) * var(--media-hpw, 4 / 3) + 120px); }
 
   .bk-occasion__items { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
+  .bk-occasion__item--card { width: 100%; max-width: 460px; margin-inline: auto; box-sizing: border-box; }
 
   .bk-resv { padding: 40px 20px; outline-offset: -8px; }
   .bk-resv__contact { padding: var(--space-4); gap: var(--space-4); }
@@ -130,4 +131,28 @@
   .bk-resv__phone { font-size: 24px; }
   .bk-resv__hour { font-size: 17px; }
   .bk-resv__hour-label { letter-spacing: .06em; }
+}
+
+/* Occasion cards on tablets: three narrow columns read poorly — two up, the third centred below. */
+@media (min-width: 768px) and (max-width: 1099.98px) {
+  .bk-occasion__items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bk-occasion__item--card:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - var(--card-gap) / 2); justify-self: center; }
+}
+
+/* Signature dishes: 4 cards (≥1280) → 3 → 2 → one and a peek; arrows move beneath the row on phones. */
+@media (max-width: 1279.98px) {
+  .bk-dish { flex-basis: calc((100% - 2 * var(--card-gap)) / 3); }
+}
+@media (max-width: 1023.98px) {
+  .bk-dish { flex-basis: calc((100% - var(--card-gap)) / 2); }
+}
+@media (max-width: 699.98px) {
+  .bk-dishes { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; row-gap: var(--space-4); }
+  .bk-dishes__track { grid-column: 1 / -1; grid-row: 1; margin: 0 calc(-1 * var(--gutter)); padding: 12px var(--gutter) 24px; scroll-padding: 0 var(--gutter); }
+  .bk-dish { flex-basis: 80%; }
+  .bk-dishes__arrow { grid-row: 2; width: 44px; height: 44px; }
+  .bk-dishes__arrow--prev { grid-column: 1; }
+  .bk-dishes__arrow--next { grid-column: 3; }
+  .bk-dishes__dots { grid-column: 2; grid-row: 2; margin: 0; align-self: center; min-width: 0; flex-wrap: wrap; }
+  .bk-dishes__dot { width: 16px; }
 }

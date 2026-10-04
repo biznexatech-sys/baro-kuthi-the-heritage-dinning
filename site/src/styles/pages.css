@@ -92,3 +92,23 @@
   .pg-medallion { --size: 300px; opacity: .25; }
   .pg-medallion { --size: clamp(280px, 26vw, 420px); position: absolute; top: calc(var(--size) * 0.1); z-index: 0; display: block; width: var(--size); height: var(--size); pointer-events: none; user-select: none; animation: pg-chakra 80s linear infinite; }
 }
+
+/* Text on scroll (TextReveal) — headings rise word by word out of a mask; supporting text fades up from a soft blur.
+   Classes are added by script only, so text is always visible without JS; reduced motion skips it entirely. */
+.tr-on .bk-heading[data-reveal] { opacity: 1 !important; transform: none !important; }
+.tr-title .tr-w { display: inline-block; overflow: hidden; vertical-align: top; padding: .06em 0 .12em; margin: -.06em 0 -.12em; }
+.tr-title .tr-i { display: inline-block; transform: translateY(105%) rotate(2deg); transform-origin: 0 100%; opacity: 0; transition: transform .95s cubic-bezier(.2, .75, .2, 1), opacity .7s ease; transition-delay: calc(var(--i) * 70ms + 60ms); }
+.tr-title.tr-in .tr-i { transform: none; opacity: 1; }
+.tr-fade { opacity: 0; transform: translateY(18px); filter: blur(5px); transition: opacity .85s var(--ease-heritage), transform .85s var(--ease-heritage), filter .85s var(--ease-heritage); transition-delay: var(--d, 0ms); }
+.tr-fade.tr-in { opacity: 1; transform: none; filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  .tr-title .tr-i, .tr-fade { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* Heading on the left, a link on the right at its baseline (stacked on phones). */
+.pg-split-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); }
+.pg-split-head > .bk-textlink { flex: none; margin-bottom: 6px; }
+@media (max-width: 767.98px) {
+  .pg-split-head { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+}
+

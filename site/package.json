@@ -5,15 +5,16 @@
   "description": "BARO KUTHI RAJ BARI — The Heritage Dining production website (Next.js static export).",
   "scripts": {
     "sync:ds": "node scripts/sync-design-system.mjs",
-    "predev": "npm run sync:ds && npm run icons",
+    "predev": "npm run sync:ds && npm run icons && npm run dishes",
     "dev": "next dev",
-    "prebuild": "npm run sync:ds && npm run icons",
+    "prebuild": "npm run sync:ds && npm run icons && npm run dishes",
     "build": "next build",
     "start": "npx serve@latest out",
     "typecheck": "tsc --noEmit",
     "build:coming-soon": "node scripts/build-coming-soon.mjs",
     "preview:coming-soon": "node scripts/build-coming-soon.mjs && node scripts/serve-static.mjs out-coming-soon 4000",
-    "icons": "node scripts/build-icons.mjs"
+    "icons": "node scripts/build-icons.mjs",
+    "dishes": "node scripts/build-dishes.mjs"
   },
   "engines": {
     "node": ">=20.9.0"

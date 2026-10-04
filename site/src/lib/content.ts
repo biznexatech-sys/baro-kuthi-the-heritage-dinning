@@ -3,6 +3,8 @@ import siteJson from '@/content/site.json';
 import menuJson from '@/content/menu.json';
 import coursesJson from '@/content/courses.json';
 import roomsJson from '@/content/rooms.json';
+import signatureJson from '@/content/signature.json';
+import dishImagesJson from '@/content/dish-images.json';
 import reviewsJson from '@/content/reviews.json';
 import storyJson from '@/content/story.json';
 import occasionsJson from '@/content/occasions.json';
@@ -57,7 +59,7 @@ export type Review = { date?: string; quote: string; name: string; href?: string
 export type Chapter = { year: string; title: string; image?: string; imageAlt: string; draft?: boolean; quote?: string; body: string[] };
 export type Story = { homeExcerpt: string; chapters: Chapter[] };
 
-export type OccasionItem = { title: string; text: string; icon?: string };
+export type OccasionItem = { title: string; text: string; icon?: string; image?: string; imageAlt?: string };
 export type OccasionDetail = { title: string; eyebrow: string; image?: string; imageAlt: string; text: string };
 export type Step = { numeral: string; title: string; text: string };
 export type Occasions = { band: OccasionItem[]; details: OccasionDetail[]; steps: Step[] };
@@ -72,3 +74,22 @@ export const reviews: Review[] = reviewsJson;
 export const story: Story = storyJson;
 export const occasions: Occasions = occasionsJson;
 export const faqs: Faq[] = faqsJson;
+
+/** A signature dish resolved against the menu: which table it belongs to, its description, and its photograph if one
+ *  has been added to public/images/signature dish/ (see scripts/build-dishes.mjs). */
+export type SignatureDish = MenuItem & { table: string; image?: string };
+const dishSlug = (s: string) =>
+  s
+    .normalize('NFKD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+const dishImages: Record<string, string> = dishImagesJson;
+export const signatureDishes: SignatureDish[] = (signatureJson.dishes as { name: string; image?: string }[]).flatMap((d) => {
+  for (const page of [...menu.tables, menu.sets, menu.verandah]) {
+    const item = page.items.find((i) => i.name === d.name);
+    if (item) return [{ ...item, table: page.tab || page.title, image: d.image || dishImages[dishSlug(d.name)] }];
+  }
+  return [];
+});

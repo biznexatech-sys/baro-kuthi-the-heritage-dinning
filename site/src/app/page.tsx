@@ -1,11 +1,11 @@
-import { courses, menu, occasions, reviews, rooms, site, story } from '@/lib/content';
+import { courses, menu, occasions, reviews, rooms, signatureDishes, site, story } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 import { InvitationIntro } from '@/components/layout/InvitationIntro';
 import { Hero } from '@/components/sections/Hero';
 import { InfoStrip } from '@/components/sections/InfoStrip';
 import { StoryBlock } from '@/components/sections/StoryBlock';
 import { MenuBook } from '@/components/sections/MenuBook';
-import { RoomRow } from '@/components/sections/RoomRow';
+import { SignatureDishes } from '@/components/sections/SignatureDishes';
 import { OccasionBand } from '@/components/sections/OccasionBand';
 import { GuestBook } from '@/components/sections/GuestBook';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -15,7 +15,7 @@ import { Reservation } from '@/components/page/Reservation';
 
 export const metadata = pageMetadata({ path: '/' });
 
-/** §10 Home — Invitation → Gate → Courtyard (I) → Two Tables (II) → Rooms (III) → Occasions (IV) → Guest Book (V) → Reserve (VI). */
+/** §10 Home — Invitation → Gate → Courtyard (I) → Two Tables (II) → Signature Dishes (III) → Occasions (IV) → Guest Book (V) → Reserve (VI). */
 export default function HomePage() {
   return (
     <>
@@ -67,8 +67,8 @@ export default function HomePage() {
 
         <PageSection>
           <Stack>
-            <SectionHeading numeral="III" eyebrow="The Rooms of the House" title="Four Rooms, Four Evenings" lead="Each room of the house keeps its own hour and its own table." />
-            <RoomRow rooms={rooms.map((r) => ({ name: r.name, eyebrow: r.eyebrow, description: r.description, image: r.image, imageAlt: r.imageAlt, action: { label: 'See the room', href: `/rooms/#${r.slug}` } }))} />
+            <SectionHeading align="center" numeral="III" eyebrow="From the Kitchens" title="Our Signature Dishes" lead="The dishes the house is known for, from the Bengali table and the Sahib’s." />
+            <SignatureDishes dishes={signatureDishes} />
           </Stack>
         </PageSection>
 
@@ -76,6 +76,7 @@ export default function HomePage() {
           heading={{ numeral: 'IV', eyebrow: 'Occasions of the House', title: 'Celebrations, Arranged by the House', lead: 'Private dinners, family gatherings and midday tables for colleagues.' }}
           items={occasions.band}
           action={{ label: 'Arrange an Occasion', href: '/occasions/' }}
+          itemAction={{ label: 'Arrange this', href: '/occasions/' }}
         />
 
         <PageSection

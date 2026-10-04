@@ -1,0 +1,13 @@
+{
+  "note": "Dishes shown in 'Our Signature Dishes' on the home page, in order. Name must match menu.json exactly. Photos: put a file named after the dish (e.g. Kosha Mangsho.png) in public/images/signature dish/ and it is picked up automatically.",
+  "dishes": [
+    { "name": "Kosha Mangsho" },
+    { "name": "Chingri Malai Curry" },
+    { "name": "Bhetki Paturi" },
+    { "name": "The Rajbari Thali · Aamish" },
+    { "name": "Chicken à la Kiev" },
+    { "name": "Fish Orly" },
+    { "name": "Mishti Doi" },
+    { "name": "Caramel Custard" }
+  ]
+}

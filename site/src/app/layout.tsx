@@ -8,6 +8,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { StickyCallBar } from '@/components/layout/StickyCallBar';
 import { SmoothScroll } from '@/components/layout/SmoothScroll';
+import { TextReveal } from '@/components/layout/TextReveal';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Footer address={site.address.lines} mapHref={site.mapHref} hours={site.hours} gettingHere={site.gettingHere} banquetHref={site.banquetHref} phone={site.phone} email={site.email} />
         <StickyCallBar phoneHref={site.phone.href} whatsappHref={site.whatsapp} />
         <SmoothScroll />
+        <TextReveal />
         <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(restaurantJsonLd())} />
       </body>
     </html>
