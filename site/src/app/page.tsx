@@ -1,4 +1,4 @@
-import { menu, occasions, reviews, rooms, site, story } from '@/lib/content';
+import { courses, menu, occasions, reviews, rooms, site, story } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 import { InvitationIntro } from '@/components/layout/InvitationIntro';
 import { Hero } from '@/components/sections/Hero';
@@ -39,7 +39,23 @@ export default function HomePage() {
         <InfoStrip hours={site.hoursLine} address={site.address.short} mapHref={site.mapHref} phone={site.phone} whatsappHref={site.whatsapp} />
 
         <PageSection flushBottom className="overflow-x-clip">
-          <StoryBlock numeral="I" eyebrow="The Courtyard" title="A House of 1823" image="/images/gallery-20.webp" imageShape="landscape" imageAlt="Baro Kuthi from above: the white rajbari, its gateway and the rooftop terrace" watermark="/images/jhar-bati-watermark.webp" action={{ label: 'Read the full story', href: '/story/' }}>
+          <StoryBlock
+            numeral="I"
+            eyebrow="The Courtyard"
+            title="A House of 1823"
+            image="/images/courtyard.webp"
+            imageShape="landscape"
+            imageAlt="The Baro Kuthi courtyard at night: the white façade strung with lights, lantern-lit tables under umbrellas"
+            featured
+            seal={['Since', '1823']}
+            facts={[
+              { value: String(rooms.length), label: 'Dining rooms' },
+              { value: String(menu.tables.length), label: 'Kitchens' },
+              { value: String(courses.length), label: 'Courses' },
+            ]}
+            watermark="/images/jhar-bati-watermark.webp"
+            action={{ label: 'Read the full story', href: '/story/' }}
+          >
             <p>{story.homeExcerpt}</p>
           </StoryBlock>
         </PageSection>

@@ -24,13 +24,19 @@ export type StoryBlockProps = {
   headingAs?: 'h2' | 'h3';
   /** Decorative watermark hung from the top of the section above the text column (e.g. the jhar-bati chandelier). */
   watermark?: string;
+  /** Larger image (6 columns) with an offset copper frame behind it. */
+  featured?: boolean;
+  /** Round seal overlapping the image corner — two short lines, e.g. ['Est.', '1823']. */
+  seal?: [string, string];
+  /** A row of figures under the copy, e.g. { value: '1823', label: 'The house is built' }. */
+  facts?: { value: string; label: string }[];
 };
 
 /** §9.7 "The Courtyard" — arched image (5 cols) + text (5 cols) with a 2-column offset, alternating sides. */
-export function StoryBlock({ image, imageAlt, imageShape = 'arch', eyebrow, numeral, year, title, lead, children, quote, action, reverse = false, tone = 'light', headingAs = 'h2', watermark }: StoryBlockProps) {
+export function StoryBlock({ image, imageAlt, imageShape = 'arch', eyebrow, numeral, year, title, lead, children, quote, action, reverse = false, tone = 'light', headingAs = 'h2', watermark, featured = false, seal, facts }: StoryBlockProps) {
   const body = typeof children === 'string' ? <p>{children}</p> : children;
   return (
-    <article className={cx('bk-story', 'bk-story--' + tone, reverse && 'bk-story--reverse', watermark && 'bk-story--hung')} style={{ '--media-hpw': imageShape === 'landscape' ? '0.75' : '1.3333' } as CSSProperties}>
+    <article className={cx('bk-story', 'bk-story--' + tone, reverse && 'bk-story--reverse', watermark && 'bk-story--hung', featured && 'bk-story--featured')} style={{ '--media-hpw': imageShape === 'landscape' ? '0.75' : '1.3333' } as CSSProperties}>
       {watermark && (
         <span className="bk-story__watermark" aria-hidden="true">
           <img src={watermark} alt="" width={520} height={811} loading="lazy" decoding="async" />
@@ -38,11 +44,27 @@ export function StoryBlock({ image, imageAlt, imageShape = 'arch', eyebrow, nume
       )}
       <div className="bk-story__media">
         <ArchImage src={image} alt={imageAlt} shape={imageShape} tone={tone} parallax />
+        {seal && (
+          <span className="bk-story__seal" aria-hidden="true">
+            <span className="bk-story__seal-top">{seal[0]}</span>
+            <span className="bk-story__seal-main">{seal[1]}</span>
+          </span>
+        )}
       </div>
       <div className="bk-story__text">
         {year && <p className="bk-story__year">{year}</p>}
         <SectionHeading eyebrow={eyebrow} numeral={numeral} title={title} lead={lead} tone={tone} align="left" ornament={year ? false : undefined} as={headingAs} />
         {body && <div className="bk-story__body">{body}</div>}
+        {facts && facts.length > 0 && (
+          <dl className="bk-story__facts">
+            {facts.map((f) => (
+              <div key={f.label} className="bk-story__fact">
+                <dt className="bk-story__fact-value">{f.value}</dt>
+                <dd className="bk-story__fact-label">{f.label}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
         {quote && <blockquote className="bk-story__quote">{quote}</blockquote>}
         {action && (
           <div className="bk-story__action">
