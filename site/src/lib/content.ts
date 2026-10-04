@@ -50,7 +50,8 @@ export type Room = {
   text: string;
 };
 
-export type Review = { date?: string; quote: string; name: string; href?: string; source?: string };
+/** `rating` (1–5) only when the source review shows one — stars are never shown otherwise. */
+export type Review = { date?: string; quote: string; name: string; href?: string; source?: string; rating?: number };
 
 export type Chapter = { year: string; title: string; image?: string; imageAlt: string; draft?: boolean; quote?: string; body: string[] };
 export type Story = { homeExcerpt: string; chapters: Chapter[] };

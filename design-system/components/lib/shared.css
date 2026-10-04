@@ -2,7 +2,7 @@
 .bk-wordmark{display:inline-flex;flex-direction:column;align-items:center;gap:6px;max-width:100%;color:var(--terracotta);text-decoration:none;text-align:center}
 .bk-wordmark__name{white-space:nowrap}
 .bk-wordmark__name{font:var(--fw-semibold) 22px/1 var(--font-display);letter-spacing:.14em;text-transform:uppercase;margin-right:-.14em}
-.bk-wordmark__tag{font:var(--fw-semibold) 13px/1 var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-eyebrow);margin-right:calc(-1 * var(--ls-eyebrow))}
+.bk-wordmark__tag{font:var(--fw-semibold) 19px/1 var(--font-serif);font-variant:all-small-caps;letter-spacing:var(--ls-eyebrow);margin-right:calc(-1 * var(--ls-eyebrow))}
 .bk-wordmark--sm .bk-wordmark__name{font-size:17px}
 .bk-wordmark--lg .bk-wordmark__name{font-size:30px}
 .bk-wordmark--lg .bk-wordmark__tag{font-size:15px}

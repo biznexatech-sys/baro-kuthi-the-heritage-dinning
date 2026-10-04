@@ -1,13 +1,23 @@
 'use client';
-import { useEffect, useRef, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { cx, renderMotif, type Motif } from '@/lib/utils';
 import { prefersReducedMotion } from '@/lib/hooks';
 import type { Action } from '@/lib/content';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
+import { AlponaCorner } from '@/components/ui/Alpona';
+
+export type HeroSlide = { src: string; alt: string };
+
+/** Time each slide holds before the crossfade (ms). */
+const SLIDE_MS = 7000;
 
 export type HeroProps = {
   image?: string;
+  /** Two or more photographs crossfade with a slow zoom, advancing on their own (paused on hover; off under reduced motion). */
+  slides?: HeroSlide[];
+  /** Alpona line-work: four corner motifs inside the frame. */
+  alpona?: boolean;
   imageAlt?: string;
   eyebrow?: string;
   title: string;
@@ -23,7 +33,7 @@ export type HeroProps = {
 };
 
 /** §9.5 "The Gate" — full-bleed dusk photograph, terracotta-deep gradient, double copper frame inset 24px. */
-export function Hero({ image, imageAlt = 'The Baro Kuthi façade at dusk, lamps lit', eyebrow, title, lead, primaryAction, secondaryAction, chandelier, height, className, style }: HeroProps) {
+export function Hero({ image, slides, alpona = false, imageAlt = 'The Baro Kuthi façade at dusk, lamps lit', eyebrow, title, lead, primaryAction, secondaryAction, chandelier, height, className, style }: HeroProps) {
   const chRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!chandelier || prefersReducedMotion()) return undefined;
@@ -47,10 +57,43 @@ export function Hero({ image, imageAlt = 'The Baro Kuthi façade at dusk, lamps 
     };
   }, [chandelier]);
 
+  const count = slides?.length ?? 0;
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [hover, setHover] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) setPaused(true);
+  }, []);
+  useEffect(() => {
+    if (count < 2 || paused || hover || hidden) return undefined;
+    const t = window.setTimeout(() => setActive((active + 1) % count), SLIDE_MS);
+    return () => window.clearTimeout(t);
+  }, [active, count, paused, hover, hidden]);
+  // Stop when the tab is hidden so the slide doesn't jump on return.
+  useEffect(() => {
+    const on = () => setHidden(document.hidden);
+    document.addEventListener('visibilitychange', on);
+    return () => document.removeEventListener('visibilitychange', on);
+  }, []);
+
   return (
-    <section className={cx('bk-hero', className)} style={{ minHeight: height, ...style }}>
+    <section
+      className={cx('bk-hero', count > 1 && 'bk-hero--slider', (paused || hover || hidden) && 'is-paused', className)}
+      style={{ minHeight: height, ['--slide-ms' as string]: SLIDE_MS + 'ms', ...style }}
+      aria-roledescription={count > 1 ? 'carousel' : undefined}
+      onMouseEnter={count > 1 ? () => setHover(true) : undefined}
+      onMouseLeave={count > 1 ? () => setHover(false) : undefined}
+    >
       <div className="bk-hero__media">
-        {image ? (
+        {count > 0 ? (
+          slides!.map((sl, i) => (
+            <div key={sl.src} className={cx('bk-hero__slide', i === active && 'is-active')} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${count}`} aria-hidden={i !== active}>
+              <img src={sl.src} alt={sl.alt} className="bk-hero__img" fetchPriority={i === 0 ? 'high' : 'low'} decoding="async" />
+            </div>
+          ))
+        ) : image ? (
           <img src={image} alt={imageAlt} className="bk-hero__img" fetchPriority="high" />
         ) : (
           <div className="bk-hero__placeholder" role="img" aria-label={imageAlt}>
@@ -63,6 +106,14 @@ export function Hero({ image, imageAlt = 'The Baro Kuthi façade at dusk, lamps 
       </div>
       <div className="bk-hero__shade" aria-hidden="true" />
       <div className="bk-hero__frame bk-frame" aria-hidden="true" />
+      {alpona && (
+        <div className="bk-hero__alpona" aria-hidden="true">
+          <AlponaCorner className="bk-hero__corner bk-hero__corner--tl" />
+          <AlponaCorner className="bk-hero__corner bk-hero__corner--tr" />
+          <AlponaCorner className="bk-hero__corner bk-hero__corner--bl" />
+          <AlponaCorner className="bk-hero__corner bk-hero__corner--br" />
+        </div>
+      )}
       {chandelier && (
         <div ref={chRef} className="bk-hero__chandelier">
           {renderMotif(chandelier, 'bk-hero__chandelier-art')}

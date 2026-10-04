@@ -59,22 +59,31 @@
   .bk-hero__ph { top: calc(var(--hero-inset) + 24px); right: calc(var(--hero-inset) + 24px); max-width: 220px; }
   .bk-hero__actions { flex-direction: column; align-self: stretch; }
   .bk-hero__actions .bk-btn { width: 100%; }
+  /* Text runs full width on phones: shade rises from the foot behind it; the top of the photo stays clear. */
+  .bk-hero--slider .bk-hero__shade { background: linear-gradient(to top, color-mix(in srgb, var(--terracotta-deep) 88%, transparent) 0%, color-mix(in srgb, var(--terracotta-deep) 70%, transparent) 45%, color-mix(in srgb, var(--terracotta-deep) 30%, transparent) 62%, transparent 78%); }
+  /* Alpona corners scale down. */
+  .bk-hero__corner { width: 76px; }
 }
 
 /* ── Info strip, story block, occasion band, guest book, reservation card ─────────────────────────────── */
 @media (max-width: 767.98px) {
-  .bk-info__inner { grid-template-columns: 1fr; }
-  .bk-info__col { padding: var(--space-6) 0; }
-  .bk-info__col + .bk-info__col { border-left: 0; border-top: var(--hairline); }
+  /* Hidden on phones: the sticky Call / WhatsApp bar already carries this, and the hours and address are in the footer. */
+  .bk-info { display: none; }
 
   .bk-story { grid-template-columns: minmax(0, 1fr); row-gap: 40px; }
   .bk-story .bk-story__media, .bk-story .bk-story__text,
   .bk-story--reverse .bk-story__media, .bk-story--reverse .bk-story__text { grid-column: 1; grid-row: auto; }
   .bk-story .bk-story__media { width: 100%; max-width: 420px; }
+  /* Chandelier: chain from the section top runs behind the arch; the jhar emerges below it, above the eyebrow. */
+  .bk-story .bk-story__media, .bk-story--reverse .bk-story__media, .bk-story--hung .bk-story__media { grid-row: 1; }
+  .bk-story .bk-story__text, .bk-story--reverse .bk-story__text, .bk-story--hung .bk-story__text { grid-row: 2; }
+  .bk-story .bk-story__watermark, .bk-story--reverse .bk-story__watermark {
+    grid-column: 1; grid-row: 1 / span 2; justify-self: end; margin: calc(-1 * var(--section-pad-y)) 10% 0 0; translate: none;
+    height: calc(var(--section-pad-y) + min(100vw - 2 * var(--gutter), 420px) * var(--media-hpw, 4 / 3) + 110px);
+  }
+  .bk-story .bk-story__watermark img { height: 200px; }
 
   .bk-occasion__items { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
-
-  .bk-guestbook { grid-template-columns: minmax(0, 1fr); }
 
   .bk-resv { padding: 56px var(--space-5) 40px; }
   .bk-resv__grid { grid-template-columns: minmax(0, 1fr); }
@@ -82,7 +91,17 @@
   .bk-resv__col + .bk-resv__col { border-left: 0; border-top: var(--hairline); margin-top: 40px; }
   .bk-resv__phone { white-space: normal; }
 }
-/* Tablet: three narrow review cards read poorly; stack them in one column until there is room. */
-@media (min-width: 768px) and (max-width: 1023.98px) {
-  .bk-guestbook { grid-template-columns: minmax(0, 1fr); }
+/* Guest book: below 1200px the cards become a swipeable scroll-snap row — two cards on tablet, one and a peek on phones. */
+@media (max-width: 1199.98px) {
+  .bk-guestbook { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 8px 2px 24px; overscroll-behavior-x: contain; }
+  .bk-guestbook::-webkit-scrollbar { display: none; }
+  .bk-guest { flex: 0 0 calc((100% - var(--card-gap)) / 2); scroll-snap-align: start; }
+  .bk-guest:hover { transform: none; }
+  .bk-guestbook__nav { display: flex; }
+}
+@media (max-width: 767.98px) {
+  .bk-menuitem__name { font-size: 19px; }
+  .bk-guest { flex-basis: 86%; padding: 52px 24px 24px; }
+  .bk-guest__mark { left: 18px; font-size: 80px; }
+  .bk-guest__ornament { width: 52px; }
 }

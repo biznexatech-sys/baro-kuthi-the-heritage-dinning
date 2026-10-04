@@ -1,4 +1,5 @@
-import { cx, lalpaarStyle, renderMotif, Wordmark } from '@/lib/utils';
+import Link from 'next/link';
+import { cx, lalpaarStyle, renderMotif } from '@/lib/utils';
 import type { LabelValue } from '@/lib/content';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { TextLink } from '@/components/ui/TextLink';
@@ -10,6 +11,7 @@ export type FooterProps = {
   gettingHere: LabelValue[];
   banquetHref: string;
   banquetLabel?: string;
+  logoSrc?: string;
   crest?: string;
   lalpaar?: string;
   className?: string;
@@ -29,7 +31,18 @@ function List({ rows }: { rows: LabelValue[] }) {
 }
 
 /** §9.14 "The Visitor's Note" — four columns on terracotta-deep, lal-paar band at the very bottom. */
-export function Footer({ address, mapHref, hours, gettingHere, banquetHref, banquetLabel = 'Visit the Banquet House', crest, lalpaar, className }: FooterProps) {
+export function Footer({
+  address,
+  mapHref,
+  hours,
+  gettingHere,
+  banquetHref,
+  banquetLabel = 'Visit the Banquet House',
+  logoSrc = '/images/logo-header-light.webp',
+  crest,
+  lalpaar,
+  className,
+}: FooterProps) {
   const year = new Date().getFullYear();
   return (
     <footer className={cx('bk-footer', className)}>
@@ -63,7 +76,20 @@ export function Footer({ address, mapHref, hours, gettingHere, banquetHref, banq
             <List rows={gettingHere} />
           </section>
           <section className="bk-footer__col bk-footer__col--brand">
-            {crest ? renderMotif(crest, 'bk-footer__crest', 'Baro Kuthi crest') : <Wordmark size="md" tone="dark" />}
+            {crest ? (
+              renderMotif(crest, 'bk-footer__crest', 'Baro Kuthi crest')
+            ) : (
+              <Link href="/" className="bk-footer__brand-link" aria-label="Baro Kuthi — home">
+                <img
+                  className="bk-footer__logo"
+                  src={logoSrc}
+                  alt="Baro Kuthi Rajbari · The Heritage Dining"
+                  width={365}
+                  height={220}
+                  decoding="async"
+                />
+              </Link>
+            )}
             <TextLink tone="dark" href={banquetHref}>
               {banquetLabel}
             </TextLink>

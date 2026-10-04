@@ -7,7 +7,7 @@ export function Reservation({ home = false }: { home?: boolean }) {
   return (
     <PageSection aria-label="Reservations">
       <ReservationCard
-        numeral={home ? 'VII' : undefined}
+        numeral={home ? 'VI' : undefined}
         eyebrow={home ? 'Reserve a Table' : 'Reservations'}
         title="Telephone the House"
         phone={site.phone}

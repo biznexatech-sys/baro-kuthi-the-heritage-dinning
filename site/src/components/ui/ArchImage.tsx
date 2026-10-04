@@ -3,10 +3,10 @@ import { useEffect, useRef, type CSSProperties, type ReactNode } from 'react';
 import { cx } from '@/lib/utils';
 import { prefersReducedMotion } from '@/lib/hooks';
 
-export type ImageShape = 'arch' | 'tall' | 'wide' | 'cinema' | 'square';
+export type ImageShape = 'arch' | 'portrait' | 'landscape' | 'tall' | 'wide' | 'cinema' | 'square';
 
-const RATIO: Record<ImageShape, string> = { arch: '3 / 4', tall: '2 / 3', wide: '16 / 9', cinema: '21 / 9', square: '1 / 1' };
-const LABEL: Record<ImageShape, string> = { arch: '3:4', tall: '2:3', wide: '16:9', cinema: '21:9', square: '1:1' };
+const RATIO: Record<ImageShape, string> = { arch: '3 / 4', portrait: '3 / 4', landscape: '4 / 3', tall: '2 / 3', wide: '16 / 9', cinema: '21 / 9', square: '1 / 1' };
+const LABEL: Record<ImageShape, string> = { arch: '3:4', portrait: '3:4', landscape: '4:3', tall: '2:3', wide: '16:9', cinema: '21:9', square: '1:1' };
 
 export type ArchImageProps = {
   src?: string;

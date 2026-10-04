@@ -1,11 +1,10 @@
-import { courses, menu, occasions, reviews, rooms, site, story } from '@/lib/content';
+import { menu, occasions, reviews, rooms, site, story } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 import { InvitationIntro } from '@/components/layout/InvitationIntro';
 import { Hero } from '@/components/sections/Hero';
 import { InfoStrip } from '@/components/sections/InfoStrip';
 import { StoryBlock } from '@/components/sections/StoryBlock';
 import { MenuBook } from '@/components/sections/MenuBook';
-import { CourseScroll } from '@/components/sections/CourseScroll';
 import { RoomRow } from '@/components/sections/RoomRow';
 import { OccasionBand } from '@/components/sections/OccasionBand';
 import { GuestBook } from '@/components/sections/GuestBook';
@@ -17,7 +16,7 @@ import { Reservation } from '@/components/page/Reservation';
 
 export const metadata = pageMetadata({ path: '/' });
 
-/** §10 Home — Invitation → Gate → Courtyard (I) → Two Tables (II) → Courses (III) → Rooms (IV) → Occasions (V) → Guest Book (VI) → Reserve (VII). */
+/** §10 Home — Invitation → Gate → Courtyard (I) → Two Tables (II) → Rooms (III) → Occasions (IV) → Guest Book (V) → Reserve (VI). */
 export default function HomePage() {
   return (
     <>
@@ -25,6 +24,12 @@ export default function HomePage() {
       <InvitationIntro />
       <div className="pg-page">
         <Hero
+          slides={[
+            { src: '/images/slide1.webp', alt: 'The Baro Kuthi façade at dusk, lit for the evening' },
+            { src: '/images/slide2.webp', alt: 'The hall with its chandeliers lit, seen through an old window' },
+            { src: '/images/slide3.webp', alt: 'The rooftop terrace and courtyard from above at night' },
+          ]}
+          alpona
           eyebrow="Est. 1823 · Paikpara, Kolkata"
           title="The Rajbari Table"
           lead="The house receives guests for dinner from 7 pm."
@@ -33,8 +38,8 @@ export default function HomePage() {
         />
         <InfoStrip hours={site.hoursLine} address={site.address.short} mapHref={site.mapHref} phone={site.phone} whatsappHref={site.whatsapp} />
 
-        <PageSection flushBottom>
-          <StoryBlock numeral="I" eyebrow="The Courtyard" title="A House of 1823" imageAlt="The courtyard and its arches at dusk, lamps lit" action={{ label: 'Read the full story', href: '/story/' }}>
+        <PageSection flushBottom className="overflow-x-clip">
+          <StoryBlock numeral="I" eyebrow="The Courtyard" title="A House of 1823" image="/images/gallery-20.webp" imageShape="landscape" imageAlt="Baro Kuthi from above: the white rajbari, its gateway and the rooftop terrace" watermark="/images/jhar-bati-watermark.webp" action={{ label: 'Read the full story', href: '/story/' }}>
             <p>{story.homeExcerpt}</p>
           </StoryBlock>
         </PageSection>
@@ -46,27 +51,22 @@ export default function HomePage() {
           </Stack>
         </PageSection>
 
-        <CourseScroll
-          courses={courses}
-          heading={{ numeral: 'III', eyebrow: 'The Course of a Rajbari Meal', title: 'Eight Courses, In Order', lead: 'A Bengali meal is served in sequence, from bitter to sweet.' }}
-        />
-
         <PageSection>
           <Stack>
-            <SectionHeading numeral="IV" eyebrow="The Rooms of the House" title="Four Rooms, Four Evenings" lead="Each room of the house keeps its own hour and its own table." />
+            <SectionHeading numeral="III" eyebrow="The Rooms of the House" title="Four Rooms, Four Evenings" lead="Each room of the house keeps its own hour and its own table." />
             <RoomRow rooms={rooms.map((r) => ({ name: r.name, eyebrow: r.eyebrow, description: r.description, image: r.image, imageAlt: r.imageAlt, action: { label: 'See the room', href: `/rooms/#${r.slug}` } }))} />
           </Stack>
         </PageSection>
 
         <OccasionBand
-          heading={{ numeral: 'V', eyebrow: 'Occasions of the House', title: 'Celebrations, Arranged by the House', lead: 'Private dinners, family gatherings and midday tables for colleagues.' }}
+          heading={{ numeral: 'IV', eyebrow: 'Occasions of the House', title: 'Celebrations, Arranged by the House', lead: 'Private dinners, family gatherings and midday tables for colleagues.' }}
           items={occasions.band}
           action={{ label: 'Arrange an Occasion', href: '/occasions/' }}
         />
 
-        <PageSection>
+        <PageSection tone="alt">
           <Stack>
-            <SectionHeading numeral="VI" eyebrow="The Guest Book" title="From the Guest Book" lead="Words left by guests of the house, quoted as written." />
+            <SectionHeading numeral="V" eyebrow="The Guest Book" title="From the Guest Book" lead="Words left by guests of the house, quoted as written." />
             <GuestBook reviews={reviews} />
           </Stack>
         </PageSection>

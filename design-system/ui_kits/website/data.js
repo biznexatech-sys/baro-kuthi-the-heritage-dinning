@@ -5,8 +5,8 @@
    (history must be verified with the owners). Reviews are NOT invented: the guest book shows placeholders. */
 window.BK_DATA = {
   site: {
-    phone: { display: '+91 XXXXX XXXXX', href: 'tel:+91XXXXXXXXXX' },
-    whatsapp: 'https://wa.me/91XXXXXXXXXX?text=I%20would%20like%20to%20reserve%20a%20table',
+    phone: { display: '+91 98363 67737', href: 'tel:+919836367737' },
+    whatsapp: 'https://wa.me/919836367737?text=I%20would%20like%20to%20reserve%20a%20table',
     address: ['Baro Kuthi Rajbari', 'Paikpara, Kolkata'],
     addressLine: 'Paikpara, Kolkata',
     mapHref: 'https://maps.google.com/?q=Paikpara,Kolkata',

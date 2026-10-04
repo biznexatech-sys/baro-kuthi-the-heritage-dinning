@@ -3,7 +3,7 @@ import { cx, useCompact, renderMotif, renderWordmark, lalpaarStyle } from '../..
 import { Eyebrow } from '../../ui/type/Eyebrow.jsx';
 import { TextLink } from '../../ui/actions/TextLink.jsx';
 
-export function Footer({ address = ['Baro Kuthi Rajbari', 'Paikpara, Kolkata'], mapHref, hours = [{ label: 'Dinner', value: 'From 7 pm' }], gettingHere = [], banquetHref = 'https://barokuthirajbari.com', banquetLabel = 'Visit the Banquet House', year = new Date().getFullYear(), crest, lalpaar, layout = 'auto', className, style }) {
+export function Footer({ address = ['Baro Kuthi Rajbari', 'Paikpara, Kolkata'], mapHref, hours = [{ label: 'Dinner', value: 'From 7 pm' }], gettingHere = [], banquetHref = 'https://barokuthirajbari.com', banquetLabel = 'Visit the Banquet House', year = new Date().getFullYear(), crest, logo = '/images/logo-header-light.webp', lalpaar, layout = 'auto', className, style }) {
   const [ref, compact, width] = useCompact(layout);
   const mid = !compact && layout === 'auto' && width < 1100;
   const list = (rows) => (
@@ -31,7 +31,15 @@ export function Footer({ address = ['Baro Kuthi Rajbari', 'Paikpara, Kolkata'], 
             {list(gettingHere)}
           </section>
           <section className="bk-footer__col bk-footer__col--brand">
-            {crest ? renderMotif(crest, 'bk-footer__crest', 'Baro Kuthi crest') : renderWordmark({ size: 'md', tone: 'dark' })}
+            {logo ? (
+              <a href="/" className="bk-footer__brand-link" aria-label="Baro Kuthi — home">
+                <img className="bk-footer__logo" src={logo} alt="Baro Kuthi Rajbari · The Heritage Dining" width={365} height={220} />
+              </a>
+            ) : crest ? (
+              renderMotif(crest, 'bk-footer__crest', 'Baro Kuthi crest')
+            ) : (
+              renderWordmark({ size: 'md', tone: 'dark' })
+            )}
             <TextLink tone="dark" href={banquetHref}>{banquetLabel}</TextLink>
           </section>
         </div>
