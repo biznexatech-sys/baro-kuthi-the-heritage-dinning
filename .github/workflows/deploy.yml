@@ -57,6 +57,15 @@ jobs:
           for d in "$FTP_SITE_DIR" ${FTP_PREVIEW_DIR:+"$FTP_PREVIEW_DIR"}; do
             case "$d" in */) ;; *) echo "::error::FTP directories must end with '/' (got '$d')"; exit 1;; esac
           done
+          # The preview must be a sub-folder of the public site, never the public folder itself
+          if [ -n "$FTP_PREVIEW_DIR" ]; then
+            site_n="${FTP_SITE_DIR#./}"; prev_n="${FTP_PREVIEW_DIR#./}"
+            if [ "$prev_n" = "$site_n" ] || [ -z "${prev_n#"$site_n"}" ]; then
+              echo "::error::FTP_PREVIEW_DIR ('$FTP_PREVIEW_DIR') is the public site folder. Use the preview sub-folder, e.g. 'preview/' (or 'public_html/preview/' if FTP_SITE_DIR is 'public_html/')."
+              exit 1
+            fi
+            case "$prev_n" in public_html/) echo "::error::FTP_PREVIEW_DIR must not be 'public_html/' — use 'public_html/preview/' and set FTP_SITE_DIR to 'public_html/'."; exit 1;; esac
+          fi
           if [ "$HAS_FTP" != "true" ]; then
             echo "::warning::FTP secrets are not set — the site is built and checked, but nothing is deployed. See site/README.md."
             echo "deploy=false" >> "$GITHUB_OUTPUT"
