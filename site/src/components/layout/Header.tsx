@@ -99,7 +99,7 @@ export function Header({ phone, leftLinks = LEFT_LINKS, rightLinks = RIGHT_LINKS
     </Link>
   );
   const logo = (src: string, extra?: string) => (
-    <img className={cx('bk-header__logo', extra)} src={src} alt={extra ? '' : 'Baro Kuthi Rajbari · The Heritage Dining'} width={365} height={220} decoding="async" />
+    <img className={cx('bk-header__logo', extra)} src={src} alt={extra ? '' : 'BARO KUTHI RAJ BARI — The Heritage Dining'} width={365} height={220} decoding="async" />
   );
   // 'light' = the bar: maroon logo, with the cream one stacked on top for the inverted state (cross-faded in CSS).
   const brand = (tone: 'light' | 'dark', tabIndex?: number) => (

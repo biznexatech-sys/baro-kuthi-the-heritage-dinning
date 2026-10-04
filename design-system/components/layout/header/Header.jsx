@@ -4,7 +4,7 @@ import { Button } from '../../ui/actions/Button.jsx';
 
 const LEFT = [{ label: 'The Story', href: '#story' }, { label: 'The Menu', href: '#menu' }, { label: 'The Rooms', href: '#rooms' }];
 const RIGHT = [{ label: 'Occasions', href: '#occasions' }, { label: 'Visit', href: '#visit' }];
-const PHONE = { display: '+91 98363 67737', href: 'tel:+919836367737' };
+const PHONE = { display: '+91 82403 83737', href: 'tel:+918240383737' };
 
 export function Header({ leftLinks = LEFT, rightLinks = RIGHT, phone = PHONE, activeHref, homeHref = '#home', onNavigate, crest, lalpaar, layout = 'auto', condensed, sticky = true, menuOpen, onMenuOpenChange, className, style }) {
   const [ref, compact] = useCompact(layout, 1200);

@@ -1,10 +1,10 @@
-# ARCHITECTURE.md — Baro Kuthi Rajbari · The Heritage Dining
+# ARCHITECTURE.md — BARO KUTHI RAJ BARI · The Heritage Dining
 
 > How the website is put together: repository layout, pages, components, data, styling, behaviour, build and deploy.
 > Brand and visual rules live in [`design-system/uploads/DESIGN.md`](../design-system/uploads/DESIGN.md), the source of truth.
 > This file covers structure only. If the two disagree, DESIGN.md wins. Update this file when you fix the conflict.
 
-**Domain:** `barokuthirajbariheritagedining.com` (working) · **Sister site:** `barokuthirajbari.com` (Banquet House)
+**Domain:** `www.barokuthirajbaritheheritagedining.com` · **Sister site:** `barokuthirajbari.com` (Banquet House)
 **Booking model:** telephone and WhatsApp only. There is no booking backend, no forms and no database.
 **Language:** English only.
 
@@ -363,7 +363,7 @@ flowchart LR
     DSedit[Edit design-system/ CSS] --> Build
     Build --> Out[site/out/]
     Out --> Upload[Upload the contents of out/<br/>to Hostinger public_html/]
-    Upload --> Live[barokuthirajbariheritagedining.com]
+    Upload --> Live[www.barokuthirajbaritheheritagedining.com]
 ```
 
 ```

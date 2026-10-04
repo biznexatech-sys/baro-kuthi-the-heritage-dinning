@@ -97,7 +97,7 @@ export function renderMotif(src, className, alt) {
 export function renderWordmark({ size = 'md', tone = 'light', tagline = true } = {}) {
   return h('span', { className: cx('bk-wordmark', 'bk-wordmark--' + size, 'bk-wordmark--' + tone) },
     h('span', { className: 'bk-wordmark__name' }, 'Baro Kuthi'),
-    tagline ? h('span', { className: 'bk-wordmark__tag' }, 'Rajbari · The Heritage Dining') : null);
+    tagline ? h('span', { className: 'bk-wordmark__tag' }, 'Raj Bari · The Heritage Dining') : null);
 }
 
 export function lalpaarStyle(src) {

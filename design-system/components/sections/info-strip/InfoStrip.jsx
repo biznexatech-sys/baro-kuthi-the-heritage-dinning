@@ -3,8 +3,8 @@ import { cx, useCompact } from '../../lib/helpers.js';
 import { Eyebrow } from '../../ui/type/Eyebrow.jsx';
 import { TextLink } from '../../ui/actions/TextLink.jsx';
 
-const PHONE = { display: '+91 98363 67737', href: 'tel:+919836367737' };
-const WA = 'https://wa.me/919836367737?text=I%20would%20like%20to%20reserve%20a%20table';
+const PHONE = { display: '+91 82403 83737', href: 'tel:+918240383737' };
+const WA = 'https://wa.me/918240383737?text=I%20would%20like%20to%20reserve%20a%20table';
 
 export function InfoStrip({ hours = 'The house receives guests from 7 pm', address = 'Paikpara, Kolkata', mapHref, phone = PHONE, whatsappHref = WA, layout = 'auto', className, style }) {
   const [ref, compact] = useCompact(layout);

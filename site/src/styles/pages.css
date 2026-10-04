@@ -85,9 +85,10 @@
 /* Guest book — the heading's lead runs on one line; the carved lotus is tucked into the top-right corner, a quarter-to-half
    visible, turning slowly like a chakra. */
 .pg-guest-heading .bk-heading__lead { max-width: 52ch; }
-.pg-medallion { --size: clamp(280px, 26vw, 420px); position: absolute; top: calc(var(--size) * -0.3); z-index: 0; display: block; width: var(--size); height: var(--size); opacity: .38; pointer-events: none; user-select: none; animation: pg-chakra 80s linear infinite; }
+.pg-medallion { --size: clamp(280px, 30vw, 420px); position: absolute; top: calc(var(--size) * 0.2); z-index: 0; display: block; width: var(--size); height: var(--size); opacity: .20; pointer-events: none; user-select: none; animation: pg-chakra 80s linear infinite; }
 .pg-medallion--right { right: calc(var(--size) / -2.4); }
 @keyframes pg-chakra { to { transform: rotate(360deg); } }
 @media (max-width: 767.98px) {
-  .pg-medallion { --size: 200px; opacity: .35; }
+  .pg-medallion { --size: 300px; opacity: .25; }
+  .pg-medallion { --size: clamp(280px, 26vw, 420px); position: absolute; top: calc(var(--size) * 0.1); z-index: 0; display: block; width: var(--size); height: var(--size); pointer-events: none; user-select: none; animation: pg-chakra 80s linear infinite; }
 }

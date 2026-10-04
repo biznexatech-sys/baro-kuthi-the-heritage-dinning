@@ -18,7 +18,7 @@ Types for every file live in `src/lib/content.ts`, so a typo in a key fails the 
 
 ## ⚠ Sample content — replace before launch
 
-- **Phone / WhatsApp** are the spec's `XXXXXXXXXX` placeholders (`site.json` → `phone`, `whatsapp`).
+- **Phone, WhatsApp, email and canonical website URL** are maintained in `site.json`.
 - **Prices, room capacities, lunch and Verandah hours, "Getting here"** are illustrative.
 - **History chapters** marked `"draft": true` must be written from the family's records and approved by the owners.
 - **Reviews** are placeholders on purpose. Use real Google reviews only, quoted exactly, each with its source `href`.

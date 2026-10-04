@@ -20,6 +20,7 @@ export type Site = {
   description: string;
   phone: Phone;
   whatsapp: string;
+  email: string;
   address: { lines: string[]; short: string; locality: string; region: string; country: string };
   mapHref: string;
   mapEmbed: string;

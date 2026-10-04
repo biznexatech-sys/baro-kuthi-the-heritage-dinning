@@ -1,6 +1,6 @@
 ---
 name: baro-kuthi-design
-description: Use this skill to generate well-branded interfaces and assets for Baro Kuthi Rajbari · The Heritage Dining, either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
+description: Use this skill to generate well-branded interfaces and assets for BARO KUTHI RAJ BARI — The Heritage Dining, either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
 user-invocable: true
 ---
 

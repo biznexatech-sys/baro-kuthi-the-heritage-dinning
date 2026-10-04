@@ -3,9 +3,14 @@
    Phone / WhatsApp are the spec's own placeholders. Prices, capacities, lunch & verandah hours and
    "Getting here" details are illustrative. Reviews are placeholders on purpose: real reviews only, quoted exactly. */
 export const site = {
-  phone: { display: '+91 98363 67737', href: 'tel:+919836367737' },
-  whatsapp: 'https://wa.me/919836367737?text=I%20would%20like%20to%20reserve%20a%20table',
-  address: ['Baro Kuthi Rajbari', 'Paikpara, Kolkata'],
+  name: 'BARO KUTHI RAJ BARI — The Heritage Dining',
+  shortName: 'Baro Kuthi Raj Bari',
+  url: 'https://www.barokuthirajbaritheheritagedining.com',
+  phone: { display: '+91 82403 83737', href: 'tel:+918240383737' },
+  whatsapp: 'https://wa.me/918240383737?text=I%20would%20like%20to%20reserve%20a%20table',
+  email: 'barokuthi.theheritagedining@gmail.com',
+  website: 'https://www.barokuthirajbaritheheritagedining.com',
+  address: ['BARO KUTHI RAJ BARI', 'Paikpara, Kolkata'],
   addressLine: 'Paikpara, Kolkata',
   mapHref: 'https://maps.google.com/?q=Paikpara,Kolkata',
   mapEmbed: 'https://www.google.com/maps?q=Paikpara,Kolkata&output=embed',

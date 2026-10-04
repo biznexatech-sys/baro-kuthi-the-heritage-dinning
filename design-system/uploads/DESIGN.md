@@ -1,9 +1,10 @@
-# DESIGN.md — Baro Kuthi Rajbari · The Heritage Dining
+# DESIGN.md — BARO KUTHI RAJ BARI · The Heritage Dining
 
 > The single source of truth for design and layout. Every page, component and asset must follow this file.
 > If something is not covered here, decide it in the spirit of Section 1, then add it to this file.
 
-**Domain:** barokuthirajbariheritagedining.com (working)
+**Domain:** www.barokuthirajbaritheheritagedining.com
+**Telephone:** +91 82403 83737 · **Email:** barokuthi.theheritagedining@gmail.com
 **Stack:** Next.js (static export) · Tailwind CSS · GSAP + ScrollTrigger · Lenis · Hostinger shared hosting
 **Booking model:** Telephone and WhatsApp only. There is no online booking system.
 **Language:** English only.
@@ -238,7 +239,7 @@ Focus: 2px copper outline, 3px offset. Always visible.
 ### 9.3 Sticky call bar (mobile only)
 - Fixed at the bottom, 64px tall, parchment with a copper hairline top.
 - Two equal buttons: **Call** (primary) | **WhatsApp** (secondary). Always visible below 768px.
-- Links: `tel:+91XXXXXXXXXX` and `https://wa.me/91XXXXXXXXXX?text=I%20would%20like%20to%20reserve%20a%20table`.
+- Links: `tel:+918240383737` and `https://wa.me/918240383737?text=I%20would%20like%20to%20reserve%20a%20table`.
 
 ### 9.4 Invitation intro (first visit only)
 - Full-screen parchment, centred double-framed card, max 560px.

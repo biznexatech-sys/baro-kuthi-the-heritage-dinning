@@ -1,11 +1,11 @@
-# Baro Kuthi Rajbari · The Heritage Dining — Design System
+# BARO KUTHI RAJ BARI · The Heritage Dining — Design System
 
-A design system for the website of **Baro Kuthi Rajbari · The Heritage Dining**, a restaurant set in a zamindar's mansion in Paikpara, Kolkata (est. 1823). The site is conceived as *an evening at the Rajbari table*: **Invitation → Gate → Courtyard → The Table → The Courses → The Rooms → Guest Book → Reservation.** Tables are booked **by telephone and WhatsApp only** — there is no online booking — so the phone is the hero call to action.
+A design system for **BARO KUTHI RAJ BARI — The Heritage Dining**, a restaurant set in a zamindar's mansion in Paikpara, Kolkata (est. 1823). The site is conceived as *an evening at the Raj Bari table*: **Invitation → Gate → Courtyard → The Table → The Courses → The Rooms → Guest Book → Reservation.** Tables are booked by telephone and WhatsApp.
 
 ## Sources
 
-- **`uploads/DESIGN.md`** — *DESIGN.md · Baro Kuthi Rajbari · The Heritage Dining*, v1.0, October 2026, prepared by BizNexa. The single source of truth; every value here is lifted from it.
-- Working domain: `barokuthirajbariheritagedining.com`. Sister site (the Banquet House, cross-linked from the footer): `https://barokuthirajbari.com`.
+- **`uploads/DESIGN.md`** — *DESIGN.md · BARO KUTHI RAJ BARI · The Heritage Dining*, v1.0, October 2026, prepared by BizNexa. The single source of truth for the visual system.
+- Working domain: `www.barokuthirajbaritheheritagedining.com`. Phone: `+91 82403 83737` · Email: `barokuthi.theheritagedining@gmail.com`. Sister site (the Banquet House, cross-linked from the footer): `https://barokuthirajbari.com`.
 - Intended production stack (from the spec): Next.js static export · Tailwind · GSAP + ScrollTrigger · Lenis · Hostinger.
 - No codebase, Figma, logo, photography or illustration files were provided. See **Asset status**.
 

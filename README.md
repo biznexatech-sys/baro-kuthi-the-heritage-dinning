@@ -1,6 +1,6 @@
-# Baro Kuthi Rajbari · The Heritage Dining
+# BARO KUTHI RAJ BARI — The Heritage Dining
 
-The website for **Baro Kuthi Rajbari · The Heritage Dining**, a restaurant in a zamindar's mansion in Paikpara,
+The website for **BARO KUTHI RAJ BARI — The Heritage Dining**, a restaurant in a zamindar's mansion in Paikpara,
 Kolkata (est. 1823). Tables are reserved **by telephone and WhatsApp only**.
 
 ## Repository

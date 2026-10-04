@@ -10,6 +10,8 @@ export type FooterProps = {
   hours: LabelValue[];
   gettingHere: LabelValue[];
   banquetHref: string;
+  phone: { display: string; href: string };
+  email: string;
   banquetLabel?: string;
   logoSrc?: string;
   crest?: string;
@@ -37,6 +39,8 @@ export function Footer({
   hours,
   gettingHere,
   banquetHref,
+  phone,
+  email,
   banquetLabel = 'Visit the Banquet House',
   logoSrc = '/images/logo-header-light.webp',
   crest,
@@ -83,7 +87,7 @@ export function Footer({
                 <img
                   className="bk-footer__logo"
                   src={logoSrc}
-                  alt="Baro Kuthi Rajbari · The Heritage Dining"
+                  alt="BARO KUTHI RAJ BARI — The Heritage Dining"
                   width={365}
                   height={220}
                   decoding="async"
@@ -93,9 +97,18 @@ export function Footer({
             <TextLink tone="dark" href={banquetHref}>
               {banquetLabel}
             </TextLink>
+            <TextLink tone="dark" href={phone.href}>
+              {phone.display}
+            </TextLink>
+            <TextLink tone="dark" href={`mailto:${email}`} style={{ fontVariant: 'normal', letterSpacing: 'normal' }}>
+              {email}
+            </TextLink>
+            <TextLink tone="dark" href="https://www.barokuthirajbaritheheritagedining.com">
+              www.barokuthirajbaritheheritagedining.com
+            </TextLink>
           </section>
         </div>
-        <p className="bk-footer__legal">© {year} · Baro Kuthi Rajbari · The Heritage Dining</p>
+        <p className="bk-footer__legal">© {year} · BARO KUTHI RAJ BARI · The Heritage Dining</p>
       </div>
       <div className="bk-lalpaar" style={lalpaarStyle(lalpaar)} aria-hidden="true" />
     </footer>

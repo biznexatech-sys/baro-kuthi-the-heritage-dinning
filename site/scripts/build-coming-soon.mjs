@@ -77,6 +77,7 @@ const rays = Array.from({ length: 9 }, (_, i) => {
 const real = (s) => s && !/X{4,}/i.test(s);
 const links = [];
 if (real(site.phone?.href)) links.push(`<a href="${escapeHtml(site.phone.href)}">Telephone the House</a>`);
+if (real(site.email)) links.push(`<a href="mailto:${escapeHtml(site.email)}">Email the House</a>`);
 if (real(site.whatsapp)) links.push(`<a href="${escapeHtml(site.whatsapp)}" target="_blank" rel="noopener">WhatsApp</a>`);
 const contacts = links.length ? `<p class="stamp__contact reveal" style="--d:8">${links.join('')}</p>` : '';
 

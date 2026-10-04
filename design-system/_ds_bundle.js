@@ -316,9 +316,9 @@ Object.assign(__ds_scope, { Button });
 
 // components/layout/call-bar/StickyCallBar.jsx
 try { (() => {
-const WA = 'https://wa.me/919836367737?text=I%20would%20like%20to%20reserve%20a%20table';
+const WA = 'https://wa.me/918240383737?text=I%20would%20like%20to%20reserve%20a%20table';
 function StickyCallBar({
-  phoneHref = 'tel:+919836367737',
+  phoneHref = 'tel:+918240383737',
   whatsappHref = WA,
   callLabel = 'Call',
   whatsappLabel = 'WhatsApp',
@@ -372,8 +372,8 @@ const RIGHT = [{
   href: '#visit'
 }];
 const PHONE = {
-  display: '+91 98363 67737',
-  href: 'tel:+919836367737'
+  display: '+91 82403 83737',
+  href: 'tel:+918240383737'
 };
 function Header({
   leftLinks = LEFT,
@@ -856,7 +856,7 @@ function Footer({
     href: banquetHref
   }, banquetLabel))), /*#__PURE__*/React.createElement("p", {
     className: "bk-footer__legal"
-  }, "\xA9 ", year, " \xB7 Baro Kuthi Rajbari \xB7 The Heritage Dining")), /*#__PURE__*/React.createElement("div", {
+  }, "\xA9 ", year, " \xB7 BARO KUTHI RAJ BARI \xB7 The Heritage Dining")), /*#__PURE__*/React.createElement("div", {
     className: "bk-lalpaar",
     style: __ds_scope.lalpaarStyle(lalpaar),
     "aria-hidden": "true"
@@ -988,7 +988,7 @@ function Hero({
   lead = 'The house receives guests for dinner from 7 pm.',
   primaryAction = {
     label: 'Reserve by Telephone',
-    href: 'tel:+919836367737'
+    href: 'tel:+918240383737'
   },
   secondaryAction = {
     label: 'View the Menu',
@@ -1083,10 +1083,10 @@ Object.assign(__ds_scope, { Hero });
 // components/sections/info-strip/InfoStrip.jsx
 try { (() => {
 const PHONE = {
-  display: '+91 98363 67737',
-  href: 'tel:+919836367737'
+  display: '+91 82403 83737',
+  href: 'tel:+918240383737'
 };
-const WA = 'https://wa.me/919836367737?text=I%20would%20like%20to%20reserve%20a%20table';
+const WA = 'https://wa.me/918240383737?text=I%20would%20like%20to%20reserve%20a%20table';
 function InfoStrip({
   hours = 'The house receives guests from 7 pm',
   address = 'Paikpara, Kolkata',
@@ -1476,10 +1476,10 @@ Object.assign(__ds_scope, { OccasionBand });
 // components/sections/reservation/ReservationCard.jsx
 try { (() => {
 const PHONE = {
-  display: '+91 98363 67737',
-  href: 'tel:+919836367737'
+  display: '+91 82403 83737',
+  href: 'tel:+918240383737'
 };
-const WA = 'https://wa.me/919836367737?text=I%20would%20like%20to%20reserve%20a%20table';
+const WA = 'https://wa.me/918240383737?text=I%20would%20like%20to%20reserve%20a%20table';
 function ReservationCard({
   eyebrow = 'Reservations',
   numeral,
@@ -2197,11 +2197,13 @@ try { (() => {
 window.BK_DATA = {
   site: {
     phone: {
-      display: '+91 98363 67737',
-      href: 'tel:+919836367737'
+      display: '+91 82403 83737',
+      href: 'tel:+918240383737'
     },
-    whatsapp: 'https://wa.me/919836367737?text=I%20would%20like%20to%20reserve%20a%20table',
-    address: ['Baro Kuthi Rajbari', 'Paikpara, Kolkata'],
+    whatsapp: 'https://wa.me/918240383737?text=I%20would%20like%20to%20reserve%20a%20table',
+    email: 'barokuthi.theheritagedining@gmail.com',
+    website: 'https://www.barokuthirajbaritheheritagedining.com',
+    address: ['BARO KUTHI RAJ BARI', 'Paikpara, Kolkata'],
     addressLine: 'Paikpara, Kolkata',
     mapHref: 'https://maps.google.com/?q=Paikpara,Kolkata',
     hoursLine: 'The house receives guests from 7 pm',

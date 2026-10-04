@@ -2,7 +2,7 @@
   "name": "baro-kuthi-heritage-dining",
   "version": "0.1.0",
   "private": true,
-  "description": "Baro Kuthi Rajbari · The Heritage Dining — production website (Next.js static export).",
+  "description": "BARO KUTHI RAJ BARI — The Heritage Dining production website (Next.js static export).",
   "scripts": {
     "sync:ds": "node scripts/sync-design-system.mjs",
     "predev": "npm run sync:ds && npm run icons",

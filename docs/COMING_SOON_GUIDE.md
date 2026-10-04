@@ -1,6 +1,6 @@
-# Coming Soon Page & Launch Guide — Baro Kuthi Rajbari
+# Coming Soon Page & Launch Guide — BARO KUTHI RAJ BARI
 
-> **Overview:** An animated, royal heritage Coming Soon page designed to be deployed immediately on the domain (`barokuthirajbariheritagedining.com`). When the full website is ready, it can be switched off with a single line change.
+> **Overview:** An animated, royal heritage Coming Soon page designed to be deployed immediately on the domain (`www.barokuthirajbaritheheritagedining.com`). When the full website is ready, it can be switched off with a single line change.
 
 ---
 
@@ -43,7 +43,7 @@
 Even while Coming Soon mode is active, the owner and team can view the full website in two ways:
 1. Click the **"Preview Main Website →"** link in the bottom-right corner of the Coming Soon page.
 2. Or add `?preview=full` to the URL:
-   `https://barokuthirajbariheritagedining.com/?preview=full` (or `http://localhost:3000/?preview=full`)
+   `https://www.barokuthirajbaritheheritagedining.com/?preview=full` (or `http://localhost:3000/?preview=full`)
 
 ---
 

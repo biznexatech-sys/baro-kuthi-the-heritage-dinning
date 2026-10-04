@@ -64,10 +64,10 @@ You can also run it by hand: GitHub → **Actions → Deploy to Hostinger → Ru
 **1. Hostinger (hPanel)**
 - **FTP:** Files → FTP Accounts → note the **FTP IP / host**, **username** and **password** (reset it if you don't know it).
   Check which folder the FTP account opens in: for the main account it is normally the domain's `public_html`.
-- **Preview subdomain:** Domains → Subdomains → create `preview` (→ `preview.barokuthirajbariheritagedining.com`).
+- **Preview subdomain:** Domains → Subdomains → create `preview` (→ `preview.barokuthirajbaritheheritagedining.com`).
   Note the folder it uses, e.g. `public_html/preview`. Turn on SSL for it (Security → SSL).
 - **Absolute path:** open that folder in File Manager and copy the full path shown at the top, e.g.
-  `/home/u123456789/domains/barokuthirajbariheritagedining.com/public_html/preview`.
+  `/home/u123456789/domains/barokuthirajbaritheheritagedining.com/public_html/preview`.
 
 **2. GitHub → repository → Settings → Secrets and variables → Actions**
 
@@ -80,7 +80,7 @@ You can also run it by hand: GitHub → **Actions → Deploy to Hostinger → Ru
 | Secret | `PREVIEW_USER` | *(optional)* preview login name — default `team` |
 | Variable | `SITE_MODE` | `coming-soon` |
 | Variable | `FTP_PREVIEW_DIR` | Preview folder **relative to the FTP login folder**, ending in `/` — e.g. `preview/` |
-| Variable | `PREVIEW_HTPASSWD_PATH` | Absolute path from step 1 + `/.htpasswd`, e.g. `/home/u123456789/domains/barokuthirajbariheritagedining.com/public_html/preview/.htpasswd` |
+| Variable | `PREVIEW_HTPASSWD_PATH` | Absolute path from step 1 + `/.htpasswd`, e.g. `/home/u123456789/domains/barokuthirajbaritheheritagedining.com/public_html/preview/.htpasswd` |
 | Variable | `FTP_SITE_DIR` | *(optional)* public folder relative to the FTP login folder — default `./` |
 | Variable | `FTP_PROTOCOL` / `FTP_SECURITY` | *(optional)* default `ftps` / `strict`. If the run fails with a certificate error, set `FTP_SECURITY` to `loose`; if FTPS is refused, set `FTP_PROTOCOL` to `ftp` |
 

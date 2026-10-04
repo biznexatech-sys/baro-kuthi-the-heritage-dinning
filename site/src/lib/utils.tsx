@@ -36,7 +36,7 @@ export function Wordmark({ size = 'md', tone = 'light', tagline = true }: { size
   return (
     <span className={cx('bk-wordmark', 'bk-wordmark--' + size, 'bk-wordmark--' + tone)}>
       <span className="bk-wordmark__name">Baro Kuthi</span>
-      {tagline && <span className="bk-wordmark__tag">Rajbari · The Heritage Dining</span>}
+      {tagline && <span className="bk-wordmark__tag">Raj Bari · The Heritage Dining</span>}
     </span>
   );
 }

@@ -7,7 +7,7 @@
 //   PREVIEW_USER           login name for the team (default: "team")
 //   PREVIEW_PASSWORD       required — the script refuses to produce an unprotected preview
 //   PREVIEW_HTPASSWD_PATH  absolute path of .htpasswd ON THE SERVER, e.g.
-//                          /home/u123456789/domains/barokuthirajbariheritagedining.com/public_html/preview/.htpasswd
+//                          /home/u123456789/domains/barokuthirajbaritheheritagedining.com/public_html/preview/.htpasswd
 //
 // Usage: node scripts/protect-preview.mjs [buildDir]   (default: out)
 import { execFileSync } from 'node:child_process';

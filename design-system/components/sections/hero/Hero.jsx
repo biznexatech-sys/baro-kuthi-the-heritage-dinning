@@ -3,7 +3,7 @@ import { cx, useCompact, renderMotif, prefersReducedMotion } from '../../lib/hel
 import { Eyebrow } from '../../ui/type/Eyebrow.jsx';
 import { Button } from '../../ui/actions/Button.jsx';
 
-export function Hero({ image, imageAlt = 'The Baro Kuthi façade at dusk, lamps lit', eyebrow = 'Est. 1823 · Paikpara, Kolkata', title = 'The Rajbari Table', lead = 'The house receives guests for dinner from 7 pm.', primaryAction = { label: 'Reserve by Telephone', href: 'tel:+919836367737' }, secondaryAction = { label: 'View the Menu', href: '#menu' }, chandelier, height, layout = 'auto', className, style }) {
+export function Hero({ image, imageAlt = 'The Baro Kuthi façade at dusk, lamps lit', eyebrow = 'Est. 1823 · Paikpara, Kolkata', title = 'The Rajbari Table', lead = 'The house receives guests for dinner from 7 pm.', primaryAction = { label: 'Reserve by Telephone', href: 'tel:+918240383737' }, secondaryAction = { label: 'View the Menu', href: '#menu' }, chandelier, height, layout = 'auto', className, style }) {
   const [ref, compact] = useCompact(layout);
   const chRef = React.useRef(null);
   React.useEffect(() => {

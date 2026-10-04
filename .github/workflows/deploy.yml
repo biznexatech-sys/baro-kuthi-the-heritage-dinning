@@ -102,6 +102,25 @@ jobs:
           PREVIEW_HTPASSWD_PATH: ${{ vars.PREVIEW_HTPASSWD_PATH }}
         run: node scripts/protect-preview.mjs out
 
+      # Shows which folder the FTP login opens in, so a wrong account or FTP_SITE_DIR is visible in the log.
+      - name: Check where the FTP login lands
+        if: steps.config.outputs.deploy == 'true'
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_PROTOCOL: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          FTP_SECURITY: ${{ vars.FTP_SECURITY || 'strict' }}
+        run: |
+          opts=(--silent --show-error --list-only --max-time 60 --user "$FTP_USERNAME:$FTP_PASSWORD")
+          [ "$FTP_PROTOCOL" != "ftp" ] && opts+=(--ssl-reqd)
+          [ "$FTP_SECURITY" = "loose" ] && opts+=(--insecure)
+          site="${FTP_SITE_DIR#./}"
+          echo "Login folder contains:"; root=$(curl "${opts[@]}" "ftp://$FTP_SERVER/") || { echo "::error::Could not log in to list the FTP folder (check FTP_SERVER / FTP_USERNAME / FTP_PASSWORD)."; exit 1; }
+          echo "$root" | sed 's/^/  /'
+          if [ -n "$site" ]; then echo "FTP_SITE_DIR ($FTP_SITE_DIR) contains:"; curl "${opts[@]}" "ftp://$FTP_SERVER/$site" | sed 's/^/  /' || true; fi
+          echo "The upload goes into: login folder + '${FTP_SITE_DIR}'. The domain's public_html should be that folder."
+
       # ── Coming Soon mode ────────────────────────────────────────────────────────────────────────
       - name: Deploy Coming Soon → public domain
         if: env.SITE_MODE == 'coming-soon' && steps.config.outputs.deploy == 'true'
@@ -152,6 +171,21 @@ jobs:
             **/.git*/**
             **/node_modules/**
             ${{ steps.config.outputs.preview_glob }}
+
+      # Proves the upload reached the folder the domain actually serves: the live robots.txt must be this build's
+      # (the website's has a Sitemap line; the Coming Soon page's does not).
+      - name: Verify the live domain shows the website
+        if: env.SITE_MODE == 'live' && steps.config.outputs.deploy == 'true'
+        run: |
+          url=$(node -p "require('./src/content/site.json').url.replace(/\/$/, '')")
+          for i in 1 2 3 4 5 6; do
+            body=$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "$url/robots.txt?v=$GITHUB_RUN_ID-$i" || true)
+            if echo "$body" | grep -q '^Sitemap:'; then echo "✓ $url is serving the website."; exit 0; fi
+            sleep 10
+          done
+          echo "Live robots.txt returned:"; echo "$body" | sed 's/^/  /'
+          echo "::error::Uploaded, but $url is not serving this build (it still looks like the Coming Soon page). The files went to a different folder than the domain's public_html — check that FTP_USERNAME is the FTP account whose directory is .../public_html and that FTP_SITE_DIR is './'."
+          exit 1
 
       - name: Summary
         if: always()
