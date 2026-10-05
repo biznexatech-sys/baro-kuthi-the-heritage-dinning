@@ -24,6 +24,9 @@ export type HeaderProps = {
   leftLinks?: NavLink[];
   rightLinks?: NavLink[];
   lalpaar?: string;
+  /** Maroon logo for the light bar, cream logo for the dark (inverted) bar and the menu — pass versioned URLs. */
+  logo?: string;
+  logoLight?: string;
 };
 
 const trim = (p: string) => (p.length > 1 ? p.replace(/\/+$/, '') : p);
@@ -32,7 +35,7 @@ const trim = (p: string) => (p.length > 1 ? p.replace(/\/+$/, '') : p);
  * §9.2 — sticky, 88px → 64px after 120px of scroll. Both the desktop bar and the mobile bar are rendered;
  * CSS shows one per viewport (switch at 1200px), so the prerendered HTML is right before JavaScript loads.
  */
-export function Header({ phone, leftLinks = LEFT_LINKS, rightLinks = RIGHT_LINKS, lalpaar }: HeaderProps) {
+export function Header({ phone, leftLinks = LEFT_LINKS, rightLinks = RIGHT_LINKS, lalpaar, logo: logoSrc = '/images/logo-header.webp', logoLight = '/images/logo-header-light.webp' }: HeaderProps) {
   const pathname = trim(usePathname() || '/');
   const [scrolled, setScrolled] = useState(false);
   // Over the hero the header stays light; past it, over the light sections, it inverts to terracotta-deep.
@@ -104,10 +107,10 @@ export function Header({ phone, leftLinks = LEFT_LINKS, rightLinks = RIGHT_LINKS
   // 'light' = the bar: maroon logo, with the cream one stacked on top for the inverted state (cross-faded in CSS).
   const brand = (tone: 'light' | 'dark', tabIndex?: number) => (
     <Link className="bk-header__brand" href="/" aria-label="Baro Kuthi — home" tabIndex={tabIndex} onClick={() => setOpen(false)}>
-      {tone === 'dark' ? logo('/images/logo-header-light.webp') : (
+      {tone === 'dark' ? logo(logoLight) : (
         <>
-          {logo('/images/logo-header.webp')}
-          {logo('/images/logo-header-light.webp', 'bk-header__logo--inverted')}
+          {logo(logoSrc)}
+          {logo(logoLight, 'bk-header__logo--inverted')}
         </>
       )}
     </Link>

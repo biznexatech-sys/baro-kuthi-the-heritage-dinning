@@ -1,4 +1,5 @@
 // Typed access to src/content/*.json. Assigning each file to its type makes a missing or misspelt key a build error.
+import { v } from '@/lib/asset';
 import siteJson from '@/content/site.json';
 import menuJson from '@/content/menu.json';
 import coursesJson from '@/content/courses.json';
@@ -69,10 +70,10 @@ export type Faq = { q: string; a: string };
 export const site: Site = siteJson;
 export const menu: Menu = menuJson;
 export const courses: Course[] = coursesJson;
-export const rooms: Room[] = roomsJson;
+export const rooms: Room[] = roomsJson.map((r: Room) => ({ ...r, image: v(r.image) }));
 export const reviews: Review[] = reviewsJson;
 export const story: Story = storyJson;
-export const occasions: Occasions = occasionsJson;
+export const occasions: Occasions = { ...occasionsJson, band: occasionsJson.band.map((o: OccasionItem) => ({ ...o, image: v(o.image) })) };
 export const faqs: Faq[] = faqsJson;
 
 /** A signature dish resolved against the menu: which table it belongs to, its description, and its photograph if one
@@ -89,7 +90,7 @@ const dishImages: Record<string, string> = dishImagesJson;
 export const signatureDishes: SignatureDish[] = (signatureJson.dishes as { name: string; image?: string }[]).flatMap((d) => {
   for (const page of [...menu.tables, menu.sets, menu.verandah]) {
     const item = page.items.find((i) => i.name === d.name);
-    if (item) return [{ ...item, table: page.tab || page.title, image: d.image || dishImages[dishSlug(d.name)] }];
+    if (item) return [{ ...item, table: page.tab || page.title, image: v(d.image || dishImages[dishSlug(d.name)]) }];
   }
   return [];
 });

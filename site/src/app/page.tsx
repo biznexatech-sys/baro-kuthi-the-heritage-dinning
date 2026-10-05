@@ -1,5 +1,6 @@
 import { courses, menu, occasions, reviews, rooms, signatureDishes, site, story } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
+import { v } from '@/lib/asset';
 import { Hero } from '@/components/sections/Hero';
 import { InfoStrip } from '@/components/sections/InfoStrip';
 import { StoryBlock } from '@/components/sections/StoryBlock';
@@ -21,9 +22,9 @@ export default function HomePage() {
       <div className="pg-page">
         <Hero
           slides={[
-            { src: '/images/slide1.webp', alt: 'The dining hall under its chandeliers, tables laid for the evening' },
-            { src: '/images/slide2.webp', alt: 'The Baro Kuthi façade at dusk, lit for the evening' },
-            { src: '/images/slide3.webp', alt: 'The rooftop terrace and courtyard from above at night' },
+            { src: v('/images/slide1.webp')!, alt: 'The dining hall under its chandeliers, tables laid for the evening' },
+            { src: v('/images/slide2.webp')!, alt: 'The Baro Kuthi façade at dusk, lit for the evening' },
+            { src: v('/images/slide3.webp')!, alt: 'The rooftop terrace and courtyard from above at night' },
           ]}
           alpona
           eyebrow="Est. 1823 · Paikpara, Kolkata"
@@ -39,7 +40,7 @@ export default function HomePage() {
             numeral="I"
             eyebrow="The Courtyard"
             title="A House of 1823"
-            image="/images/courtyard.webp"
+            image={v('/images/courtyard.webp')}
             imageShape="landscape"
             imageAlt="The Baro Kuthi courtyard at night: the white façade strung with lights, lantern-lit tables under umbrellas"
             featured
@@ -49,7 +50,7 @@ export default function HomePage() {
               { value: String(menu.tables.length), label: 'Kitchens' },
               { value: String(courses.length), label: 'Courses' },
             ]}
-            watermark="/images/jhar-bati-watermark.webp"
+            watermark={v('/images/jhar-bati-watermark.webp')}
             action={{ label: 'Read the full story', href: '/story/' }}
           >
             <p>{story.homeExcerpt}</p>
@@ -65,10 +66,10 @@ export default function HomePage() {
         <PageSection
           decor={
             <div className="pg-lantern" aria-hidden="true">
-              <img className="pg-lantern__bracket" src="/images/lantern-bracket.webp" alt="" width={565} height={900} loading="lazy" decoding="async" />
+              <img className="pg-lantern__bracket" src={v('/images/lantern-bracket.webp')} alt="" width={565} height={900} loading="lazy" decoding="async" />
               <div className="pg-lantern__swing">
                 <span className="pg-lantern__glow" />
-                <img className="pg-lantern__lamp" src="/images/lantern-lamp.webp" alt="" width={565} height={900} loading="lazy" decoding="async" />
+                <img className="pg-lantern__lamp" src={v('/images/lantern-lamp.webp')} alt="" width={565} height={900} loading="lazy" decoding="async" />
               </div>
             </div>
           }
@@ -89,7 +90,7 @@ export default function HomePage() {
         <PageSection
           tone="alt"
           className="py-[clamp(64px,6.5vw,96px)]!"
-          decor={<img className="pg-medallion pg-medallion--right" src="/images/medallion.webp" alt="" aria-hidden="true" width={720} height={720} loading="lazy" decoding="async" />}
+          decor={<img className="pg-medallion pg-medallion--right" src={v('/images/medallion.webp')} alt="" aria-hidden="true" width={720} height={720} loading="lazy" decoding="async" />}
         >
           <Stack className="gap-[clamp(28px,3vw,40px)]!">
             <SectionHeading align="center" ornament={false} className="pg-guest-heading" numeral="V" eyebrow="The Guest Book" title="From the Guest Book" lead="Words left by guests of the house, quoted as written." />

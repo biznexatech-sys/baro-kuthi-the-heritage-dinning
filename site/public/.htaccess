@@ -30,7 +30,8 @@ ErrorDocument 404 /404.html
   <FilesMatch "\.(js|css)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  # Fonts, images and the menu PDF keep their names when replaced — cache for 30 days.
+  # Fonts, images and the menu PDF — cache for 30 days. Pages link images with a content hash (?v=…, src/lib/asset.ts),
+  # so a replaced image gets a new URL and every device fetches it at once.
   <FilesMatch "\.(woff2|webp|avif|jpg|jpeg|png|svg|pdf)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>

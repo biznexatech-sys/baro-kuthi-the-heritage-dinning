@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { preload } from 'react-dom';
 import './globals.css';
 import { site } from '@/lib/content';
+import { v } from '@/lib/asset';
 import { jsonLdScript, restaurantJsonLd } from '@/lib/seo';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a className="pg-skip" href="#main">
           Skip to content
         </a>
-        <Header phone={site.phone} />
+        <Header phone={site.phone} logo={v('/images/logo-header.webp')} logoLight={v('/images/logo-header-light.webp')} />
         <main id="main" tabIndex={-1}>
           {children}
         </main>
