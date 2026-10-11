@@ -51,7 +51,7 @@ export function restaurantJsonLd() {
         opens: h.opens,
         closes: h.closes,
       })),
-    sameAs: [site.banquetHref],
+    sameAs: [site.banquetHref, ...(site.social ?? []).map((l) => l.href)],
   };
 }
 

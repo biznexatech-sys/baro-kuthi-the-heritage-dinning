@@ -128,3 +128,30 @@
   .pg-lantern { width: 74px; }
 }
 
+
+/* ── The Menu page ─────────────────────────────────────────────────────────────────────────────────────── */
+/* Sticky section bar under the (condensed) header; scrolls sideways on phones. */
+.pg-secnav { position: sticky; top: calc(var(--header-h-compact) + var(--lalpaar-h)); z-index: 40; background: color-mix(in srgb, var(--parchment) 94%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: var(--hairline); box-shadow: 0 10px 24px -20px color-mix(in srgb, var(--terracotta-deep) 50%, transparent); }
+.pg-secnav__list { display: flex; justify-content: center; gap: clamp(8px, 2vw, 28px); max-width: calc(var(--container) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); list-style: none; overflow-x: auto; scrollbar-width: none; }
+.pg-secnav__list::-webkit-scrollbar { display: none; }
+.pg-secnav__link { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 6px; font: var(--fw-medium) 17px/1 var(--font-nav); color: var(--terracotta); text-decoration: none; white-space: nowrap; }
+.pg-secnav__num { font: var(--fw-regular) 13px/1 var(--font-display); letter-spacing: .08em; color: var(--copper); }
+.pg-secnav__link::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: 0; height: 2px; background: var(--terracotta); transform: scaleX(0); transition: transform var(--dur-fast) var(--ease-heritage); }
+.pg-secnav__link:hover::after, .pg-secnav__link.is-active::after { transform: scaleX(1); }
+.pg-secnav__link.is-active { color: var(--terracotta-deep); }
+@media (max-width: 767.98px) {
+  .pg-secnav__list { justify-content: flex-start; }
+  .pg-secnav__link { min-height: 50px; font-size: 16px; }
+}
+/* In-page jumps land below the header and the section bar. */
+#two-tables, #signature, #set-menus, #verandah { scroll-margin-top: calc(var(--header-h-compact) + var(--lalpaar-h) + 56px); }
+
+/* The Verandah — the heading column carries a hanging lantern and the café's hours below the copy. */
+.pg-verandah__aside { display: flex; flex-direction: column; gap: var(--space-6); }
+.pg-verandah__foot { display: flex; align-items: flex-start; gap: var(--space-6); }
+.pg-lantern--inline { position: relative; top: auto; left: auto; flex: none; width: clamp(120px, 12vw, 180px); opacity: .55; }
+.pg-verandah__hours { margin: var(--space-6) 0 0; padding: var(--space-4) var(--space-5); border: 1px solid color-mix(in srgb, var(--copper) 70%, transparent); outline: 1px solid color-mix(in srgb, var(--copper) 40%, transparent); outline-offset: -6px; font: var(--fw-regular) 24px/1.2 var(--font-display); letter-spacing: .03em; color: var(--terracotta); background: color-mix(in srgb, var(--parchment-dark) 50%, transparent); }
+.pg-verandah__hours-label { display: block; margin-bottom: 6px; font: var(--fw-semibold) 16px/1.2 var(--font-serif); font-variant: all-small-caps; letter-spacing: .14em; color: var(--copper); }
+@media (max-width: 1023.98px) {
+  .pg-lantern--inline { width: 96px; }
+}

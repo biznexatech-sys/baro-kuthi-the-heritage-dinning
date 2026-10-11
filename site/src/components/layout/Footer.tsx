@@ -12,12 +12,34 @@ export type FooterProps = {
   banquetHref: string;
   phone: { display: string; href: string };
   email: string;
+  /** Social profiles, shown as icon links under the contact details. */
+  social?: { label: string; href: string }[];
   banquetLabel?: string;
   logoSrc?: string;
   crest?: string;
   lalpaar?: string;
   className?: string;
 };
+
+/** Line icons for the social links (Lucide-style, at the brand's 1.25px stroke). */
+function SocialIcon({ label }: { label: string }) {
+  const name = label.toLowerCase();
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      {name === 'instagram' ? (
+        <>
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+        </>
+      ) : name === 'facebook' ? (
+        <path d="M14.5 21v-7.5h2.6l.4-3H14.5V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H9v3h2.5V21" />
+      ) : (
+        <circle cx="12" cy="12" r="8" />
+      )}
+    </svg>
+  );
+}
 
 function List({ rows }: { rows: LabelValue[] }) {
   return (
@@ -41,6 +63,7 @@ export function Footer({
   banquetHref,
   phone,
   email,
+  social,
   banquetLabel = 'Visit the Banquet House',
   logoSrc = '/images/logo-header-light.webp',
   crest,
@@ -106,6 +129,17 @@ export function Footer({
             <TextLink tone="dark" href="https://www.barokuthirajbaritheheritagedining.com">
               www.barokuthirajbaritheheritagedining.com
             </TextLink>
+            {social && social.length > 0 && (
+              <ul className="bk-footer__social" aria-label="Follow the house">
+                {social.map((l) => (
+                  <li key={l.href}>
+                    <a className="bk-footer__social-link" href={l.href} target="_blank" rel="noopener" aria-label={`${l.label} — opens in a new tab`} title={l.label}>
+                      <SocialIcon label={l.label} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </section>
         </div>
         <div className="bk-footer__legal">

@@ -53,7 +53,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <main id="main" tabIndex={-1}>
           {children}
         </main>
-        <Footer address={site.address.lines} mapHref={site.mapHref} hours={site.hours} gettingHere={site.gettingHere} banquetHref={site.banquetHref} phone={site.phone} email={site.email} />
+        <Footer address={site.address.lines} mapHref={site.mapHref} hours={site.hours} gettingHere={site.gettingHere} banquetHref={site.banquetHref} phone={site.phone} email={site.email} social={site.social} />
         <StickyCallBar phoneHref={site.phone.href} whatsappHref={site.whatsapp} />
         <SmoothScroll />
         <TextReveal />

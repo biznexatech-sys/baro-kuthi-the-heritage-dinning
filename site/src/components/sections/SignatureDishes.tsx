@@ -3,7 +3,19 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { SignatureDish } from '@/lib/content';
 import { cx } from '@/lib/utils';
 
-export type SignatureDishesProps = { dishes: SignatureDish[] };
+export type SignatureDishesProps = {
+  dishes: SignatureDish[];
+  /** 'row' (default): a slider at every width. 'set': all cards side by side on wide screens, a slider below 900px. */
+  layout?: 'row' | 'set';
+  /** Show each dish's price in this currency (omit to hide prices). */
+  currency?: string;
+  /** Small line under the price, e.g. 'per guest'. */
+  priceNote?: string;
+  /** Show which table the dish comes from (default true). */
+  showTable?: boolean;
+  /** Names the arrows: 'Previous dishes' / 'Next dishes'. */
+  itemsLabel?: string;
+};
 
 /**
  * Our Signature Dishes — arch-topped cards in a copper outline, each with a round plate: the dish photograph in a
@@ -11,7 +23,7 @@ export type SignatureDishesProps = { dishes: SignatureDish[] };
  * A scroll-snap row: four cards on wide screens, three, two, then one and a peek on phones; arrows at the sides
  * (beneath on phones) and dots.
  */
-export function SignatureDishes({ dishes }: SignatureDishesProps) {
+export function SignatureDishes({ dishes, layout = 'row', currency, priceNote, showTable = true, itemsLabel = 'dishes' }: SignatureDishesProps) {
   const track = useRef<HTMLUListElement>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
   const [active, setActive] = useState(0);
@@ -42,8 +54,8 @@ export function SignatureDishes({ dishes }: SignatureDishesProps) {
   };
 
   return (
-    <div className="bk-dishes">
-      <button type="button" className="bk-dishes__arrow bk-dishes__arrow--prev" aria-label="Previous dishes" disabled={edges.start} onClick={() => page(-1)}>
+    <div className={cx('bk-dishes', layout === 'set' && 'bk-dishes--set')}>
+      <button type="button" className="bk-dishes__arrow bk-dishes__arrow--prev" aria-label={`Previous ${itemsLabel}`} disabled={edges.start} onClick={() => page(-1)}>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
       </button>
 
@@ -56,21 +68,27 @@ export function SignatureDishes({ dishes }: SignatureDishesProps) {
               ) : (
                 <span className="bk-dish__placeholder" aria-hidden="true">
                   <img className="bk-dish__lotus" src="/images/medallion.webp" alt="" loading="lazy" decoding="async" />
-                  <span className="bk-dish__initial">{d.name.charAt(0)}</span>
+                  <span className="bk-dish__initial">{d.name.replace(/^The\s+/, '').charAt(0)}</span>
                 </span>
               )}
             </div>
-            <p className="bk-dish__table">{d.table}</p>
+            {showTable && d.table && <p className="bk-dish__table">{d.table}</p>}
             <h3 className="bk-dish__name">{d.name}</h3>
             {d.description && <p className="bk-dish__desc">{d.description}</p>}
-            <div className="bk-dish__foot" aria-hidden={!d.speciality}>
+            <div className="bk-dish__foot">
               {d.speciality && <span className="bk-dish__badge">✦ House speciality</span>}
+              {currency && d.price !== undefined && (
+                <span className="bk-dish__price">
+                  {currency} {d.price}
+                  {priceNote && <span className="bk-dish__price-note">{priceNote}</span>}
+                </span>
+              )}
             </div>
           </li>
         ))}
       </ul>
 
-      <button type="button" className="bk-dishes__arrow bk-dishes__arrow--next" aria-label="Next dishes" disabled={edges.end} onClick={() => page(1)}>
+      <button type="button" className="bk-dishes__arrow bk-dishes__arrow--next" aria-label={`Next ${itemsLabel}`} disabled={edges.end} onClick={() => page(1)}>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
       </button>
 

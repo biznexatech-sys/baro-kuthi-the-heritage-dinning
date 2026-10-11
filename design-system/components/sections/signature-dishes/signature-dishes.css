@@ -33,3 +33,13 @@
 .bk-dishes__dot{position:relative;width:22px;height:36px;padding:0;border:0;background:none;cursor:pointer}
 .bk-dishes__dot::after{content:"";position:absolute;top:50%;left:50%;width:7px;height:7px;border-radius:50%;background:color-mix(in srgb,var(--copper) 60%,transparent);translate:-50% -50%;transition:width var(--dur-fast) var(--ease-heritage),background var(--dur-fast) var(--ease-heritage),border-radius var(--dur-fast) var(--ease-heritage)}
 .bk-dishes__dot.is-active::after{width:18px;border-radius:4px;background:var(--terracotta)}
+.bk-dish__price{font:var(--fw-regular) 26px/1 var(--font-display);letter-spacing:.03em;color:var(--terracotta)}
+.bk-dish__price-note{display:block;margin-top:6px;font:italic var(--fw-medium) 16px/1 var(--font-serif);letter-spacing:0;color:var(--ink)}
+/* 'set' layout — all cards side by side on wide screens (no arrows or dots); a slider below 900px. */
+@media (min-width:900px){
+.bk-dishes--set{display:block;max-width:1080px;margin-inline:auto}
+.bk-dishes--set .bk-dishes__track{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));grid-auto-flow:column;overflow:visible}
+.bk-dishes--set .bk-dishes__arrow,.bk-dishes--set .bk-dishes__dots{display:none}
+.bk-dishes--set .bk-dish .bk-dish__plate{width:min(100%,220px)}
+}
+

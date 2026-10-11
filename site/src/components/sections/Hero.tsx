@@ -80,7 +80,7 @@ export function Hero({ image, slides, alpona = false, imageAlt = 'The Baro Kuthi
 
   return (
     <section
-      className={cx('bk-hero', count > 1 && 'bk-hero--slider', (paused || hover || hidden) && 'is-paused', className)}
+      className={cx('bk-hero', count > 0 && 'bk-hero--slider', (paused || hover || hidden) && 'is-paused', className)}
       style={{ minHeight: height, ['--slide-ms' as string]: SLIDE_MS + 'ms', ...style }}
       aria-roledescription={count > 1 ? 'carousel' : undefined}
       onMouseEnter={count > 1 ? () => setHover(true) : undefined}

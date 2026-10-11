@@ -17,6 +17,7 @@ export type Hours = LabelValue & { opens?: string; closes?: string };
 export type Action = { label: string; href: string };
 
 export type Site = {
+  social?: { label: string; href: string }[];
   name: string;
   shortName: string;
   url: string;
@@ -87,6 +88,8 @@ const dishSlug = (s: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 const dishImages: Record<string, string> = dishImagesJson;
+/** The photograph for any dish on the menu, if one has been added to public/images/signature dish/ (versioned URL). */
+export const dishImage = (name: string) => v(dishImages[dishSlug(name)]);
 export const signatureDishes: SignatureDish[] = (signatureJson.dishes as { name: string; image?: string }[]).flatMap((d) => {
   for (const page of [...menu.tables, menu.sets, menu.verandah]) {
     const item = page.items.find((i) => i.name === d.name);
