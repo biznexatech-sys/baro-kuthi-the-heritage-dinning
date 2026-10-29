@@ -62,7 +62,7 @@ export type Chapter = { year: string; title: string; image?: string; imageAlt: s
 export type Story = { homeExcerpt: string; chapters: Chapter[] };
 
 export type OccasionItem = { title: string; text: string; icon?: string; image?: string; imageAlt?: string };
-export type OccasionDetail = { title: string; eyebrow: string; image?: string; imageAlt: string; text: string };
+export type OccasionDetail = { title: string; slug: string; eyebrow: string; image?: string; imageAlt: string; text: string; facts?: LabelValue[] };
 export type Step = { numeral: string; title: string; text: string };
 export type Occasions = { band: OccasionItem[]; details: OccasionDetail[]; steps: Step[] };
 
@@ -74,7 +74,11 @@ export const courses: Course[] = coursesJson;
 export const rooms: Room[] = roomsJson.map((r: Room) => ({ ...r, image: v(r.image) }));
 export const reviews: Review[] = reviewsJson;
 export const story: Story = storyJson;
-export const occasions: Occasions = { ...occasionsJson, band: occasionsJson.band.map((o: OccasionItem) => ({ ...o, image: v(o.image) })) };
+export const occasions: Occasions = {
+  ...occasionsJson,
+  band: occasionsJson.band.map((o: OccasionItem) => ({ ...o, image: v(o.image) })),
+  details: occasionsJson.details.map((o: OccasionDetail) => ({ ...o, image: v(o.image) })),
+};
 export const faqs: Faq[] = faqsJson;
 
 /** A signature dish resolved against the menu: which table it belongs to, its description, and its photograph if one

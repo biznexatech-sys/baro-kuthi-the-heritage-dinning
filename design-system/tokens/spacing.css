@@ -26,3 +26,17 @@
 @media (min-width:768px) and (max-width:1023.98px){:root{--grid-cols:8; /* @kind other */}}
 @media (max-width:767.98px){:root{--section-pad-y:var(--section-pad-y-m);--heading-gap:var(--heading-gap-m);--card-gap:var(--card-gap-m);--gutter:var(--gutter-m);--grid-cols:4; /* @kind other */ --header-h:64px;--divider-space:64px}}
 .bk-compact{--section-pad-y:var(--section-pad-y-m);--heading-gap:var(--heading-gap-m);--card-gap:var(--card-gap-m);--gutter:var(--gutter-m);--grid-cols:4; /* @kind other */--header-h:64px;--divider-space:64px}
+/* Large screens (≥1600px): the layout grows with the screen instead of sitting at 1280px in a sea of margin.
+   Container 1280 → 76vw (max 1760), wider gutters, taller sections and header — all fluid, capped. */
+@media (min-width:1600px){:root{
+--container:max(1280px,min(76vw,1760px));
+--gutter:clamp(64px,4vw,112px);
+--section-pad-y:clamp(160px,8.5vw,208px);
+--heading-gap:clamp(64px,3.4vw,88px);
+--card-gap:clamp(32px,1.7vw,44px);
+--reading:clamp(680px,36vw,880px);
+--header-h:clamp(88px,4.6vw,112px);
+--header-h-compact:clamp(64px,3.4vw,80px);
+--hero-inset:clamp(24px,1.3vw,32px);
+}}
+

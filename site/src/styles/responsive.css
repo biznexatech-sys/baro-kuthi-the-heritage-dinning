@@ -156,3 +156,39 @@
   .bk-dishes__dots { grid-column: 2; grid-row: 2; margin: 0; align-self: center; min-width: 0; flex-wrap: wrap; }
   .bk-dishes__dot { width: 16px; }
 }
+
+/* ── Large screens (≥1600px): components that use fixed sizes scale up with the type tokens ─────────────── */
+@media (min-width: 1600px) {
+  .bk-header__link { font-size: clamp(17px, .85vw, 21px); }
+  .bk-header__nav { gap: clamp(36px, 2.2vw, 52px); }
+  .bk-header__cta { font-size: clamp(15px, .8vw, 19px); min-height: clamp(48px, 2.6vw, 60px); padding: 0 clamp(22px, 1.3vw, 30px) 0 clamp(18px, 1.1vw, 26px); }
+  .bk-header__cta .bk-icon { width: clamp(18px, .95vw, 22px); height: clamp(18px, .95vw, 22px); }
+
+  .bk-book { max-width: clamp(1120px, 60vw, 1440px); }
+  .bk-book__title { font-size: clamp(30px, 1.6vw, 40px); }
+  .bk-book__subtitle { font-size: clamp(21px, 1.1vw, 27px); }
+  .bk-menuitem__name { font-size: clamp(22px, 1.16vw, 28px); }
+  .bk-menuitem__price { font-size: clamp(21px, 1.1vw, 27px); }
+  .bk-menuitem__desc { font-size: clamp(20px, 1.05vw, 26px); }
+
+  .bk-dish__plate { width: min(100%, clamp(200px, 11vw, 270px)); }
+  .bk-dish__name { font-size: clamp(22px, 1.25vw, 30px); }
+  .bk-dish__desc { font-size: clamp(19px, 1vw, 24px); }
+  .bk-dish__table, .bk-dish__badge { font-size: clamp(16px, .85vw, 20px); }
+  .bk-dish__price { font-size: clamp(26px, 1.38vw, 34px); }
+  .bk-dishes__arrow { width: clamp(52px, 2.8vw, 64px); height: clamp(52px, 2.8vw, 64px); }
+
+  .bk-guest__quote { font-size: clamp(23px, 1.2vw, 29px); }
+  .bk-guest__name { font-size: clamp(21px, 1.1vw, 26px); }
+  .bk-occasion__item--card .bk-occasion__title { font-size: clamp(25px, 1.35vw, 32px); }
+  .bk-occasion__item--card .bk-occasion__text { font-size: clamp(19px, 1vw, 24px); }
+  .bk-story__fact-value { font-size: clamp(44px, 2.4vw, 58px); }
+  .bk-story__fact-label { font-size: clamp(18px, .95vw, 23px); }
+  .bk-room__name { font-size: clamp(26px, 1.4vw, 32px); }
+  .pg-room__fact dd { font-size: clamp(21px, 1.1vw, 27px); }
+  .pg-secnav__link { font-size: clamp(17px, .9vw, 21px); min-height: clamp(56px, 3vw, 68px); }
+  .bk-resv__phone { font-size: clamp(32px, 1.7vw, 42px); }
+  .bk-field__input { font-size: clamp(19px, 1vw, 23px); min-height: clamp(52px, 2.8vw, 62px); }
+  .bk-footer__credit { font-size: clamp(15px, .8vw, 18px); }
+}
+

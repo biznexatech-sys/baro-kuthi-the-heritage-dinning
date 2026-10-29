@@ -1,11 +1,13 @@
-import { rooms } from '@/lib/content';
+import { rooms, site } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
-import { romanNumerals } from '@/lib/utils';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import { v } from '@/lib/asset';
+import { cx, romanNumerals } from '@/lib/utils';
+import { Hero } from '@/components/sections/Hero';
 import { Eyebrow } from '@/components/ui/Eyebrow';
-import { ArchImage } from '@/components/ui/ArchImage';
-import { LeaderList } from '@/components/page/LeaderList';
-import { PageSection, Split } from '@/components/page/PageSection';
+import { Button } from '@/components/ui/Button';
+import { TextLink } from '@/components/ui/TextLink';
+import { CentredNote, PageSection } from '@/components/page/PageSection';
+import { SectionNav } from '@/components/page/SectionNav';
 import { Reservation } from '@/components/page/Reservation';
 
 export const metadata = pageMetadata({
@@ -14,41 +16,85 @@ export const metadata = pageMetadata({
   path: '/rooms/',
 });
 
-/** §10 The Rooms — one full section per room: wide photo, description, capacity, best time, occasions. */
+/**
+ * §10 The Rooms — photo hero → sticky room bar → one split section per room (arch-framed photograph or lotus panel,
+ * alternating sides; name, description, three figures, reserve button) → private occasions note → reservation.
+ */
 export default function RoomsPage() {
   return (
     <div className="pg-page">
-      <PageSection flushBottom>
-        <SectionHeading size="h1" as="h1" eyebrow="The Rooms" title="The Rooms of the House" lead="Four rooms, each with its own hour, light and table." />
-      </PageSection>
+      <Hero
+        slides={[{ src: v('/images/boroKuthi_bari.webp')!, alt: 'The house dressed for an evening: a flower-decked gate and the lit façade' }]}
+        alpona
+        height="64svh"
+        eyebrow="The Rooms"
+        title="Four Rooms, Four Evenings"
+        lead="Each room of the house keeps its own hour, light and table."
+        primaryAction={{ label: 'Reserve by Telephone', href: site.phone.href }}
+      />
+
+      <SectionNav items={rooms.map((r) => ({ id: r.slug, label: r.name }))} label="The rooms" />
+
       {rooms.map((r, i) => (
-        <PageSection key={r.slug} id={r.slug} tone={i % 2 ? 'alt' : 'light'} className="scroll-mt-[calc(var(--header-h-compact)+var(--lalpaar-h))]">
-          <div className="flex flex-col gap-12">
-            <div className="flex flex-col gap-3.5">
-              <Eyebrow numeral={romanNumerals[i]}>{r.eyebrow}</Eyebrow>
-              <h2 className="pg-room-name">{r.name}</h2>
+        <PageSection key={r.slug} id={r.slug} tone={i % 2 ? 'alt' : 'light'} className="pg-room-section">
+          <article className={cx('pg-room', i % 2 === 1 && 'pg-room--reverse')}>
+            <div className="pg-room__media">
+              <div className="pg-room__arch">
+                {r.image ? (
+                  <img className="pg-room__img" src={r.image} alt={r.imageAlt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+                ) : (
+                  <div className="pg-room__panel" role="img" aria-label={r.imageAlt}>
+                    <img className="pg-room__lotus" src={v('/images/medallion.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                    <span className="pg-room__panel-num" aria-hidden="true">
+                      {romanNumerals[i]}
+                    </span>
+                  </div>
+                )}
+              </div>
+              {r.image && (
+                <span className="pg-room__seal" aria-hidden="true">
+                  {romanNumerals[i]}
+                </span>
+              )}
             </div>
-            <ArchImage shape="cinema" src={r.image} alt={r.imageAlt} parallax />
-            <Split
-              ratio="7-4"
-              first={
-                <div className="pg-prose">
-                  <p>{r.text}</p>
+
+            <div className="pg-room__body">
+              <Eyebrow numeral={romanNumerals[i]}>{r.eyebrow}</Eyebrow>
+              <h2 className="pg-room__name">{r.name}</h2>
+              <p className="pg-room__text">{r.text}</p>
+              <dl className="pg-room__facts">
+                <div className="pg-room__fact">
+                  <dt>Seats</dt>
+                  <dd>{r.capacity}</dd>
                 </div>
-              }
-              second={
-                <LeaderList
-                  rows={[
-                    { label: 'Seats', value: r.capacity },
-                    { label: 'Best', value: r.best },
-                    { label: 'Suits', value: r.occasions },
-                  ]}
-                />
-              }
-            />
-          </div>
+                <div className="pg-room__fact">
+                  <dt>Best</dt>
+                  <dd>{r.best}</dd>
+                </div>
+                <div className="pg-room__fact">
+                  <dt>Suits</dt>
+                  <dd>{r.occasions}</dd>
+                </div>
+              </dl>
+              <div className="pg-room__actions">
+                <Button variant="primary" href={site.phone.href}>
+                  Reserve this room
+                </Button>
+                <TextLink href="/menu/">See the menu</TextLink>
+              </div>
+            </div>
+          </article>
         </PageSection>
       ))}
+
+      <PageSection tone="band" className="py-[clamp(64px,7vw,104px)]!">
+        <CentredNote line={<span className="pg-rooms-note">The whole house, or any one room, may be arranged for a private evening.</span>}>
+          <Button variant="on-dark" href="/occasions/">
+            Arrange an Occasion
+          </Button>
+        </CentredNote>
+      </PageSection>
+
       <Reservation />
     </div>
   );

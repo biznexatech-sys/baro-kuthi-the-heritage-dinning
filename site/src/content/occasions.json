@@ -1,17 +1,107 @@
 {
   "band": [
-    { "title": "Private Dining", "text": "The Zamindar’s Study, arranged for an evening of your own.", "image": "/images/slide1.webp", "imageAlt": "The dining hall under its chandeliers, tables laid for the evening" },
-    { "title": "Family Celebrations", "text": "Birthdays, anniversaries and annaprashan, hosted in the old manner.", "image": "/images/boroKuthi_bari.webp", "imageAlt": "The house dressed for a celebration: a flower-decked gate and a vintage car at the door" },
-    { "title": "Corporate Lunches", "text": "Midday tables for colleagues and guests, arranged by telephone.", "image": "/images/courtyard.webp", "imageAlt": "Tables laid in the courtyard before the white façade" }
+    {
+      "title": "Private Dining",
+      "text": "The Zamindar’s Study, arranged for an evening of your own.",
+      "image": "/images/slide1.webp",
+      "imageAlt": "The dining hall under its chandeliers, tables laid for the evening"
+    },
+    {
+      "title": "Family Celebrations",
+      "text": "Birthdays, anniversaries and annaprashan, hosted in the old manner.",
+      "image": "/images/boroKuthi_bari.webp",
+      "imageAlt": "The house dressed for a celebration: a flower-decked gate and a vintage car at the door"
+    },
+    {
+      "title": "Corporate Lunches",
+      "text": "Midday tables for colleagues and guests, arranged by telephone.",
+      "image": "/images/courtyard.webp",
+      "imageAlt": "Tables laid in the courtyard before the white façade"
+    }
   ],
   "details": [
-    { "title": "Private Dining", "eyebrow": "The Zamindar’s Study", "imageAlt": "A private table laid in the study, lamp-lit", "text": "An evening of your own in the study, for up to ten guests. The menu is chosen with the host beforehand." },
-    { "title": "Family Celebrations", "eyebrow": "The Courtyard · The Jalsaghar", "imageAlt": "A long family table in the courtyard at night", "text": "Birthdays, anniversaries and annaprashan, hosted in the courtyard or the Jalsaghar, in the old manner." },
-    { "title": "Corporate Lunches", "eyebrow": "Midday, by arrangement", "imageAlt": "The verandah laid for lunch in daylight", "text": "Midday tables for colleagues and guests, with a set menu from either table." }
+    {
+      "title": "Private Dining",
+      "eyebrow": "The Zamindar’s Study",
+      "imageAlt": "The dining hall under its chandeliers, laid for a private evening",
+      "text": "An evening of your own in the study, for up to ten guests. The menu is chosen with the host beforehand.",
+      "slug": "private-dining",
+      "image": "/images/slide1.webp",
+      "facts": [
+        {
+          "label": "Guests",
+          "value": "Up to 10"
+        },
+        {
+          "label": "Room",
+          "value": "The Zamindar’s Study"
+        },
+        {
+          "label": "When",
+          "value": "Evenings, by arrangement"
+        }
+      ]
+    },
+    {
+      "title": "Family Celebrations",
+      "eyebrow": "The Courtyard · The Jalsaghar",
+      "imageAlt": "The house dressed for a celebration: a flower-decked gate and a vintage car at the door",
+      "text": "Birthdays, anniversaries and annaprashan, hosted in the courtyard or the Jalsaghar, in the old manner.",
+      "slug": "family-celebrations",
+      "image": "/images/boroKuthi_bari.webp",
+      "facts": [
+        {
+          "label": "Guests",
+          "value": "Up to 60"
+        },
+        {
+          "label": "Rooms",
+          "value": "The Courtyard · The Jalsaghar"
+        },
+        {
+          "label": "For",
+          "value": "Birthdays, anniversaries, annaprashan"
+        }
+      ]
+    },
+    {
+      "title": "Corporate Lunches",
+      "eyebrow": "Midday, by arrangement",
+      "imageAlt": "Tables laid in the courtyard before the white façade",
+      "text": "Midday tables for colleagues and guests, with a set menu from either table.",
+      "slug": "corporate-lunches",
+      "image": "/images/courtyard.webp",
+      "facts": [
+        {
+          "label": "When",
+          "value": "Midday"
+        },
+        {
+          "label": "Menu",
+          "value": "A set menu from either table"
+        },
+        {
+          "label": "Arranged",
+          "value": "By telephone"
+        }
+      ]
+    }
   ],
   "steps": [
-    { "numeral": "I", "title": "Telephone the host", "text": "Tell us the date, the number of guests and the occasion." },
-    { "numeral": "II", "title": "Settle the room and menu", "text": "The host suggests a room and a menu from either table." },
-    { "numeral": "III", "title": "Arrive and be received", "text": "The house is prepared, and your guests are received at the gate." }
+    {
+      "numeral": "I",
+      "title": "Telephone the host",
+      "text": "Tell us the date, the number of guests and the occasion."
+    },
+    {
+      "numeral": "II",
+      "title": "Settle the room and menu",
+      "text": "The host suggests a room and a menu from either table."
+    },
+    {
+      "numeral": "III",
+      "title": "Arrive and be received",
+      "text": "The house is prepared, and your guests are received at the gate."
+    }
   ]
 }
