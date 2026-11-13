@@ -158,7 +158,7 @@
 
 /* ── The Rooms page ────────────────────────────────────────────────────────────────────────────────────── */
 /* One split section per room: arch-framed photograph (or lotus panel) beside the copy, sides alternating. */
-.pg-room-section { scroll-margin-top: calc(var(--header-h-compact) + var(--lalpaar-h) + 56px); }
+.pg-room-section { scroll-margin-top: calc(var(--header-h-compact) + var(--lalpaar-h) + 56px); overflow-x: clip; }
 .pg-room { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; gap: clamp(32px, 6vw, 96px); }
 .pg-room--reverse .pg-room__media { order: 2; }
 .pg-room__media { position: relative; padding: 8px; }
@@ -178,6 +178,10 @@
 .pg-room__fact + .pg-room__fact { padding-left: var(--space-4); border-left: var(--hairline); }
 .pg-room__fact dt { font: var(--fw-semibold) 16px/1.2 var(--font-serif); font-variant: all-small-caps; letter-spacing: .14em; color: var(--copper); }
 .pg-room__fact dd { margin: 6px 0 0; font: var(--fw-regular) 21px/1.3 var(--font-display); letter-spacing: .02em; color: var(--terracotta-deep); text-wrap: balance; }
+.pg-room__name-bn { display: block; font: 600 clamp(40px, 4vw, 64px)/1.15 var(--font-bengali); letter-spacing: 0; text-transform: none; color: var(--terracotta-deep); }
+.pg-room__name-en { display: block; margin-top: 6px; font: italic 400 clamp(22px, 1.8vw, 30px)/1.2 var(--font-serif); letter-spacing: .02em; text-transform: none; color: var(--copper); }
+.pg-room__text[lang="bn"] { max-width: 60ch; font: 400 clamp(17px, 1.1vw, 20px)/1.85 var(--font-bengali); text-align: justify; hyphens: auto; }
+.pg-room__text + .pg-room__text { margin-top: var(--space-4); }
 .pg-room__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); margin-top: var(--space-6); }
 .pg-rooms-note { color: var(--parchment); }
 

@@ -10,6 +10,7 @@ import reviewsJson from '@/content/reviews.json';
 import storyJson from '@/content/story.json';
 import occasionsJson from '@/content/occasions.json';
 import faqsJson from '@/content/faqs.json';
+import houseJson from '@/content/house.json';
 
 export type Phone = { display: string; href: string; e164: string };
 export type LabelValue = { label: string; value: string };
@@ -36,23 +37,54 @@ export type Site = {
   servesCuisine: string[];
 };
 
-export type MenuItem = { id?: string; name: string; price?: number | string; description?: string; speciality?: boolean };
-export type MenuPage = { title: string; tab?: string; subtitle?: string; items: MenuItem[] };
-export type Menu = { currency: string; tables: MenuPage[]; sets: MenuPage; verandah: MenuPage; seasonalNote: string };
+/** One line of the printed menu: Bengali name, portion (as printed, e.g. "২ পিস"), English name, price.
+ *  Thalis add a Bengali `note`; the special thalis add a `priceLabel` (as printed) and their `courses`. */
+export type MenuItem = { bn: string; qty?: string; en?: string; price?: number; priceLabel?: string; note?: string; courses?: string[] };
+export type MenuSection = { bn?: string; en?: string; columns?: number; items: MenuItem[] };
+export type MenuCategory = {
+  id: string;
+  /** English label for navigation (the printed category titles are Bengali). */
+  label: string;
+  bn: string;
+  en?: string;
+  /** Sketch from the printed menu, in /images/menu/<name>.webp. */
+  illustration?: string;
+  intro?: { bnTitle?: string; bn?: string; en?: string };
+  footnotes?: string[];
+  sections: MenuSection[];
+};
+/** The printed menu's text pages (the house introduction, the stories behind the room names) — shown on the Rooms page. */
+export type HousePage = {
+  id: string;
+  label: string;
+  title: string;
+  subtitle?: string;
+  paragraphs?: string[];
+  closing?: { title: string; line: string };
+  entries?: { bn: string; en: string; text: string }[];
+};
+export type Menu = { currency: string; gstNote: string; source?: string; categories: MenuCategory[] };
+/** The shape the open-book component (home page) and the dish cards read. */
+export type MenuBookItem = { id?: string; name: string; price?: number | string; description?: string; speciality?: boolean };
+export type MenuBookPage = { title: string; tab?: string; subtitle?: string; items: MenuBookItem[] };
 
 export type Course = { numeral: string; name: string; note: string; image?: string; imageAlt?: string; icon?: string };
 
 export type Room = {
   slug: string;
   name: string;
+  /** The room's name in Bengali, as on the house's own room cards. */
+  bn?: string;
   eyebrow: string;
   description: string;
   image?: string;
   imageAlt: string;
-  capacity: string;
-  best: string;
-  occasions: string;
-  text: string;
+  /** The room's story (Bengali), one string per paragraph. */
+  paragraphs?: string[];
+  text?: string;
+  capacity?: string;
+  best?: string;
+  occasions?: string;
 };
 
 /** `rating` (1–5) only when the source review shows one — stars are never shown otherwise. */
@@ -70,6 +102,7 @@ export type Faq = { q: string; a: string };
 
 export const site: Site = siteJson;
 export const menu: Menu = menuJson;
+export const housePages: HousePage[] = houseJson.pages;
 export const courses: Course[] = coursesJson;
 export const rooms: Room[] = roomsJson.map((r: Room) => ({ ...r, image: v(r.image) }));
 export const reviews: Review[] = reviewsJson;
@@ -81,23 +114,48 @@ export const occasions: Occasions = {
 };
 export const faqs: Faq[] = faqsJson;
 
-/** A signature dish resolved against the menu: which table it belongs to, its description, and its photograph if one
- *  has been added to public/images/signature dish/ (see scripts/build-dishes.mjs). */
-export type SignatureDish = MenuItem & { table: string; image?: string };
+/** Every item on the menu with its category and section, in printed order. */
+export const menuItems = menu.categories.flatMap((c) => c.sections.flatMap((sec) => sec.items.map((item) => ({ item, category: c, section: sec }))));
+
+/** "মোচার চপ" + "২ পিস" → "মোচার চপ (২ পিস)" — the Bengali line as printed. */
+export const bnLine = (i: MenuItem) => (i.qty ? `${i.bn} (${i.qty})` : i.bn);
+
+/** A menu category as open-book pages (English name, the Bengali line beneath, price). */
+export function menuBookPage(id: string, tab?: string): MenuBookPage {
+  const c = menu.categories.find((x) => x.id === id);
+  if (!c) return { title: id, items: [] };
+  return {
+    title: c.en || c.label,
+    tab: tab || c.label,
+    subtitle: c.bn,
+    items: c.sections.flatMap((sec) => sec.items).map((i) => ({ name: i.en || i.bn, description: i.note || bnLine(i), price: i.price })),
+  };
+}
+
+/** A signature dish resolved against the menu: its section, the Bengali line, and its photograph if one has been added
+ *  to public/images/signature dish/ (see scripts/build-dishes.mjs). `photo` names the photo file when it differs. */
+export type SignatureDish = MenuBookItem & { table: string; image?: string };
 const dishSlug = (s: string) =>
   s
     .normalize('NFKD')
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 const dishImages: Record<string, string> = dishImagesJson;
 /** The photograph for any dish on the menu, if one has been added to public/images/signature dish/ (versioned URL). */
 export const dishImage = (name: string) => v(dishImages[dishSlug(name)]);
-export const signatureDishes: SignatureDish[] = (signatureJson.dishes as { name: string; image?: string }[]).flatMap((d) => {
-  for (const page of [...menu.tables, menu.sets, menu.verandah]) {
-    const item = page.items.find((i) => i.name === d.name);
-    if (item) return [{ ...item, table: page.tab || page.title, image: v(d.image || dishImages[dishSlug(d.name)]) }];
-  }
-  return [];
+export const signatureDishes: SignatureDish[] = (signatureJson.dishes as { name: string; photo?: string; image?: string }[]).flatMap((d) => {
+  const hit = menuItems.find((m) => m.item.en === d.name);
+  if (!hit) return [];
+  const { item, category, section } = hit;
+  return [
+    {
+      name: item.en || item.bn,
+      description: bnLine(item),
+      price: item.price,
+      table: section.en || category.en || category.label,
+      image: v(d.image || dishImages[dishSlug(d.photo || d.name)]),
+    },
+  ];
 });

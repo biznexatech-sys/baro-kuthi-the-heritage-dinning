@@ -1,11 +1,12 @@
 /* DESIGN.md §3 — Cinzel (display) + Cormorant Garamond (everything else) + Playfair Display Medium 500 (header only — nav, call button, mobile menu; client request). No sans-serif anywhere. */
 :root{
---font-cinzel:'Cinzel','Trajan Pro',Georgia,serif;
---font-cormorant:'Cormorant Garamond','Cormorant',Garamond,Georgia,serif;
+--font-cinzel:'Cinzel','Trajan Pro','Noto Serif Bengali',Georgia,serif;
+--font-cormorant:'Cormorant Garamond','Cormorant','Noto Serif Bengali',Garamond,Georgia,serif;
 --font-display:var(--font-cinzel);
 --font-serif:var(--font-cormorant);
---font-playfair:'Playfair Display',Georgia,serif;
+--font-playfair:'Playfair Display','Noto Serif Bengali',Georgia,serif;
 --font-nav:var(--font-playfair);
+--font-bengali:'Noto Serif Bengali','Cormorant Garamond',Georgia,serif;
 
 --fw-regular:500; /* @kind font */ /* Cormorant is hairline-thin at 400; 500 reads cleanly on parchment. The hero keeps 400. */
 --fw-medium:500; /* @kind font */

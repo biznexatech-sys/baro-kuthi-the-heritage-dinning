@@ -1,4 +1,4 @@
-import { rooms, site } from '@/lib/content';
+import { housePages, rooms, site } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 import { v } from '@/lib/asset';
 import { cx, romanNumerals } from '@/lib/utils';
@@ -9,10 +9,13 @@ import { TextLink } from '@/components/ui/TextLink';
 import { CentredNote, PageSection } from '@/components/page/PageSection';
 import { SectionNav } from '@/components/page/SectionNav';
 import { Reservation } from '@/components/page/Reservation';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { HousePages } from '@/components/sections/HousePages';
+import { Stack } from '@/components/page/PageSection';
 
 export const metadata = pageMetadata({
   title: 'The Rooms',
-  description: 'The Verandah, the Jalsaghar, the Thakur-dalan Courtyard and the Zamindar’s Study — four rooms, each with its own hour and table.',
+  description: 'Ratnavali, Sharmistha, Auckland and Babumoshai — four dining rooms, each named for a chapter in the history of the Belgachia Villa.',
   path: '/rooms/',
 });
 
@@ -29,11 +32,18 @@ export default function RoomsPage() {
         height="64svh"
         eyebrow="The Rooms"
         title="Four Rooms, Four Evenings"
-        lead="Each room of the house keeps its own hour, light and table."
+        lead="Each room is named for a chapter in the history of the Belgachia Villa."
         primaryAction={{ label: 'Reserve by Telephone', href: site.phone.href }}
       />
 
-      <SectionNav items={rooms.map((r) => ({ id: r.slug, label: r.name }))} label="The rooms" />
+      <SectionNav items={[{ id: 'the-house', label: 'Our Story' }, ...rooms.map((r) => ({ id: r.slug, label: r.name }))]} label="The rooms" />
+
+      <PageSection tone="band" id="the-house">
+        <Stack>
+          <SectionHeading tone="dark" align="center" eyebrow="Baro Kuthi Rajbari" title="Our Story" lead="The house, its history, and the Bengali table it keeps." />
+          <HousePages pages={housePages} />
+        </Stack>
+      </PageSection>
 
       {rooms.map((r, i) => (
         <PageSection key={r.slug} id={r.slug} tone={i % 2 ? 'alt' : 'light'} className="pg-room-section">
@@ -60,22 +70,39 @@ export default function RoomsPage() {
 
             <div className="pg-room__body">
               <Eyebrow numeral={romanNumerals[i]}>{r.eyebrow}</Eyebrow>
-              <h2 className="pg-room__name">{r.name}</h2>
-              <p className="pg-room__text">{r.text}</p>
-              <dl className="pg-room__facts">
-                <div className="pg-room__fact">
-                  <dt>Seats</dt>
-                  <dd>{r.capacity}</dd>
-                </div>
-                <div className="pg-room__fact">
-                  <dt>Best</dt>
-                  <dd>{r.best}</dd>
-                </div>
-                <div className="pg-room__fact">
-                  <dt>Suits</dt>
-                  <dd>{r.occasions}</dd>
-                </div>
-              </dl>
+              <h2 className="pg-room__name">
+                {r.bn ? (
+                  <>
+                    <span className="pg-room__name-bn" lang="bn">
+                      {r.bn}
+                    </span>
+                    <span className="pg-room__name-en">{r.name}</span>
+                  </>
+                ) : (
+                  r.name
+                )}
+              </h2>
+              {(r.paragraphs ?? (r.text ? [r.text] : [])).map((t) => (
+                <p key={t} className="pg-room__text" lang={r.paragraphs ? 'bn' : undefined}>
+                  {t}
+                </p>
+              ))}
+              {r.capacity && (
+                <dl className="pg-room__facts">
+                  <div className="pg-room__fact">
+                    <dt>Seats</dt>
+                    <dd>{r.capacity}</dd>
+                  </div>
+                  <div className="pg-room__fact">
+                    <dt>Best</dt>
+                    <dd>{r.best}</dd>
+                  </div>
+                  <div className="pg-room__fact">
+                    <dt>Suits</dt>
+                    <dd>{r.occasions}</dd>
+                  </div>
+                </dl>
+              )}
               <div className="pg-room__actions">
                 <Button variant="primary" href={site.phone.href}>
                   Reserve this room

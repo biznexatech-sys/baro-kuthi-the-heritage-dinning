@@ -1,7 +1,7 @@
 'use client';
 import { useState, type ReactNode } from 'react';
 import { cx } from '@/lib/utils';
-import type { MenuPage } from '@/lib/content';
+import type { MenuBookPage as MenuPage } from '@/lib/content';
 
 export type MenuBookProps = {
   pages: MenuPage[];

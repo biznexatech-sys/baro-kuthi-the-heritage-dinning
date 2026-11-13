@@ -59,21 +59,21 @@ const priceOf = (p?: number | string) => (p == null ? undefined : String(p).repl
 
 /** DESIGN.md §16 — `Menu` JSON-LD, built from content/menu.json (prices never live in code). */
 export function menuJsonLd() {
-  const sections = [...menu.tables, menu.sets, menu.verandah];
   return {
     '@context': 'https://schema.org',
     '@type': 'Menu',
     name: `${site.shortName} — The Menu`,
     url: abs('/menu/'),
-    inLanguage: 'en',
-    hasMenuSection: sections.map((s) => ({
+    inLanguage: ['en', 'bn'],
+    hasMenuSection: menu.categories.map((c) => ({
       '@type': 'MenuSection',
-      name: s.title,
-      description: s.subtitle,
-      hasMenuItem: s.items.map((it) => ({
+      name: c.en || c.label,
+      alternateName: c.bn,
+      hasMenuItem: c.sections.flatMap((s) => s.items).map((it) => ({
         '@type': 'MenuItem',
-        name: it.name,
-        description: it.description,
+        name: it.en || it.bn,
+        alternateName: it.bn,
+        ...(it.note ? { description: it.note } : {}),
         ...(it.price != null ? { offers: { '@type': 'Offer', price: priceOf(it.price), priceCurrency: 'INR' } } : {}),
       })),
     })),

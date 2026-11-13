@@ -1,45 +1,942 @@
 {
   "currency": "₹",
-  "tables": [
+  "gstNote": "**GST Will Be Charged Extra",
+  "source": "Transcribed from 'menu updated.pdf' (14 pages). Items, portions and prices exactly as printed.",
+  "categories": [
     {
-      "title": "The Bengali Table", "tab": "The Bengali Table", "subtitle": "Served course by course, on kansa",
-      "items": [
-        { "name": "Shukto", "price": 320, "description": "Bitter gourd and summer vegetables in a light milk gravy." },
-        { "name": "Chingri Malai Curry", "price": 980, "description": "Tiger prawns in coconut milk, gently spiced.", "speciality": true },
-        { "name": "Bhetki Paturi", "price": 740, "description": "Bhetki in mustard paste, steamed in banana leaf." },
-        { "name": "Kosha Mangsho", "price": 880, "description": "Mutton slow-cooked dark with onion and whole spices.", "speciality": true },
-        { "name": "Mochar Ghonto", "price": 360, "description": "Banana flower with coconut, slow-stirred." },
-        { "name": "Mishti Doi", "price": 180, "description": "Sweetened curd, set in an earthen pot." }
+      "id": "starters",
+      "label": "Starters",
+      "bn": "বনেদি মুখরোচক",
+      "illustration": "fish-fry",
+      "sections": [
+        {
+          "bn": "নিরামিষ মুখরোচক",
+          "en": "Vegetarian Starters",
+          "items": [
+            {
+              "bn": "মোচার চপ",
+              "qty": "২ পিস",
+              "en": "Mochar Chop",
+              "price": 160
+            },
+            {
+              "bn": "পোস্তর বড়া",
+              "qty": "২ পিস",
+              "en": "Posto Bora",
+              "price": 150
+            },
+            {
+              "bn": "সবজির কাটলেট",
+              "qty": "১ পিস",
+              "en": "Vegetable Cutlet",
+              "price": 140
+            },
+            {
+              "bn": "পনির ফিঙ্গার",
+              "qty": "৪ পিস",
+              "en": "Paneer Fingers",
+              "price": 220
+            }
+          ]
+        },
+        {
+          "bn": "আমিষ মুখরোচক",
+          "en": "Non Vegetarian Starters",
+          "items": [
+            {
+              "bn": "ভেটকি ফিশ ফ্রাই",
+              "qty": "১ পিস",
+              "en": "Bhetki Fish Fry",
+              "price": 260
+            },
+            {
+              "bn": "ভেটকি ফিশ ফিঙ্গার",
+              "qty": "৪ পিস",
+              "en": "Bhetki Fish Fingers",
+              "price": 260
+            },
+            {
+              "bn": "ভেটকি ফিশ কবিরাজি",
+              "qty": "১ পিস",
+              "en": "Bhetki Fish Kobiraji",
+              "price": 260
+            },
+            {
+              "bn": "চিংড়ি কাটলেট",
+              "qty": "২ পিস",
+              "en": "Prawn Cutlet",
+              "price": 250
+            },
+            {
+              "bn": "গন্ধরাজ চিকেন পকোড়া",
+              "qty": "৬ পিস",
+              "en": "Gondhoraj Chicken Pakora",
+              "price": 260
+            },
+            {
+              "bn": "চিকেন ভাপা",
+              "qty": "৬ পিস",
+              "en": "Chicken Bhapa",
+              "price": 330
+            },
+            {
+              "bn": "মৌরলা মাছের পেঁয়াজি",
+              "qty": "৪ পিস",
+              "en": "Mourala Macher Peyaji",
+              "price": 260
+            },
+            {
+              "bn": "পমফ্রেট মসলা ফ্রাই",
+              "qty": "১ পিস",
+              "en": "Pomfret Masala Fry",
+              "price": 350
+            },
+            {
+              "bn": "হাঁসের ডিমের মটন কীমা ডেভিল",
+              "qty": "১ পিস",
+              "en": "Duck Egg Mutton Keema Devil",
+              "price": 150
+            },
+            {
+              "bn": "তোপসে ফ্রাই",
+              "qty": "২ পিস",
+              "en": "Topshe Fry",
+              "price": 270
+            },
+            {
+              "bn": "মাছের ডিমের বড়া",
+              "qty": "২ পিস",
+              "en": "Macher Dimer Bora",
+              "price": 160
+            }
+          ]
+        }
       ]
     },
     {
-      "title": "The Sahib’s Table", "tab": "The Sahib’s Table", "subtitle": "Anglo-Indian dishes, on old china",
-      "items": [
-        { "name": "Mulligatawny Soup", "price": 290, "description": "Peppered lentil soup, bright with lime." },
-        { "name": "Fish Orly", "price": 690, "description": "Bhetki in a light batter, with tartare sauce." },
-        { "name": "Chicken à la Kiev", "price": 720, "description": "Butter-filled cutlet, crumbed and fried golden.", "speciality": true },
-        { "name": "Mutton Stew", "price": 760, "description": "A club-style stew with root vegetables." },
-        { "name": "Roast Chicken", "price": 780, "description": "With gravy, buttered vegetables and mash." },
-        { "name": "Caramel Custard", "price": 220, "description": "Baked custard under a dark caramel." }
+      "id": "vegetarian",
+      "label": "Vegetarian & Bhaja",
+      "bn": "নিরামিষ পদ ও ভাজাভুজি",
+      "sections": [
+        {
+          "bn": "বনেদি নিরামিষ",
+          "en": "Vegetarian Specialities",
+          "items": [
+            {
+              "bn": "বনেদি শুক্তো",
+              "qty": "১ পরিবেশন",
+              "en": "Bonedi Shukto",
+              "price": 180
+            },
+            {
+              "bn": "ধনেপাতা কাঁচালঙ্কার আলুর দম",
+              "qty": "১ পরিবেশন",
+              "en": "Dhonepata Kachalonka Aloor Dum",
+              "price": 220
+            },
+            {
+              "bn": "দই পটল",
+              "qty": "৪ পিস",
+              "en": "Doi Potol",
+              "price": 190
+            },
+            {
+              "bn": "ঝিঙে আলু পোস্ত",
+              "qty": "১ পরিবেশন",
+              "en": "Jhinge Aloo Posto",
+              "price": 220
+            },
+            {
+              "bn": "আলু পোস্ত",
+              "qty": "১ পরিবেশন",
+              "en": "Aloo Posto",
+              "price": 160
+            },
+            {
+              "bn": "ধোঁকার ডালনা",
+              "qty": "৩ পিস",
+              "en": "Dhokar Dalna",
+              "price": 170
+            },
+            {
+              "bn": "এঁচোড়ের ডালনা",
+              "qty": "১ পরিবেশন",
+              "en": "Echorer Dalna",
+              "price": 210
+            },
+            {
+              "bn": "ছানার কোফতা",
+              "qty": "৩ পিস",
+              "en": "Chhanar Kofta",
+              "price": 280
+            },
+            {
+              "bn": "মোচার ঘণ্ট",
+              "qty": "১ পরিবেশন",
+              "en": "Mochar Ghonto",
+              "price": 170
+            },
+            {
+              "bn": "আলু ফুলকপির রসা",
+              "qty": "১ পরিবেশন",
+              "en": "Aloo Phulkopir Rasa",
+              "price": 170
+            },
+            {
+              "bn": "লাল শাক",
+              "qty": "১ পরিবেশন",
+              "en": "Lal Shaak",
+              "price": 110
+            }
+          ]
+        },
+        {
+          "bn": "বাঙালির ভাজাভুজি",
+          "en": "Bengali Bhaja",
+          "items": [
+            {
+              "bn": "বেগুন ভাজা",
+              "qty": "২ পিস",
+              "en": "Begun Bhaja",
+              "price": 80
+            },
+            {
+              "bn": "পটল ভাজা",
+              "qty": "৪ অর্ধেক",
+              "en": "Potol Bhaja",
+              "price": 120
+            },
+            {
+              "bn": "ঝুরঝুরে আলু ভাজা",
+              "qty": "১ পরিবেশন",
+              "en": "Jhuri Aloo Bhaja",
+              "price": 90
+            },
+            {
+              "bn": "বেগুনি",
+              "qty": "২ পিস",
+              "en": "Beguni",
+              "price": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dal-rice",
+      "label": "Dal, Rice & Pulao",
+      "bn": "ডাল ভাত ও পোলাও",
+      "illustration": "luchi",
+      "sections": [
+        {
+          "bn": "ডাল",
+          "en": "Dal",
+          "items": [
+            {
+              "bn": "সোনামুগ ডাল",
+              "qty": "১ বাটি",
+              "en": "Sona Moong Dal",
+              "price": 90
+            },
+            {
+              "bn": "ভাজা মুগ ডাল",
+              "qty": "১ বাটি",
+              "en": "Bhaja Moong Dal",
+              "price": 95
+            },
+            {
+              "bn": "মাছের মাথা দিয়ে সোনামুগ ডাল",
+              "qty": "১ বাটি",
+              "en": "Fish Head Sona Moong Dal",
+              "price": 160
+            },
+            {
+              "bn": "ছোলার ডাল",
+              "qty": "১ বাটি",
+              "en": "Chholar Dal",
+              "price": 130
+            }
+          ]
+        },
+        {
+          "bn": "ভাত ও পোলাও",
+          "en": "Rice and Pulao",
+          "items": [
+            {
+              "bn": "সাদা ভাত",
+              "qty": "১ বাটি",
+              "en": "Steamed Rice",
+              "price": 100
+            },
+            {
+              "bn": "বাসন্তী পোলাও",
+              "qty": "১ পরিবেশন",
+              "en": "Basanti Pulao",
+              "price": 220
+            },
+            {
+              "bn": "চিংড়ি পোলাও",
+              "qty": "১ পরিবেশন",
+              "en": "Chingri Pulao",
+              "price": 270
+            },
+            {
+              "bn": "মটন পোলাও",
+              "qty": "১ পরিবেশন",
+              "en": "Mutton Pulao",
+              "price": 420
+            },
+            {
+              "bn": "মোরগ পোলাও",
+              "qty": "১ পরিবেশন",
+              "en": "Morog Pulao",
+              "price": 370
+            }
+          ]
+        },
+        {
+          "bn": "লুচি ও কচুরি",
+          "en": "Luchi and Kochuri",
+          "items": [
+            {
+              "bn": "কড়াইশুঁটির কচুরি",
+              "qty": "২ পিস",
+              "en": "Koraishutir Kochuri",
+              "price": 100
+            },
+            {
+              "bn": "লুচি",
+              "qty": "৪ পিস",
+              "en": "Luchi",
+              "price": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fish",
+      "label": "Fish",
+      "bn": "মাছের পদাবলি",
+      "illustration": "fish-leaf",
+      "sections": [
+        {
+          "bn": "ভেটকির পদ",
+          "en": "Bhetki Specialities",
+          "items": [
+            {
+              "bn": "ভেটকি কালিয়া কাটা ছাড়া",
+              "qty": "৩ পিস",
+              "en": "Boneless Bhetki Kalia",
+              "price": 330
+            },
+            {
+              "bn": "সরষে ভেটকি কাটা ছাড়া",
+              "qty": "৩ পিস",
+              "en": "Boneless Shorshe Bhetki",
+              "price": 330
+            },
+            {
+              "bn": "ভেটকি পাতুরি",
+              "qty": "১ পিস",
+              "en": "Bhetki Paturi",
+              "price": 370
+            },
+            {
+              "bn": "ভেটকি ভাপা কাটা ছাড়া",
+              "qty": "৩ পিস",
+              "en": "Boneless Bhetki Bhapa",
+              "price": 330
+            }
+          ]
+        },
+        {
+          "bn": "কাতলা পাবদা ও কই",
+          "en": "Katla Pabda and Koi",
+          "items": [
+            {
+              "bn": "কাতলা মাছ ভাজা",
+              "qty": "১ পিস",
+              "en": "Katla Mach Bhaja",
+              "price": 230
+            },
+            {
+              "bn": "দই কাতলা",
+              "qty": "১ পিস",
+              "en": "Doi Katla",
+              "price": 280
+            },
+            {
+              "bn": "কাতলা মাছের কালিয়া",
+              "qty": "১ পিস",
+              "en": "Katla Kalia",
+              "price": 280
+            },
+            {
+              "bn": "সরষে পাবদা",
+              "qty": "১ পিস",
+              "en": "Shorshe Pabda",
+              "price": 320
+            },
+            {
+              "bn": "আলু বড়ি দিয়ে পাবদার ঝোল",
+              "qty": "১ পিস",
+              "en": "Pabda Jhol with Aloo Bori",
+              "price": 310
+            },
+            {
+              "bn": "তেল কই",
+              "qty": "২ পিস",
+              "en": "Tel Koi",
+              "price": 310
+            },
+            {
+              "bn": "কাসুন্দি কই",
+              "qty": "২ পিস",
+              "en": "Kasundi Koi",
+              "price": 310
+            }
+          ]
+        },
+        {
+          "bn": "চিতল ও পমফ্রেট",
+          "en": "Chitol and Pomfret",
+          "items": [
+            {
+              "bn": "চিতল মাছের মুইঠ্যা",
+              "qty": "৩ পিস",
+              "en": "Chitol Macher Muitha",
+              "price": 470
+            },
+            {
+              "bn": "চিতল পেটি",
+              "qty": "১ পিস",
+              "en": "Chitol Peti",
+              "price": 480
+            },
+            {
+              "bn": "সরষে পমফ্রেট",
+              "qty": "১ পিস",
+              "en": "Shorshe Pomfret",
+              "price": 350
+            },
+            {
+              "bn": "পমফ্রেট ঝাল",
+              "qty": "১ পরিবেশন",
+              "en": "Pomfret Jhal",
+              "price": 350
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ilish-prawn",
+      "label": "Ilish, Prawn & Crab",
+      "bn": "ইলিশ চিংড়ি ও কাঁকড়া",
+      "illustration": "daab-chingri",
+      "sections": [
+        {
+          "bn": "ইলিশের পদ",
+          "en": "Ilish Specialities",
+          "items": [
+            {
+              "bn": "ইলিশ ভাজা তেলসহ",
+              "qty": "১ পিস",
+              "en": "Ilish Fry with Oil",
+              "price": 570
+            },
+            {
+              "bn": "ভাপা ইলিশ",
+              "qty": "১ পিস",
+              "en": "Bhapa Ilish",
+              "price": 650
+            },
+            {
+              "bn": "সরষে ইলিশ",
+              "qty": "১ পিস",
+              "en": "Shorshe Ilish",
+              "price": 660
+            },
+            {
+              "bn": "ইলিশ পাতুরি",
+              "qty": "১ পিস",
+              "en": "Ilish Paturi",
+              "price": 670
+            },
+            {
+              "bn": "বেগুন দিয়ে ইলিশের ঝোল",
+              "qty": "১ পিস",
+              "en": "Ilish Jhol with Eggplant",
+              "price": 650
+            },
+            {
+              "bn": "ইলিশের লেজ ভর্তা",
+              "qty": "১ পরিবেশন",
+              "en": "Ilish Lej Bhorta",
+              "price": 320
+            }
+          ]
+        },
+        {
+          "bn": "চিংড়ি ও কাঁকড়া",
+          "en": "Prawn and Crab",
+          "items": [
+            {
+              "bn": "কাঁকড়ার ঝাল",
+              "qty": "১ পরিবেশন",
+              "en": "Kankrar Jhal",
+              "price": 620
+            },
+            {
+              "bn": "বাগদা চিংড়ি মালাইকারি",
+              "qty": "৪ পিস",
+              "en": "Bagda Chingri Malaikari",
+              "price": 470
+            },
+            {
+              "bn": "ডাব চিংড়ি বাগদা",
+              "qty": "৪ পিস",
+              "en": "Daab Chingri Bagda",
+              "price": 520
+            },
+            {
+              "bn": "ডাব চিংড়ি গলদা",
+              "qty": "১ বড় পিস",
+              "en": "Daab Chingri Golda",
+              "price": 500
+            },
+            {
+              "bn": "গলদা চিংড়ি মালাইকারি",
+              "qty": "১ বড় পিস",
+              "en": "Golda Chingri Malaikari",
+              "price": 450
+            },
+            {
+              "bn": "মোচা চিংড়ি",
+              "qty": "১ পরিবেশন",
+              "en": "Mocha Chingri",
+              "price": 220
+            },
+            {
+              "bn": "এঁচোড় চিংড়ি",
+              "qty": "১ পরিবেশন",
+              "en": "Echor Chingri",
+              "price": 250
+            },
+            {
+              "bn": "কচুপাতা ভাপা চিংড়ি",
+              "qty": "১ পরিবেশন",
+              "en": "Kochupata Bhapa Chingri",
+              "price": 260
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chicken-mutton",
+      "label": "Chicken & Mutton",
+      "bn": "মুরগি ও মটনের বনেদি পদ",
+      "illustration": "drawing-room",
+      "sections": [
+        {
+          "bn": "মুরগির পদ",
+          "en": "Chicken Specialities",
+          "items": [
+            {
+              "bn": "ধনেপাতা কাঁচালঙ্কা মুরগি",
+              "qty": "৩ পিস",
+              "en": "Dhonepata Kachalonka Murgi",
+              "price": 370
+            },
+            {
+              "bn": "চিকেন ডাকবাংলো",
+              "qty": "৩ পিস ও ডিম",
+              "en": "Chicken Dak Bungalow",
+              "price": 380
+            },
+            {
+              "bn": "চিকেন কষা",
+              "qty": "৩ পিস",
+              "en": "Chicken Kosha",
+              "price": 370
+            },
+            {
+              "bn": "দেশি মুরগির ঝোল",
+              "qty": "৩ পিস",
+              "en": "Desi Murgir Jhol",
+              "price": 460
+            },
+            {
+              "bn": "চিকেন ভাপা",
+              "qty": "৬ পিস",
+              "en": "Chicken Bhapa",
+              "price": 330
+            }
+          ]
+        },
+        {
+          "bn": "মটনের পদ",
+          "en": "Mutton Specialities",
+          "items": [
+            {
+              "bn": "মটন কষা",
+              "qty": "৩ পিস",
+              "en": "Mutton Kosha",
+              "price": 430
+            },
+            {
+              "bn": "রাজবাড়ির পোড়া মাংস",
+              "qty": "৩ পিস",
+              "en": "Rajbari Pora Mutton",
+              "price": 455
+            },
+            {
+              "bn": "মটন ডাকবাংলো",
+              "qty": "৩ পিস ও ডিম",
+              "en": "Mutton Dak Bungalow",
+              "price": 455
+            },
+            {
+              "bn": "কচি পাঁঠার আলু দিয়ে ঝোল",
+              "qty": "৩ পিস",
+              "en": "Kochi Pathar Jhol with Potato",
+              "price": 470
+            },
+            {
+              "bn": "প্রেসার কুকার মাটন আলু দিয়ে ঝোল",
+              "qty": "৬ পিস",
+              "en": "Pressure Cooker Aloo Diye Mutton Jhol",
+              "price": 850
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zamindari",
+      "label": "Zamindari Signature",
+      "bn": "রাজবাড়ির বনেদি পদ",
+      "en": "The Zamindari Signature Collection",
+      "illustration": "mansion",
+      "sections": [
+        {
+          "items": [
+            {
+              "bn": "জমিদারবাড়ির কষা মাংস",
+              "qty": "৪ পিস",
+              "en": "Zamindar Bari Kosha Mangsho",
+              "price": 620
+            },
+            {
+              "bn": "রাজবাড়ির গন্ধরাজ চিংড়ি",
+              "qty": "৬ পিস",
+              "en": "Rajbari Gondhoraj Chingri",
+              "price": 620
+            },
+            {
+              "bn": "বড়কুটির ইলিশ পাতুরি",
+              "qty": "১ পিস",
+              "en": "Barokuthi Ilish Paturi",
+              "price": 700
+            },
+            {
+              "bn": "রাজবাড়ির কাতলা কালিয়া",
+              "qty": "১ বড় পিস",
+              "en": "Rajbari Katla Kalia",
+              "price": 320
+            },
+            {
+              "bn": "রাজবাড়ির সোনালি ভেটকি পাতুরি",
+              "qty": "১ পিস",
+              "en": "Rajbari Sonali Bhetki Paturi",
+              "price": 420
+            },
+            {
+              "bn": "বড়কুটির চিতল মুইঠ্যা",
+              "qty": "৩ পিস",
+              "en": "Barokuthi Chitol Muitha",
+              "price": 520
+            },
+            {
+              "bn": "রাজবাড়ির মুড়িঘণ্ট",
+              "qty": "১ পরিবেশন",
+              "en": "Rajbari Muri Ghonto",
+              "price": 220
+            },
+            {
+              "bn": "মাছের ডিমের ঝাল",
+              "qty": "১ পরিবেশন",
+              "en": "Macher Dimer Jhal",
+              "price": 320
+            },
+            {
+              "bn": "চিংড়ি দিয়ে মোচার ঘণ্ট",
+              "qty": "১ পরিবেশন",
+              "en": "Chingri Diye Mochar Ghonto",
+              "price": 270
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thali",
+      "label": "Rajbari Thali",
+      "bn": "রাজবাড়ির থালির সম্ভার",
+      "en": "Rajbari Thali",
+      "illustration": "dining-hall",
+      "intro": {
+        "bnTitle": "প্রতিটি থালিতে থাকছে",
+        "bn": "লুচি ২টি, ছোলার ডাল, সাদা ভাত, সোনামুগ ডাল, বেগুন ভাজা, শুক্তো, আলু পোস্ত ও ধোঁকার ডালনা, চাটনি, পাপড়, মিষ্টি দই ও মিষ্টি ১টি।",
+        "en": "Each thali includes 2 luchis, chholar dal, steamed rice, sona moong dal, fried eggplant, shukto, aloo posto and dhokar dalna, chutney, papad, mishti doi and 1 sweet."
+      },
+      "footnotes": [
+        "*মাছের প্রাপ্যতা অনুযায়ী পরিবেশন।"
+      ],
+      "sections": [
+        {
+          "items": [
+            {
+              "bn": "রাজবাড়ি নিরামিষ থালি",
+              "en": "Vegetarian Thali",
+              "price": 490,
+              "note": "উপরের সম্পূর্ণ নিরামিষ আয়োজন (১ থালি)"
+            },
+            {
+              "bn": "রাজবাড়ি কাতলা থালি",
+              "en": "Katla Thali",
+              "price": 770,
+              "note": "সম্পূর্ণ আয়োজনের সঙ্গে কাতলা কালিয়া (১ পিস) (১ থালি)"
+            },
+            {
+              "bn": "রাজবাড়ি পাবদা থালি",
+              "en": "Pabda Thali",
+              "price": 810,
+              "note": "সম্পূর্ণ আয়োজনের সঙ্গে সরষে পাবদা (১ পিস) (১ থালি)"
+            },
+            {
+              "bn": "রাজবাড়ি চিকেন থালি",
+              "en": "Chicken Thali",
+              "price": 740,
+              "note": "সম্পূর্ণ আয়োজনের সঙ্গে চিকেন কষা (২ পিস) (১ থালি)"
+            },
+            {
+              "bn": "রাজবাড়ি মটন থালি",
+              "en": "Mutton Thali",
+              "price": 780,
+              "note": "সম্পূর্ণ আয়োজনের সঙ্গে মটন কষা (২ পিস) (১ থালি)"
+            },
+            {
+              "bn": "রাজবাড়ি ইলিশ থালি",
+              "en": "Ilish Thali",
+              "price": 950,
+              "note": "সম্পূর্ণ আয়োজনের সঙ্গে সরষে ইলিশ (১ পিস) (১ থালি)"
+            },
+            {
+              "bn": "রাজবাড়ি চিংড়ি থালি",
+              "en": "Prawn Thali",
+              "price": 730,
+              "note": "সম্পূর্ণ আয়োজনের সঙ্গে বাগদা চিংড়ি মালাইকারি (২ পিস) (১ থালি)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "special-thali",
+      "label": "Special Thali",
+      "bn": "রাজবাড়ির বিশেষ থালি",
+      "en": "Rajbari Special Thali",
+      "footnotes": [
+        "*প্রতিটি থালি কেবল একজন অতিথির জন্য পরিবেশিত।",
+        "বিশেষ আয়োজনের জন্য অগ্রিম বুকিং আবশ্যক।"
+      ],
+      "sections": [
+        {
+          "items": [
+            {
+              "bn": "রাজবাড়ির আইবুড়ো ভাত",
+              "price": 1490,
+              "priceLabel": "₹1,490 (Per person)",
+              "note": "নতুন জীবনের শুভ সূচনায়, বনেদি বাঙালি ভোজের রাজকীয় আয়োজন। কাঁসার থালা–বাটিতে ঐতিহ্যবাহী পরিবেশন, ফুলের সাজ ও নামাঙ্কিত শুভেচ্ছাপত্রসহ।",
+              "courses": [
+                "গন্ধরাজ লেবুর শরবত",
+                "ফুলকো লুচি ২টি • নারকেল দিয়ে ছোলার ডাল",
+                "ঘি ও গন্ধরাজ লেবুসহ সাদা ভাত • বাসন্তী পোলাও",
+                "পঞ্চভাজা—আলু, বেগুন, কুমড়ো, পটল ও উচ্ছে",
+                "বনেদি শুক্তো • ঘি-ফোড়ন সোনামুগ ডাল",
+                "রাজবাড়ির ছানার কালিয়া",
+                "রুই মাছের মাথা—১টি",
+                "কাতলার কালিয়া—১ পিস",
+                "চিংড়ি মালাইকারি—১টি বড় চিংড়ি",
+                "আলুসহ রাজবাড়ির কষা মাংস—২ পিস মাটন",
+                "টমেটো–খেজুরের চাটনি • পাঁপড়",
+                "গোবিন্দভোগের পায়েস • মিষ্টি দই",
+                "রসগোল্লা—১টি • সন্দেশ—১টি"
+              ]
+            },
+            {
+              "bn": "রাজবাড়ির জন্মদিনের ভোজ",
+              "price": 1490,
+              "priceLabel": "₹1,490 (Per person)",
+              "note": "পায়েসের মিষ্টি শুভেচ্ছায়, জন্মদিন কাটুক রাজবাড়ির আপ্যায়নে। কাঁসার থালা–বাটিতে ঐতিহ্যবাহী পরিবেশন, ফুলের সাজ ও নামাঙ্কিত জন্মদিনের শুভেচ্ছাপত্রসহ।",
+              "courses": [
+                "গন্ধরাজ লেবুর শরবত",
+                "ফুলকো লুচি ২টি • নারকেল দিয়ে ছোলার ডাল",
+                "ঘি ও গন্ধরাজ লেবুসহ সাদা ভাত • বাসন্তী পোলাও",
+                "ত্রিভাজা—আলু, বেগুন ও পটল",
+                "বনেদি শুক্তো • ঘি-ফোড়ন সোনামুগ ডাল",
+                "রাজবাড়ির ছানার কালিয়া",
+                "কাতলার কালিয়া—১ পিস",
+                "আলুসহ রাজবাড়ির কষা মাংস—২ পিস মাটন",
+                "টমেটো–খেজুরের চাটনি • পাঁপড়",
+                "জন্মদিনের বিশেষ গোবিন্দভোগের পায়েস",
+                "মিষ্টি দই • সন্দেশ—১টি"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "desserts-drinks",
+      "label": "Desserts & Drinks",
+      "bn": "মিষ্টিমুখ ও পানীয়",
+      "illustration": "interior",
+      "sections": [
+        {
+          "bn": "মিষ্টিমুখ",
+          "en": "Desserts",
+          "columns": 2,
+          "items": [
+            {
+              "bn": "নলেন গুড়ের আইসক্রিম",
+              "qty": "২ স্কুপ",
+              "en": "Nolen Gur Ice Cream",
+              "price": 220
+            },
+            {
+              "bn": "ডাব আইসক্রিম",
+              "qty": "২ স্কুপ",
+              "en": "Daab Ice Cream",
+              "price": 220
+            },
+            {
+              "bn": "মিষ্টি দই",
+              "qty": "১০০ গ্রাম",
+              "en": "Mishti Doi",
+              "price": 80
+            },
+            {
+              "bn": "ম্যাঙ্গো পান্না কোটা",
+              "qty": "১ গ্লাস",
+              "en": "Mango Panna Cotta",
+              "price": 240
+            },
+            {
+              "bn": "রসমালাই তিরামিসু",
+              "qty": "১ পরিবেশন",
+              "en": "Rasmalai Tiramisu",
+              "price": 260
+            },
+            {
+              "bn": "নিত্যদিনের চাটনি",
+              "qty": "১ পরিবেশন",
+              "en": "Chutney Of The Day",
+              "price": 90
+            },
+            {
+              "bn": "বেকড সন্দেশ",
+              "qty": "২ পিস",
+              "en": "Baked Sandesh",
+              "price": 180
+            },
+            {
+              "bn": "নলেন গুড়ের পাটিসাপটা",
+              "qty": "২ পিস",
+              "en": "Nolen Gur Patishapta",
+              "price": 120
+            },
+            {
+              "bn": "ক্ষীরের মালপোয়া",
+              "qty": "২ পিস",
+              "en": "Kheer Malpua",
+              "price": 120
+            },
+            {
+              "bn": "গুড়ের পায়েস",
+              "qty": "১ বাটি",
+              "en": "Gurer Payesh",
+              "price": 150
+            },
+            {
+              "bn": "রাজভোগ",
+              "qty": "১ পিস",
+              "en": "Rajbhog",
+              "price": 80
+            },
+            {
+              "bn": "পাঁপড়",
+              "qty": "১ পিস",
+              "en": "Papad",
+              "price": 30
+            }
+          ]
+        },
+        {
+          "bn": "শরবত ও পানীয়",
+          "en": "Mocktails and Beverages",
+          "columns": 2,
+          "items": [
+            {
+              "bn": "ভার্জিন মোহিতো",
+              "en": "Virgin Mojito",
+              "price": 160
+            },
+            {
+              "bn": "গন্ধরাজ মোহিতো",
+              "en": "Gondhoraj Mojito",
+              "price": 170
+            },
+            {
+              "bn": "অরেঞ্জ মোহিতো",
+              "en": "Orange Mojito",
+              "price": 170
+            },
+            {
+              "bn": "ফ্রেশ লাইম সোডা",
+              "en": "Fresh Lime Soda",
+              "price": 100
+            },
+            {
+              "bn": "পানীয় জল",
+              "en": "Packed Drinking Water"
+            },
+            {
+              "bn": "আমপোড়ার শরবত",
+              "en": "Aampora Shorbot",
+              "price": 160
+            },
+            {
+              "bn": "ঠান্ডা পানীয়",
+              "en": "Soft Drinks",
+              "price": 100
+            },
+            {
+              "bn": "আম পান্না",
+              "en": "Aam Panna",
+              "price": 130
+            },
+            {
+              "bn": "গন্ধরাজ ঘোল",
+              "en": "Gondhoraj Ghol",
+              "price": 150
+            }
+          ]
+        }
       ]
     }
-  ],
-  "sets": {
-    "title": "Set Menus", "subtitle": "The whole meal, in its proper order",
-    "items": [
-      { "name": "The Rajbari Thali · Niramish", "price": "1,450", "description": "Eight vegetarian courses, from Shukto to Paan." },
-      { "name": "The Rajbari Thali · Aamish", "price": "1,850", "description": "Eight courses with fish and mutton.", "speciality": true },
-      { "name": "The Sahib’s Supper", "price": "1,650", "description": "Soup, fish, roast and pudding, served in courses." }
-    ]
-  },
-  "verandah": {
-    "title": "The Verandah", "subtitle": "The café of the house, through the afternoon",
-    "items": [
-      { "name": "Darjeeling Tea, by the Pot", "price": 180, "description": "First flush, with milk or lemon." },
-      { "name": "Fish Kobiraji", "price": 390, "description": "Bhetki in a lacy egg crust, with kasundi." },
-      { "name": "Chicken Cutlet", "price": 340, "description": "Crumbed and fried, with onion salad." },
-      { "name": "Nolen Gur Sandesh", "price": 160, "description": "Date-palm jaggery sandesh, in season." }
-    ]
-  },
-  "seasonalNote": "Some dishes follow the season and the market. The host will describe them at the table."
+  ]
 }

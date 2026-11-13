@@ -1,32 +1,54 @@
 [
   {
-    "slug": "verandah", "name": "The Verandah", "eyebrow": "The café · Seats 24",
-    "description": "Tea and a light menu along the cast-iron railing.",
-    "imageAlt": "The verandah railing in afternoon light",
-    "capacity": "24", "best": "Afternoon", "occasions": "Tea, small lunches",
-    "text": "The café of the house runs the length of the verandah. Tea is poured by the pot and a light menu is served until evening."
+    "slug": "ratnavali",
+    "name": "Ratnavali",
+    "bn": "রত্নাবলী",
+    "eyebrow": "Named for the play of 1858",
+    "description": "The room named for Ramnarayan Tarkaratna’s ‘Ratnavali’, staged at the Belgachia Villa in 1858.",
+    "image": "/images/Rooms/ratnavali.webp",
+    "imageAlt": "Ratnavali: a deep-red dining room under a crystal chandelier, a long table set with red upholstered chairs",
+    "paragraphs": [
+      "উনিশ শতকের কলকাতায় যখন বাংলা নাট্যচর্চা এক নতুন দিগন্তের সন্ধান করছে, তখন বেলগাছিয়া ভিলা হয়ে উঠেছিল সেই নবজাগরণের অন্যতম কেন্দ্র। পাইকপাড়ার রাজা প্রতাপচন্দ্র সিংহ ও ঈশ্বরচন্দ্র সিংহের পৃষ্ঠপোষকতায় ১৮৫৮ সালে এখানে মঞ্চস্থ হয় রামনারায়ণ তর্করত্নের নাটক ‘রত্নাবলী’।",
+      "ইউরোপীয় অতিথিদের জন্য নাটকটির ইংরেজি অনুবাদ করেন মাইকেল মধুসূদন দত্ত। সেই ঐতিহাসিক অভিনয় শুধু দর্শকদের মুগ্ধ করেনি, বাংলা নাট্যজগতের জন্যও খুলে দিয়েছিল এক নতুন পথ। সেই নাট্যঐতিহ্যের স্মৃতিকে ধারণ করেই এই ঘরের নাম রত্নাবলী। বাংলার রন্ধনঐতিহ্যের মতোই এই নামের মধ্যেই লুকিয়ে রয়েছে এক অনন্য সাংস্কৃতিক সম্পদ, যেখানে ইতিহাস, শিল্প ও স্বাদের মেলবন্ধন আজও জীবন্ত।"
+    ]
   },
   {
-    "slug": "jalsaghar", "name": "The Jalsaghar", "eyebrow": "Seats 40 · Best at dusk",
-    "description": "The music room, now the main hall, under its Belgian chandeliers.",
-    "image": "/images/slide1.webp",
-    "imageAlt": "The Jalsaghar under its chandeliers, lamp-lit",
-    "capacity": "40", "best": "Dusk", "occasions": "Dinners, anniversaries",
-    "text": "The old music room is now the main hall. Its chandeliers are lit at dusk, and dinner is served course by course."
+    "slug": "sharmistha",
+    "name": "Sharmistha",
+    "bn": "শর্মিষ্ঠা",
+    "eyebrow": "Named for Madhusudan’s first play",
+    "description": "The room named for Michael Madhusudan Dutt’s ‘Sharmistha’, first staged at Belgachia in 1859.",
+    "image": "/images/Rooms/sharmistha.webp",
+    "imageAlt": "Sharmistha: a teal-and-white room with a coffered ceiling, a staircase, green velvet chairs and a grandfather clock",
+    "paragraphs": [
+      "‘রত্নাবলী’র মঞ্চায়নের পর বেলগাছিয়ায় এক নতুন অধ্যায়ের সূচনা করেন মাইকেল মধুসূদন দত্ত তাঁর প্রথম বাংলা নাটক ‘শর্মিষ্ঠা’র মাধ্যমে। মহাভারতের উপাখ্যান অবলম্বনে রচিত নাটকটি ১৮৫৯ সালের ৩ সেপ্টেম্বর বেলগাছিয়া নাট্যশালায় প্রথম মঞ্চস্থ হয়।",
+      "মধুসূদনের এই সৃষ্টিশীলতার স্মারক হিসেবেই ঘরের নাম ‘শর্মিষ্ঠা’। নাটকের মতোই বাঙালির রান্নাতেও প্রজন্মের পর প্রজন্ম ধরে বয়ে চলেছে ঐতিহ্য, বৈচিত্র্য ও আবেগের গল্প।"
+    ]
   },
   {
-    "slug": "thakur-dalan", "name": "The Thakur-dalan Courtyard", "eyebrow": "Seats 60 · After dark",
-    "description": "Tables laid before the old pillared pavilion.",
-    "image": "/images/courtyard.webp",
-    "imageAlt": "Tables laid in the courtyard before the house at night, lamps lit",
-    "capacity": "60", "best": "After dark", "occasions": "Family celebrations",
-    "text": "Tables are laid in the open courtyard, before the pillared pavilion, for larger family evenings."
+    "slug": "auckland",
+    "name": "Auckland",
+    "bn": "অকল্যান্ড",
+    "eyebrow": "Named for the villa’s first owner",
+    "description": "The room named for Mr Auckland, from whom Prince Dwarkanath Tagore bought the villa in 1823.",
+    "image": "/images/Rooms/auckland.webp",
+    "imageAlt": "Auckland: exposed-brick walls, a green cast-iron spiral staircase and a stained-glass bar under a chandelier",
+    "paragraphs": [
+      "বেলগাছিয়া ভিলার ইতিহাসের একেবারে শুরুর অধ্যায়ে জড়িয়ে রয়েছে এক ইতালীয় ভদ্রলোকের নাম—মিস্টার অকল্যান্ড (Mr. Auckland)। তাঁর কাছ থেকেই ১৮২৩ সালে প্রাসাদোপম এই বাগানবাড়িটি কিনে নেন প্রিন্স দ্বারকানাথ ঠাকুর। এরপর প্রায় দুই লক্ষ টাকা ব্যয়ে বাড়িটিকে সাজিয়ে তোলেন ইউরোপীয় স্থাপত্য, শিল্পকর্ম, মূল্যবান আসবাব, সুন্দর বাগান আর মনোরম জলাশয়ের সমাহারে।",
+      "ধীরে ধীরে এই বাড়ি হয়ে ওঠে কলকাতার অভিজাত সমাজের এক মিলনক্ষেত্র, যেখানে দেশি-বিদেশি অতিথিদের আপ্যায়নে বসত জাঁকজমকপূর্ণ আসর। সেই ইতিহাসের প্রথম মালিকের স্মৃতি এবং বেলগাছিয়া ভিলার আদি পরিচয়কে সম্মান জানাতেই এই ঘরের নাম ‘অকল্যান্ড’। আর সেই সময়ের আতিথেয়তার ঐতিহ্যকে মনে রেখেই এই ঘরের পরিবেশে মিশে থাকবে বাঙালির ভোজ, স্বাদ ও আপ্যায়নের চিরন্তন সংস্কৃতি।"
+    ]
   },
   {
-    "slug": "study", "name": "The Zamindar’s Study", "eyebrow": "Private · Seats 10",
-    "description": "A private room for small dinners, by arrangement.",
-    "imageAlt": "A lamp-lit study with shutters half open",
-    "capacity": "10", "best": "By arrangement", "occasions": "Private dinners",
-    "text": "A private room for small dinners. The menu and the evening are arranged with the host in advance."
+    "slug": "babumoshai",
+    "name": "Babumoshai",
+    "bn": "বাবুমশাই",
+    "eyebrow": "Named for the Babu culture of Calcutta",
+    "description": "The room named for the Babu culture of nineteenth-century Calcutta and Prince Dwarkanath Tagore’s hospitality.",
+    "image": "/images/Rooms/babumoshai.webp",
+    "imageAlt": "Babumoshai: a sage-green room with carved pilasters, arched mirrors and a long red banquette",
+    "paragraphs": [
+      "উনিশ শতকের কলকাতার বনেদি সমাজে ‘বাবু’ শব্দটি ছিল আভিজাত্য, রুচি, ঐশ্বর্য ও সামাজিক প্রতিপত্তির এক পরিচিত প্রতীক। আর এই পরিচয়ের সঙ্গে অঙ্গাঙ্গিভাবে জড়িয়ে ছিলেন প্রিন্স দ্বারকানাথ ঠাকুর। তাঁর বিলাসবহুল জীবনযাপন, উদারতা এবং ইউরোপীয় অতিথিদের রাজকীয় আতিথেয়তার জন্য তিনি ছিলেন বিশেষভাবে পরিচিত। বেলগাছিয়া ভিলা ছিল তাঁর সেই জীবনযাত্রারই এক উজ্জ্বল নিদর্শন, যেখানে দেশি-বিদেশি অতিথিদের সমাগমে বসত নানা আয়োজন ও ভোজসভা।",
+      "পরবর্তীকালে পাইকপাড়ার রাজপরিবারের হাত ধরে এই বাড়ির সামাজিক ও সাংস্কৃতিক ঐতিহ্য আরও বিস্তৃত হয়। সেই বনেদিয়ানা, অতিথিপরায়ণতা এবং বাংলার বাবু-সংস্কৃতির আবহ থেকেই এই ঘরের নাম ‘বাবুমশাই’। বাঙালির কাছে যেমন অতিথি আপ্যায়ন মানেই যত্ন করে সাজানো থালা, বাহারি পদ আর মিষ্টিমুখ, তেমনই এই নামের মধ্যেও রয়েছে সেই চিরচেনা আন্তরিকতা ও রাজকীয় ভোজের আমেজ।"
+    ]
   }
 ]

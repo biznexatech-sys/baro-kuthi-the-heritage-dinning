@@ -1,4 +1,4 @@
-import { courses, menu, occasions, reviews, rooms, signatureDishes, site, story } from '@/lib/content';
+import { courses, menuBookPage, menuItems, occasions, reviews, rooms, signatureDishes, site, story } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 import { v } from '@/lib/asset';
 import { Hero } from '@/components/sections/Hero';
@@ -47,7 +47,7 @@ export default function HomePage() {
             seal={['Since', '1823']}
             facts={[
               { value: String(rooms.length), label: 'Dining rooms' },
-              { value: String(menu.tables.length), label: 'Kitchens' },
+              { value: String(menuItems.length), label: 'Dishes' },
               { value: String(courses.length), label: 'Courses' },
             ]}
             watermark={v('/images/jhar-bati-watermark.webp')}
@@ -58,8 +58,8 @@ export default function HomePage() {
         </PageSection>
         <PageSection tone="band">
           <Stack>
-            <SectionHeading tone="dark" numeral="II" eyebrow="The Two Tables" title="A Bengali Table and a Sahib’s Table" lead="Two kitchens of the house, served side by side." />
-            <MenuBook pages={menu.tables} currency={menu.currency} limit={4} footer={<TextLink href="/menu/">View the full menu</TextLink>} />
+            <SectionHeading tone="dark" numeral="II" eyebrow="The Rajbari Table" title="The Zamindari Signature and the Thali" lead="The house’s own dishes, and the thali served the old way." />
+            <MenuBook pages={[menuBookPage('zamindari', 'Signature'), menuBookPage('thali', 'Thali')]} currency="₹" limit={4} footer={<TextLink href="/menu/">View the full menu</TextLink>} />
           </Stack>
         </PageSection>
 
@@ -75,7 +75,7 @@ export default function HomePage() {
           }
         >
           <Stack>
-            <SectionHeading align="center" numeral="III" eyebrow="From the Kitchens" title="Our Signature Dishes" lead="The dishes the house is known for, from the Bengali table and the Sahib’s." />
+            <SectionHeading align="center" numeral="III" eyebrow="From the Kitchens" title="Our Signature Dishes" lead="The dishes the house is known for." />
             <SignatureDishes dishes={signatureDishes} />
           </Stack>
         </PageSection>
