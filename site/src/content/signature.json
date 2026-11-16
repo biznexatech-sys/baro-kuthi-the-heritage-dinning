@@ -1,32 +1,21 @@
 {
-  "note": "Dishes shown in 'Our Signature Dishes', in order. 'name' must match an English name in menu.json exactly. Photos: put a file named after the dish (e.g. 'Rajbari Gondhoraj Chingri.png') in public/images/signature dish/ and run npm run dishes; 'photo' points at an existing photo file whose name differs.",
+  "note": "Dishes shown in 'Our Signature Dishes', in order. 'name' must match an English name in menu.json exactly; the price comes from the menu. 'image' is the dish photo (made from public/images/menu/1_…4_… photos).",
   "dishes": [
     {
-      "name": "Zamindar Bari Kosha Mangsho",
-      "photo": "Kosha Mangsho"
+      "name": "Bhapa Ilish",
+      "image": "/images/menu/sig-bhapa-ilish.webp"
     },
     {
-      "name": "Bagda Chingri Malaikari",
-      "photo": "Chingri Malai Curry"
+      "name": "Mutton Kosha",
+      "image": "/images/menu/sig-mutton-kosha.webp"
     },
     {
-      "name": "Bhetki Paturi"
+      "name": "Daab Chingri Bagda",
+      "image": "/images/menu/sig-daab-chingri.webp"
     },
     {
-      "name": "Rajbari Gondhoraj Chingri"
-    },
-    {
-      "name": "Barokuthi Ilish Paturi"
-    },
-    {
-      "name": "Daab Chingri Bagda"
-    },
-    {
-      "name": "Vegetarian Thali",
-      "photo": "The Rajbari Thali Niramish"
-    },
-    {
-      "name": "Mishti Doi"
+      "name": "Shorshe Pabda",
+      "image": "/images/menu/sig-shorshe-pabda.webp"
     }
   ]
 }

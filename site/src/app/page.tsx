@@ -76,7 +76,7 @@ export default function HomePage() {
         >
           <Stack>
             <SectionHeading align="center" numeral="III" eyebrow="From the Kitchens" title="Our Signature Dishes" lead="The dishes the house is known for." />
-            <SignatureDishes dishes={signatureDishes} />
+            <SignatureDishes dishes={signatureDishes} currency="₹" />
           </Stack>
         </PageSection>
 

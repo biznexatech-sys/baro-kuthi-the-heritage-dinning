@@ -55,7 +55,7 @@ export default function MenuPage() {
       <PageSection id="signature">
         <Stack>
           <SectionHeading align="center" numeral="II" eyebrow="From the Kitchens" title="Signature Dishes" lead="The dishes the house is known for." />
-          <SignatureDishes dishes={signatureDishes} />
+          <SignatureDishes dishes={signatureDishes} currency="₹" />
         </Stack>
       </PageSection>
 
